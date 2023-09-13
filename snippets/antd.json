@@ -1,0 +1,1168 @@
+{
+  "Button": {
+    "prefix": "adbtn",
+    "body": [
+      "<Button type=\"${1|default,primary,ghost,dashed,link,text|}\">$2</Button>",
+      ""
+    ]
+  },
+  "Radio Group Button": {
+    "prefix": "adbtn-radio-group",
+    "body": [
+      "<Radio.Group value=\"$1\" defaultValue=\"$1\" onChange={$4}>\r",
+      "    <Radio.Button value=\"$1\">$1</Radio.Button>\r",
+      "    <Radio.Button value=\"$2\">$2</Radio.Button>\r",
+      "    <Radio.Button value=\"$3\">$3</Radio.Button>\r",
+      "</Radio.Group>",
+      ""
+    ]
+  },
+  "Typography Example": {
+    "prefix": "adtypography-example",
+    "body": [
+      "<Typography>",
+      "    <Typography.Title>Introduction</Typography.Title>",
+      "    <Typography.Paragraph>",
+      "        In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.",
+      "    </Typography.Paragraph>",
+      "    <Typography.Paragraph>",
+      "        After massive project practice and summaries, Ant Design, a design language for background applications, is refined by Ant UED Team, which aims to <Text strong>uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development</Text>.",
+      "    </Typography.Paragraph>",
+      "    <Typography.Title level={2}>Guidelines and Resources</Typography.Title>",
+      "    <Typography.Paragraph>",
+      "        We supply a series of design principles, practical patterns and high quality design resources (<Text code>Sketch</Text> and <Text code>Axure</Text>), to help people create their product prototypes beautifully and efficiently.",
+      "    </Typography.Paragraph>",
+      "</Typography>"
+    ],
+    "description": ""
+  },
+  "Typography Title": {
+    "prefix": "adtypography-title",
+    "body": [
+      "<Typography.Title level={${1|1,2,3,4,5}}>Introduction</Typography.Title>"
+    ],
+    "description": "Display title in different level. Levels match content importance: h1, h2, h3, h4"
+  },
+  "Typography Paragraph": {
+    "prefix": "adtypography-paragraph",
+    "body": [
+      "<Typography.Paragraph>",
+      "    In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.",
+      "</Typography.Paragraph>"
+    ],
+    "description": ""
+  },
+  "Typography Text": {
+    "prefix": "adtypography-text",
+    "body": [
+      "<Typography.Text type=\"${1|secondary,warning,danger}\" ${2|disabled,mark,code,underline,delete,strong}>Ant Design</Typography.Text>"
+    ],
+    "description": "Provides multiple types of text."
+  },
+  "Typography Interactive": {
+    "prefix": "adtypography-interactive",
+    "body": [
+      "<Typography.Paragraph editable={{ onChange: onChange }}>{str}</Typography.Paragraph>",
+      "<Typography.Paragraph copyable>This is a copyable text.</Typography.Paragraph>",
+      "<Typography.Paragraph copyable={{ text: 'Hello, Ant Design!' }}>Replace copy text.</Typography.Paragraph>"
+    ],
+    "description": "Provide additional interactive capacity. Copy to clipboard and edit on click."
+  },
+  "Typography Ellipsis": {
+    "prefix": "adtypography-ellipsis",
+    "body": [
+      "<Typography.Paragraph ellipsis>",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "</Typography.Paragraph>",
+      "",
+      "<Typography.Paragraph ellipsis={{ rows: 3, expandable: true }}>",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "    Ant Design, a design language for background applications, is refined by Ant UED Team.",
+      "</Typography.Paragraph>"
+    ],
+    "description": "Provide additional interactive capacity. Copy to clipboard and edit on click."
+  },
+
+  "Divider": {
+    "prefix": "addivider",
+    "body": [
+      "<Divider orientation=\"${1|left,right,center|}\">Left Text</Divider>"
+    ],
+    "description": ""
+  },
+  "Row": {
+    "prefix": "adrow",
+    "body": [
+      "<Row gutter={16}>\r",
+      "    <Col span={12}>$1</Col>\r",
+      "    <Col span={12}>$2</Col>\r",
+      "</Row>\r",
+      ""
+    ],
+    "description": "The Basic Grid Row."
+  },
+  "Layout": {
+    "prefix": "adlayout",
+    "body": [
+      "<Layout>\r",
+      "  <Header>header</Header>\r",
+      "  <Layout>\r",
+      "    <Sider>left sidebar</Sider>\r",
+      "    <Content>main content</Content>\r",
+      "    <Sider>right sidebar</Sider>\r",
+      "  </Layout>\r",
+      "  <Footer>footer</Footer>\r",
+      "</Layout>"
+    ],
+    "description": "The Basic Layout"
+  },
+  "Space": {
+    "prefix": "adspace",
+    "body": [
+      "<Space direction=\"${1|vertical,horizontal|}\">",
+      "        <p>Card content</p>",
+      "        <p>Card content</p>",
+      "        <p>Card content</p>",
+      "        <p>Card content</p>",
+      "    </Space>"
+    ],
+    "description": "Set components spacing."
+  },
+  "Affix": {
+    "prefix": "adaffix",
+    "body": [
+      "<Affix offsetTop={$1}>\r",
+      "    <Button type=\"primary\">$2</Button>\r",
+      "</Affix>\r",
+      ""
+    ],
+    "description": "Affix"
+  },
+  "Breadcrumb": {
+    "prefix": "adbread",
+    "body": [
+      "// >=4.24.0 可用，推荐的写法 ✅",
+      "const items = [",
+      "  { label: '菜单项一', key: 'item-1' }, // 菜单项务必填写 key",
+      "  { label: '菜单项二', key: 'item-2' },",
+      "];",
+      "return (",
+      "  <Breadcrumb>",
+      "    <Breadcrumb.Item menu={{ items }}>Ant Design</Breadcrumb.Item>",
+      "  </Breadcrumb>",
+      ");"
+    ],
+    "description": ""
+  },
+  "Dropdown": {
+    "prefix": "addropdown",
+    "body": [
+      "// >=4.24.0 可用，推荐的写法 ✅",
+      "const items = [",
+      "  { label: '菜单项一', key: 'item-1' }, // 菜单项务必填写 key",
+      "  { label: '菜单项二', key: 'item-2' },",
+      "];",
+      "return (",
+      "  <Dropdown menu={{ items }}>",
+      "    <a>Hover me</a>",
+      "  </Dropdown>",
+      ");"
+    ],
+    "description": ""
+  },
+  "Menu": {
+    "prefix": "admenu",
+    "body": [
+      "const items = [",
+      "  { label: '菜单项一', key: 'item-1' }, // 菜单项务必填写 key",
+      "  { label: '菜单项二', key: 'item-2' },",
+      "  {",
+      "    label: '子菜单',",
+      "    key: 'submenu',",
+      "    children: [{ label: '子菜单项', key: 'submenu-item-1' }],",
+      "  },",
+      "];",
+      "return <Menu items={items} />;"
+    ],
+    "description": ""
+  },
+  "PageHeader": {
+    "prefix": "adpageheader",
+    "body": [
+      "<PageHeader",
+      "      ghost={false}",
+      "      onBack={() => window.history.back()}",
+      "      title=\"Title\"",
+      "      subTitle=\"This is a subtitle\"",
+      "      extra={[",
+      "        <Button key=\"3\">Operation</Button>,",
+      "        <Button key=\"2\">Operation</Button>,",
+      "        <Button key=\"1\" type=\"primary\">",
+      "          Primary",
+      "        </Button>,",
+      "      ]}",
+      "    >",
+      "      <Descriptions size=\"small\" column={3}>",
+      "        <Descriptions.Item label=\"Created\">Lili Qu</Descriptions.Item>",
+      "        <Descriptions.Item label=\"Association\">",
+      "          <a>421421</a>",
+      "        </Descriptions.Item>",
+      "        <Descriptions.Item label=\"Creation Time\">2017-01-10</Descriptions.Item>",
+      "        <Descriptions.Item label=\"Effective Time\">2017-10-10</Descriptions.Item>",
+      "        <Descriptions.Item label=\"Remarks\">",
+      "          Gonghu Road, Xihu District, Hangzhou, Zhejiang, China",
+      "        </Descriptions.Item>",
+      "      </Descriptions>",
+      "    </PageHeader>"
+    ],
+    "description": ""
+  },
+  "Pagination": {
+    "prefix": "adpagination",
+    "body": ["<Pagination defaultCurrent={1} total={50} />\r", ""],
+    "description": ""
+  },
+  "Steps": {
+    "prefix": "adsteps",
+    "body": [
+      "// >=4.24.0 可用，推荐的写法 ✅",
+      "const items = [{ title: '第一步' }, { title: '第二步' }, { title: '第三步' }];",
+      "return <Steps items={items} />;"
+    ],
+    "description": ""
+  },
+  "AutoComplete": {
+    "prefix": "adautocomplete",
+    "body": [
+      "const options = [",
+      "  { value: 'Burns Bay Road' },",
+      "  { value: 'Downing Street' },",
+      "  { value: 'Wall Street' },",
+      "];",
+      "  <AutoComplete",
+      "    style={{ width: 200 }}",
+      "    options={options}",
+      "    placeholder=\"try to type `b`\"",
+      "    filterOption={(inputValue, option) =>",
+      "      option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1",
+      "    }",
+      "  />"
+    ],
+    "description": ""
+  },
+  "Cascader": {
+    "prefix": "adcascader",
+    "body": [
+      "{const options = [{ value: 'zhejiang', label: 'Zhejiang', children: [{ value: 'hangzhou', label: 'Hangzhou', children: [{ value: 'xihu', label: 'West Lake', }], }], }, { value: 'jiangsu', label: 'Jiangsu', children: [{ value: 'nanjing', label: 'Nanjing', children: [{ value: 'zhonghuamen', label: 'Zhong Hua Men', }], }], }];}\r",
+      "<Cascader options={options} onChange={onChange} placeholder=\"Please select\" />\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Checkbox": {
+    "prefix": "adcheckbox",
+    "body": [
+      "    <Checkbox",
+      "      checked={$1}",
+      "      disabled={${2|true,false|}}",
+      "      onChange={$3}",
+      "    >",
+      "      label",
+      "    </Checkbox>"
+    ],
+    "description": ""
+  },
+  "Checkbox Group": {
+    "prefix": "adcheckbox-group",
+    "body": [
+      "const options = [",
+      "  { label: 'Apple', value: 'Apple' },",
+      "  { label: 'Pear', value: 'Pear' },",
+      "  { label: 'Orange', value: 'Orange' },",
+      "];",
+      "<Checkbox.Group options={options} defaultValue={['Pear']} onChange={onChange} />"
+    ],
+    "description": ""
+  },
+  "DatePicker": {
+    "prefix": "addatepicker",
+    "body": [
+      "<DatePicker onChange={onChange} picker=\"${1|date,week,month,quarter,year|}\" />"
+    ],
+    "description": ""
+  },
+  "DatePicker RangerPicker": {
+    "prefix": "adrangerpicker",
+    "body": [
+      "const { RangePicker } = DatePicker;",
+      "    <RangePicker showTime picker=\"${1|date,week,month,quarter,year|}\"/>",
+      ""
+    ],
+    "description": ""
+  },
+  "Basic Form": {
+    "prefix": "adform",
+    "body": [
+      "const onFinish = (values: any) => {",
+      "    console.log('Success:', values);",
+      "  };",
+      "",
+      "  const onFinishFailed = (errorInfo: any) => {",
+      "    console.log('Failed:', errorInfo);",
+      "  };",
+      "<Form",
+      "      name=\"basic\"",
+      "      labelCol={{ span: 8 }}",
+      "      wrapperCol={{ span: 16 }}",
+      "      initialValues={{ remember: true }}",
+      "      onFinish={onFinish}",
+      "      onFinishFailed={onFinishFailed}",
+      "    >",
+      "      <Form.Item",
+      "        label=\"Username\"",
+      "        name=\"username\"",
+      "        rules={[{ required: true, message: 'Please input your username!' }]}",
+      "      >",
+      "        <Input />",
+      "      </Form.Item>",
+      "",
+      "      <Form.Item",
+      "        label=\"Password\"",
+      "        name=\"password\"",
+      "        rules={[{ required: true, message: 'Please input your password!' }]}",
+      "      >",
+      "        <Input.Password />",
+      "      </Form.Item>",
+      "",
+      "      <Form.Item",
+      "        name=\"remember\"",
+      "        valuePropName=\"checked\"",
+      "        wrapperCol={{ offset: 8, span: 16 }}",
+      "      >",
+      "        <Checkbox>Remember me</Checkbox>",
+      "      </Form.Item>",
+      "",
+      "      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>",
+      "        <Button type=\"primary\" htmlType=\"submit\">",
+      "          Submit",
+      "        </Button>",
+      "      </Form.Item>",
+      "    </Form>"
+    ],
+    "description": ""
+  },
+  "Form Item": {
+    "prefix": "adformitem",
+    "body": ["<Form.Item label=\"$1\" name=\"$2\">", "  $3", "</Form.Item>"],
+    "description": ""
+  },
+  "Input": {
+    "prefix": "adinput",
+    "body": ["<Input placeholder=\"Basic usage\" />\r", ""],
+    "description": "Basic Input"
+  },
+  "Input Addon": {
+    "prefix": "adinput-addon",
+    "body": [
+      "<Input addonBefore=\"http://\" addonAfter=\".com\" defaultValue=\"domain\" />\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Input Search": {
+    "prefix": "adinput-search",
+    "body": [
+      "<Input.Search placeholder=\"$1\" allowClear onSearch={onSearch} style={{ width: 200 }} />"
+    ],
+    "description": ""
+  },
+  "Input TextArea": {
+    "prefix": "adinput-textarea",
+    "body": ["<Input.TextArea placeholder=\"$1\" allowClear />"],
+    "description": ""
+  },
+  "Input Password": {
+    "prefix": "adinput-password",
+    "body": [
+      "<Input.Password",
+      "      placeholder=\"input password\"",
+      "      iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}",
+      "    />"
+    ],
+    "description": ""
+  },
+  "Input Group": {
+    "prefix": "adinput-group",
+    "body": [
+      "<Input.Group size=\"large\">\r",
+      "    <Input defaultValue=\"$1\" />\r",
+      "    <Input defaultValue=\"$2\" />\r",
+      "    <Select defaultValue=\"$1\">\r",
+      "        <Option value=\"$1\">$1</Option>\r",
+      "        <Option value=\"$2\">$2</Option>\r",
+      "      </Select>\r",
+      "    <Input style={{ width: '50%' }} d",
+      "</Input.Group>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "InputNumber": {
+    "prefix": "adinputnumber",
+    "body": [
+      "<InputNumber min={1} max={10} defaultValue={3} onChange={onChange} />"
+    ],
+    "description": ""
+  },
+  "Mentions": {
+    "prefix": "admentions",
+    "body": [
+      "<Mentions style={{ width: '100%' }} loading={loading} onSearch={onSearch}>",
+      "        {users.map(({ login, avatar_url: avatar }) => (",
+      "          <Option key={login} value={login} className=\"antd-demo-dynamic-option\">",
+      "            <img src={avatar} alt={login} />",
+      "            <span>{login}</span>",
+      "          </Option>",
+      "        ))}",
+      "      </Mentions>"
+    ],
+    "description": ""
+  },
+  "Radio": {
+    "prefix": "adradio",
+    "body": ["<Radio>$1</Radio>"],
+    "description": ""
+  },
+  "Radio Group": {
+    "prefix": "adradiogroup",
+    "body": [
+      "<Radio.Group onChange={onChange} value={value}>\r",
+      "    <Radio value={1}>A</Radio>\r",
+      "    <Radio value={2}>B</Radio>\r",
+      "    <Radio value={3}>C</Radio>\r",
+      "    <Radio value={4}>D</Radio>\r",
+      "</Radio.Group>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Rate": {
+    "prefix": "adrate",
+    "body": ["<Rate allowHalf defaultValue={2} />\r", ""],
+    "description": ""
+  },
+  "Select": {
+    "prefix": "adselect",
+    "body": [
+      "  <Select",
+      "    showSearch",
+      "    style={{ width: 200 }}",
+      "    placeholder=\"请选择\"",
+      "    onChange={onChange}",
+      "    onFocus={onFocus}",
+      "    onBlur={onBlur}",
+      "    onSearch={onSearch}",
+      "  >",
+      "    <Select.Option value=\"jack\">Jack</Select.Option>",
+      "    <Select.Option value=\"lucy\">Lucy</Select.Option>",
+      "    <Select.Option value=\"tom\">Tom</Select.Option>",
+      "  </Select>"
+    ],
+    "description": ""
+  },
+  "Select Filter": {
+    "prefix": "adselect-filter",
+    "body": [
+      "              <Select",
+      "                showSearch",
+      "                placeholder=\"请选择\"",
+      "                optionFilterProp=\"label\"",
+      "                options={options}",
+      "                filterOption={(input, option) => {",
+      "                  const res =",
+      "                    option?.label?.toString()?.toLowerCase()?.indexOf?.(input?.toLowerCase()) ??",
+      "                    -1;",
+      "                  return res >= 0;",
+      "                }}",
+      "              />    "
+    ],
+    "description": ""
+  },
+  "Slider": {
+    "prefix": "adslider",
+    "body": ["<Slider range defaultValue={[20, 50]} />\r", ""],
+    "description": ""
+  },
+  "Switch": {
+    "prefix": "adswitch",
+    "body": [
+      "<Switch",
+      "      checkedChildren={<CheckOutlined />}",
+      "      unCheckedChildren={<CloseOutlined />}",
+      "      defaultChecked",
+      "    />"
+    ],
+    "description": ""
+  },
+  "TimePicker": {
+    "prefix": "adtimepicker",
+    "body": ["<TimePicker value={value} onChange={onChange} />"],
+    "description": ""
+  },
+  "TimePicker RangePicker": {
+    "prefix": "adtimerpicker-range",
+    "body": ["<TimePicker.RangePicker />"],
+    "description": ""
+  },
+  "Transfer": {
+    "prefix": "adtransfer",
+    "body": [
+      "const [targetKeys, setTargetKeys] = useState(initialTargetKeys);",
+      "  const [selectedKeys, setSelectedKeys] = useState([]);",
+      "  const onChange = (nextTargetKeys, direction, moveKeys) => {",
+      "    console.log('targetKeys:', nextTargetKeys);",
+      "    console.log('direction:', direction);",
+      "    console.log('moveKeys:', moveKeys);",
+      "    setTargetKeys(nextTargetKeys);",
+      "  };",
+      "",
+      "  const onSelectChange = (sourceSelectedKeys, targetSelectedKeys) => {",
+      "    console.log('sourceSelectedKeys:', sourceSelectedKeys);",
+      "    console.log('targetSelectedKeys:', targetSelectedKeys);",
+      "    setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);",
+      "  };",
+      "",
+      "  const onScroll = (direction, e) => {",
+      "    console.log('direction:', direction);",
+      "    console.log('target:', e.target);",
+      "  };",
+      "<Transfer",
+      "      dataSource={mockData}",
+      "      titles={['Source', 'Target']}",
+      "      targetKeys={targetKeys}",
+      "      selectedKeys={selectedKeys}",
+      "      onChange={onChange}",
+      "      onSelectChange={onSelectChange}",
+      "      onScroll={onScroll}",
+      "      render={item => item.title}",
+      "    />"
+    ],
+    "description": ""
+  },
+  "Tree Select": {
+    "prefix": "adtreeselect",
+    "body": [
+      " const treeData = [",
+      "    {",
+      "      title: 'Node1',",
+      "      value: '0-0',",
+      "      children: [",
+      "        {",
+      "          title: 'Child Node1',",
+      "          value: '0-0-1',",
+      "        },",
+      "        {",
+      "          title: 'Child Node2',",
+      "          value: '0-0-2',",
+      "        },",
+      "      ],",
+      "    },",
+      "    {",
+      "      title: 'Node2',",
+      "      value: '0-1',",
+      "    },",
+      "  ];  ",
+      "  const [value, setValue] = useState([]);",
+      "  const onChange = (val) => {",
+      "    setValue(val);",
+      "  };      ",
+      "  <TreeSelect",
+      "    style={{ width: 200 }}",
+      "    value={value}",
+      "    treeData={treeData}",
+      "    placeholder=\"Please select\"",
+      "    treeDefaultExpandAll",
+      "    onChange={onChange}",
+      "  />",
+      "          "
+    ],
+    "description": ""
+  },
+  "Upload": {
+    "prefix": "adupload",
+    "body": [
+      "const props = {",
+      "  name: 'file',",
+      "  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',",
+      "  headers: {",
+      "    authorization: 'authorization-text',",
+      "  },",
+      "  onChange(info) {",
+      "    if (info.file.status !== 'uploading') {",
+      "      console.log(info.file, info.fileList);",
+      "    }",
+      "    if (info.file.status === 'done') {",
+      "      message.success(`${info.file.name} file uploaded successfully`);",
+      "    } else if (info.file.status === 'error') {",
+      "      message.error(`${info.file.name} file upload failed.`);",
+      "    }",
+      "  },",
+      "}; ",
+      "<Upload {...props}>",
+      "    <Button icon={<UploadOutlined />}>Click to Upload</Button>",
+      "  </Upload>"
+    ],
+    "description": ""
+  },
+  "Avatar": {
+    "prefix": "adavatar",
+    "body": ["<Avatar icon=\"user\" size={64}/>\r", ""],
+    "description": ""
+  },
+
+  "Badge": {
+    "prefix": "adbadge",
+    "body": [
+      "<Badge count={$1} overflowCount={$2}>\r",
+      "    <a href=\"#\"/>\r",
+      "</Badge>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Calendar": {
+    "prefix": "",
+    "body": ["<Calendar onPanelChange={$1} />"],
+    "description": ""
+  },
+  "Card": {
+    "prefix": "adcard",
+    "body": [
+      "<Card title=\"$1\" bordered={$2}>\r",
+      "    $3\r",
+      "</Card>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Card with extra": {
+    "prefix": "adcard-extra",
+    "body": [
+      "<Card title=\"$1\" bordered={$2} extra={<a href=\"#\">More</a>}>\r",
+      "    $3\r",
+      "</Card>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Carousel": {
+    "prefix": "adcarousel",
+    "body": [
+      "<Carousel>\r",
+      "    <div><h3>1</h3></div>\r",
+      "    <div><h3>2</h3></div>\r",
+      "    <div><h3>3</h3></div>\r",
+      "    <div><h3>4</h3></div>\r",
+      "</Carousel>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Collapse": {
+    "prefix": "adcollapse",
+    "body": [
+      "<Collapse defaultActiveKey={[ '1']}>\r",
+      "    <Collapse.Panel header=\"This is panel header 1\" key=\"1\">\r",
+      "        <p>{text}</p>\r",
+      "    </Collapse.Panel>\r",
+      "    <Collapse.Panel header=\"This is panel header 2\" key=\"2\">\r",
+      "        <p>{text}</p>\r",
+      "    </Collapse.Panel>\r",
+      "    <Collapse.Panel header=\"This is panel header 3\" key=\"3\">\r",
+      "        <p>{text}</p>\r",
+      "    </Collapse.Panel>\r",
+      "</Collapse>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Comment": {
+    "prefix": "adcomment",
+    "body": [
+      "const [likes, setLikes] = useState(0);",
+      "  const [dislikes, setDislikes] = useState(0);",
+      "  const [action, setAction] = useState(null);",
+      "",
+      "  const like = () => {",
+      "    setLikes(1);",
+      "    setDislikes(0);",
+      "    setAction('liked');",
+      "  };",
+      "",
+      "  const dislike = () => {",
+      "    setLikes(0);",
+      "    setDislikes(1);",
+      "    setAction('disliked');",
+      "  };",
+      "",
+      "  const actions = [",
+      "    <Tooltip key=\"comment-basic-like\" title=\"Like\">",
+      "      <span onClick={like}>",
+      "        {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}",
+      "        <span className=\"comment-action\">{likes}</span>",
+      "      </span>",
+      "    </Tooltip>,",
+      "    <Tooltip key=\"comment-basic-dislike\" title=\"Dislike\">",
+      "      <span onClick={dislike}>",
+      "        {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}",
+      "        <span className=\"comment-action\">{dislikes}</span>",
+      "      </span>",
+      "    </Tooltip>,",
+      "    <span key=\"comment-basic-reply-to\">Reply to</span>,",
+      "  ];",
+      "",
+      "  return (",
+      "    <Comment",
+      "      actions={actions}",
+      "      author={<a>Han Solo</a>}",
+      "      avatar={",
+      "        <Avatar",
+      "          src=\"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png\"",
+      "          alt=\"Han Solo\"",
+      "        />",
+      "      }",
+      "      content={",
+      "        <p>",
+      "          We supply a series of design principles, practical patterns and high quality design",
+      "          resources (Sketch and Axure), to help people create their product prototypes beautifully",
+      "          and efficiently.",
+      "        </p>",
+      "      }",
+      "      datetime={",
+      "        <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>",
+      "          <span>{moment().fromNow()}</span>",
+      "        </Tooltip>",
+      "      }",
+      "    />",
+      "  );",
+      "};"
+    ],
+    "description": ""
+  },
+  "Descriptions": {
+    "prefix": "addescriptions",
+    "body": [
+      "<Descriptions title=\"User Info\">",
+      "    <Descriptions.Item label=\"UserName\">Zhou Maomao</Descriptions.Item>",
+      "    <Descriptions.Item label=\"Telephone\">1810000000</Descriptions.Item>",
+      "    <Descriptions.Item label=\"Live\">Hangzhou, Zhejiang</Descriptions.Item>",
+      "    <Descriptions.Item label=\"Remark\">empty</Descriptions.Item>",
+      "    <Descriptions.Item label=\"Address\">",
+      "      No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China",
+      "    </Descriptions.Item>",
+      "  </Descriptions>"
+    ],
+    "description": ""
+  },
+  "Empty": {
+    "prefix": "adempty",
+    "body": ["<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />"],
+    "description": "Empty state placeholder."
+  },
+  "Empty with Message": {
+    "prefix": "adempty-w-message",
+    "body": [
+      "<Empty description=\"No data found...\">",
+      "    <Button type=\"primary\">Add one now</Button>",
+      "</Empty>"
+    ],
+    "description": "Empty state placeholder."
+  },
+  "Image": {
+    "prefix": "adimage",
+    "body": [
+      "      <Image",
+      "        width={200}",
+      "        src={`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`}",
+      "        placeholder={",
+      "          <Image",
+      "            preview={false}",
+      "            src=\"https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200\"",
+      "            width={200}",
+      "          />",
+      "        }",
+      "      />"
+    ],
+    "description": ""
+  },
+  "List": {
+    "prefix": "adlist",
+    "body": [
+      "<List\r",
+      "    header={<div>Header</div>}\r",
+      "    footer={<div>Footer</div>}\r",
+      "    bordered\r",
+      "    dataSource={$1}\r",
+      "    renderItem={item => (<List.Item>{item}</List.Item>)}\r",
+      "/>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Popover": {
+    "prefix": "adpopover",
+    "body": [
+      "<Popover content={ <div>\r",
+      "    <p>$3</p>\r",
+      "    </div>\r",
+      "    } title=\"$2\" >\r",
+      "    <Button type=\"primary\">$1</Button>\r",
+      "</Popover>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Statistic": {
+    "prefix": "adstatistic",
+    "body": ["<Statistic title=\"Active Users\" value={112893} loading />"],
+    "description": ""
+  },
+  "Table": {
+    "prefix": "adtable",
+    "body": [
+      "const dataSource = [",
+      "  {",
+      "    key: '1',",
+      "    name: 'Mike',",
+      "    age: 32,",
+      "    address: '10 Downing Street',",
+      "  },",
+      "  {",
+      "    key: '2',",
+      "    name: 'John',",
+      "    age: 42,",
+      "    address: '10 Downing Street',",
+      "  },",
+      "];",
+      "",
+      "const columns = [",
+      "  {",
+      "    title: 'Name',",
+      "    dataIndex: 'name',",
+      "    key: 'name',",
+      "  },",
+      "  {",
+      "    title: 'Age',",
+      "    dataIndex: 'age',",
+      "    key: 'age',",
+      "  },",
+      "  {",
+      "    title: 'Address',",
+      "    dataIndex: 'address',",
+      "    key: 'address',",
+      "  },",
+      "];",
+      "",
+      "<Table dataSource={dataSource} columns={columns} />"
+    ],
+    "description": ""
+  },
+
+  "Tabs": {
+    "prefix": "adtabs",
+    "body": [
+      "// >=4.23.0 可用，推荐的写法 ✅",
+      "const items = [",
+      "  { label: '项目 1', key: 'item-1', children: '内容 1' }, // 务必填写 key",
+      "  { label: '项目 2', key: 'item-2', children: '内容 2' },",
+      "];",
+      "return <Tabs items={items} />;"
+    ],
+    "description": ""
+  },
+  "Tabs4.23": {
+    "prefix": "adtabsnew",
+    "body": [
+      "const items = [",
+      "  { label: '项目 1', key: 'item-1', children: '内容 1' }, // 务必填写 key,children类型为ReactNode",
+      "  { label: '项目 2', key: 'item-2', children: '内容 2' },",
+      "];",
+      "return <Tabs items={items} />;"
+    ],
+    "description": ""
+  },
+  "Tag": {
+    "prefix": "adtag",
+    "body": [
+      "<div>\r",
+      "    <Tag>Tag 1</Tag>\r",
+      "    <Tag><a href=\"#\">Link</a></Tag>\r",
+      "    <Tag closable>Tag 2</Tag>\r",
+      "    <Tag closable>Prevent Default</Tag>\r",
+      "    <Tag color=\"magenta\">magenta</Tag>\r",
+      "</div>\r",
+      ""
+    ],
+    "description": ""
+  },
+
+  "Tooltip": {
+    "prefix": "adtooltip",
+    "body": [
+      "<Tooltip title=\"$1\">\r",
+      "    <span>$2</span>\r",
+      "</Tooltip>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Timeline": {
+    "prefix": "adtimeline",
+    "body": [
+      "<Timeline>\r",
+      "    <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>\r",
+      "    <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>\r",
+      "    <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>\r",
+      "    <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>\r",
+      "</Timeline>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Tree": {
+    "prefix": "adtree",
+    "body": [
+      "const treeData = [",
+      "  {",
+      "    title: 'parent 1',",
+      "    key: '0-0',",
+      "    children: [",
+      "      {",
+      "        title: 'parent 1-0',",
+      "        key: '0-0-0',",
+      "        disabled: true,",
+      "        children: [",
+      "          {",
+      "            title: 'leaf',",
+      "            key: '0-0-0-0',",
+      "            disableCheckbox: true,",
+      "          },",
+      "          {",
+      "            title: 'leaf',",
+      "            key: '0-0-0-1',",
+      "          },",
+      "        ],",
+      "      },",
+      "      {",
+      "        title: 'parent 1-1',",
+      "        key: '0-0-1',",
+      "        children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }],",
+      "      },",
+      "    ],",
+      "  },",
+      "];   ",
+      " <Tree",
+      "      checkable",
+      "      defaultExpandedKeys={['0-0-0', '0-0-1']}",
+      "      defaultSelectedKeys={['0-0-0', '0-0-1']}",
+      "      defaultCheckedKeys={['0-0-0', '0-0-1']}",
+      "      onSelect={onSelect}",
+      "      onCheck={onCheck}",
+      "      treeData={treeData}",
+      "    />"
+    ],
+    "description": ""
+  },
+
+  "Alert": {
+    "prefix": "adalert",
+    "body": [
+      "<Alert showIcon message=\"Success Text\" type=\"${1|success,info,warning,error|}\" closable description=\"\" />\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Drawer": {
+    "prefix": "addrawer",
+    "body": [
+      "<Drawer",
+      "        title=\"Basic Drawer\"",
+      "        placement=\"right\"",
+      "        closable={false}",
+      "        onClose={onClose}",
+      "        open={open}",
+      "      >",
+      "        <p>Some contents...</p>",
+      "        <p>Some contents...</p>",
+      "        <p>Some contents...</p>",
+      "      </Drawer>"
+    ],
+    "description": ""
+  },
+  "Modal": {
+    "prefix": "admodal",
+    "body": [
+      "<Modal title=\"$1\" open>\r",
+      "    <p>$2</p>\r",
+      "</Modal>\r",
+      ""
+    ],
+    "description": ""
+  },
+  "Information Modal": {
+    "prefix": "admodal-info",
+    "body": [
+      "Modal.$1({\r",
+      "    title: '$2',\r",
+      "    content: '$3',\r",
+      "})",
+      ""
+    ],
+    "description": ""
+  },
+  "Message": {
+    "prefix": "admessage",
+    "body": ["message.${1|success,error,info,warning,loading|}('$1')", ""],
+    "description": ""
+  },
+  "Notification": {
+    "prefix": "adnotification",
+    "body": [
+      "notification.${1|success,error,info,warning,warn,open,close,destroy|}({\r",
+      "    message: '$2',\r",
+      "    description: '$3',\r",
+      "})",
+      ""
+    ],
+    "description": ""
+  },
+  "Progress": {
+    "prefix": "adprogress",
+    "body": [
+      "<Progress percent={50} status=\"${1|success,exception,active|}\" type=\"${2|line,circle,dashboard|}\" />",
+      ""
+    ],
+    "description": ""
+  },
+  "Popconfirm": {
+    "prefix": "adpopconfirm",
+    "body": [
+      "<Popconfirm",
+      "    title=\"Are you sure to delete this task?\"",
+      "    onConfirm={confirm}",
+      "    onCancel={cancel}",
+      "    okText=\"Yes\"",
+      "    cancelText=\"No\"",
+      "  >",
+      "    <a href=\"#\">Delete</a>",
+      "  </Popconfirm>"
+    ],
+    "description": ""
+  },
+  "Skeleton": {
+    "prefix": "adskeleton",
+    "body": ["<Skeleton />"],
+    "description": ""
+  },
+  "Spin": {
+    "prefix": "adspin",
+    "body": ["<Spin size=\"${1|small,default,large|}\" spinning={$2}/>"],
+    "description": ""
+  },
+  "Spin in Container": {
+    "prefix": "adspin-container",
+    "body": [
+      "<Spin tip=\"Loading...\">",
+      "    <Alert\r",
+      "        message=\"Loading content\"\r",
+      "        description=\"Content here that is still loading\"\r",
+      "        type=\"info\"\r",
+      "    />\r",
+      "</Spin>"
+    ],
+    "description": ""
+  },
+  "Result": {
+    "prefix": "adresult",
+    "body": [
+      "<Result",
+      "    status=\"${1|success,error,info,warning,404,403,500|}\"",
+      "    title=\"Successfully Purchased Cloud Server ECS!\"",
+      "    subTitle=\"Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.\"",
+      "    extra={[",
+      "      <Button type=\"primary\" key=\"console\">",
+      "        Go Console",
+      "      </Button>,",
+      "      <Button key=\"buy\">Buy Again</Button>,",
+      "    ]}",
+      "  />"
+    ],
+    "description": ""
+  },
+  "Anchor": {
+    "prefix": "adanchor",
+    "body": [
+      "<Anchor>",
+      "    <Link href=\"#components-anchor-demo-basic\" title=\"Basic demo\" />",
+      "    <Link href=\"#components-anchor-demo-static\" title=\"Static demo\" />",
+      "    <Link href=\"#API\" title=\"API\">",
+      "      <Link href=\"#Anchor-Props\" title=\"Anchor Props\" />",
+      "      <Link href=\"#Link-Props\" title=\"Link Props\" />",
+      "    </Link>",
+      "  </Anchor>"
+    ],
+    "description": ""
+  },
+  "BackTop": {
+    "prefix": "adbacktop",
+    "body": ["<BackTop />"],
+    "description": ""
+  },
+  "FloatButton.BackTop": {
+    "prefix": "adfloatbacktop",
+    "body": ["<FloatButton.BackTop />"],
+    "description": ""
+  },
+  "FloatButton": {
+    "prefix": "adfloatbtn",
+    "body": [
+      "<FloatButton",
+      "      shape=\"circle\"",
+      "      type=\"primary\"",
+      "      style={{ right: 94 }}",
+      "      icon={<CustomerServiceOutlined />}",
+      "    />"
+    ],
+    "description": ""
+  },
+  "FloatButton.Group": {
+    "prefix": "adfloatbtngroup",
+    "body": [
+      "<FloatButton.Group shape=\"square\" style={{ right: 94 }}>",
+      "      <FloatButton icon={<QuestionCircleOutlined />} />",
+      "      <FloatButton />",
+      "      <FloatButton icon={<SyncOutlined />} />",
+      "      <FloatButton.BackTop visibilityHeight={0} />",
+      "    </FloatButton.Group>"
+    ],
+    "description": ""
+  },
+  "Watermark": {
+    "prefix": "adwatermark",
+    "body": [
+      "<Watermark content=\"Ant Design\">",
+      "    <div style={{ height: 500 }} />",
+      "  </Watermark>"
+    ],
+    "description": ""
+  }
+}

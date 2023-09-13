@@ -9,6 +9,7 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 2000
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 OS_SEP = IS_WINDOWS and "\\" or "/"
+NVIM_TREE_AUTO_UPDATE_ROOT = true
 
 function FORMAT_PATH_BY_OS(path)
   return not IS_WINDOWS and path or string.gsub(path, "/", OS_SEP)
@@ -49,6 +50,7 @@ INVALID_FILETYPE = {
   "startify",
   "neogitstatus",
   "Trouble",
+  "DressingInput",
   "",
   nil,
 }

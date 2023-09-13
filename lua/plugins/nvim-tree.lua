@@ -111,26 +111,10 @@ SET_AUTOCMDS({
   },
 })
 
-SET_USER_COMMANDS({
-  EnableTreeRootUpdate = function()
-    NVIM_TREE_AUTO_UPDATE_ROOT = true
-  end,
-  DisableTreeRootUpdate = function()
-    NVIM_TREE_AUTO_UPDATE_ROOT = false
-  end,
-})
-
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-    update_focused_file = {
-      enable = true,
-      update_cwd = NVIM_TREE_AUTO_UPDATE_ROOT,
-      update_root = NVIM_TREE_AUTO_UPDATE_ROOT,
-    },
-    respect_buf_cwd = true,
-    sync_root_with_cwd = NVIM_TREE_AUTO_UPDATE_ROOT,
     renderer = {
       root_folder_modifier = ":t",
       icons = {

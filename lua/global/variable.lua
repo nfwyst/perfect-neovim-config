@@ -11,6 +11,11 @@ IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) =
 OS_SEP = IS_WINDOWS and "\\" or "/"
 NVIM_TREE_AUTO_UPDATE_ROOT = true
 
+--- Manual mode doesn't automatically change root directory
+if MANUAL_MODE == nil then
+  MANUAL_MODE = false
+end
+
 function FORMAT_PATH_BY_OS(path)
   return not IS_WINDOWS and path or string.gsub(path, "/", OS_SEP)
 end

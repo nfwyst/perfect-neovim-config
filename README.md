@@ -1,6 +1,6 @@
 # 💤 perfect-neovim-config
 
-make neovim as an perfect ide for development
+make neovim as a perfect ide for development
 
 # Requirements
 

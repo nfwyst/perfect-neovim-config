@@ -9,7 +9,6 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 2000
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 OS_SEP = IS_WINDOWS and "\\" or "/"
-NVIM_TREE_AUTO_UPDATE_ROOT = true
 
 --- Manual mode doesn't automatically change root directory
 if MANUAL_MODE == nil then

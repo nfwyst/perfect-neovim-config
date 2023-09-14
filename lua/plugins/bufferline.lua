@@ -98,11 +98,9 @@ return {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
         },
-        -- buffer_selected = {
-        --   fg = {attribute='fg',highlight='#ff0000'},
-        --   bg = {attribute='bg',highlight='#0000ff'},
-        --   gui = 'none'
-        --   },
+        buffer_selected = {
+          italic = false,
+        },
         buffer_visible = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
@@ -136,17 +134,17 @@ return {
         duplicate_selected = {
           fg = { attribute = "fg", highlight = "TabLineSel" },
           bg = { attribute = "bg", highlight = "TabLineSel" },
-          italic = true,
+          underline = true,
         },
         duplicate_visible = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
-          italic = true,
+          underline = true,
         },
         duplicate = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
-          italic = true,
+          underline = true,
         },
         modified = {
           fg = { attribute = "fg", highlight = "TabLine" },

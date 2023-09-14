@@ -12,7 +12,7 @@ return {
         floats = "transparent",
         sidebars = "transparent",
         comments = { italic = true },
-        keywords = { italic = true },
+        keywords = { italic = false },
       },
       lualine_bold = true,
     })

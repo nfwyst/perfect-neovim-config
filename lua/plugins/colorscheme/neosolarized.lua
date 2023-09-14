@@ -11,10 +11,10 @@ return {
       terminal_colors = true,
       enable_italics = true,
       styles = {
-        keywords = { italic = true },
+        keywords = { italic = false },
         functions = { bold = true },
-        string = { italic = true },
-        underline = false,
+        string = { italic = false },
+        underline = true,
         undercurl = false,
       },
     })

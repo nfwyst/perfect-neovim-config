@@ -44,7 +44,6 @@ SET_OPTS({
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
   shortmess = vim.opt.shortmess + "c", -- don't give ins-completion-menu messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
-  guicursor = "", -- keep cursor block
   background = SCHEME_BACKGROUND,
   -- colorcolumn = "81", -- number of column that should be highlight
 })

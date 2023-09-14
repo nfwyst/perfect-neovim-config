@@ -76,9 +76,10 @@ TREESITTER_IGNORE = {
   "fortran",
   "perl",
   "ruby",
-  "toml",
   "swift",
   "fusion",
+  "hcl",
+  "terraform",
 }
 
 TELESCOPE_IGNORE_PATTERNS = {

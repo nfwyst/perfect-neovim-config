@@ -12,6 +12,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   event = { "BufReadPre", "BufNewFile" },
+  enabled = not IS_WINDOWS,
   opts = {
     dir = OBSIDIAN_DIR,
     completion = {

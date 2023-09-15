@@ -82,6 +82,10 @@ SET_USER_COMMANDS({
     local dap = require("dap")
     dap.repl.open({}, "vsplit")
   end,
+  DapCloseRepl = function()
+    local dap = require("dap")
+    dap.repl.close()
+  end,
   DapUiOpen = function()
     local dapui = require("dapui")
     dapui.open()

@@ -17,6 +17,7 @@ return {
   k = { "<cmd>DapUp<cr>zz", "Dap Up" },
   j = { "<cmd>DapDown<cr>zz", "Dap down" },
   r = { "<cmd>DapOpenRepl<cr><c-w>l", "Open repl" },
+  E = { "<cmd>DapCloseRepl<cr>", "Close repl" },
   f = { "<cmd>Telescope dap frames<cr>", "Dap frames" },
   l = { "<cmd>Telescope dap list_breakpoints<cr>", "List breakpoints" },
   O = { "<cmd>DapUiOpen<cr>", "Dap UI Open" },

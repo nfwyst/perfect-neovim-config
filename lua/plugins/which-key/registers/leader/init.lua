@@ -38,6 +38,7 @@ local register = {
   r = { "<cmd>Telescope oldfiles<cr>", "Recently used files" },
   R = { "<cmd>source $MYVIMRC<cr>", "Reload nvim config" },
   s = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
+  m = { "<cmd>Glow<cr>", "Preview markdown" },
   o = {
     name = "Obsidian/Outline/Open",
     b = require(get_path("obsidian")),

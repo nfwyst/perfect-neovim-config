@@ -55,6 +55,7 @@ INVALID_FILETYPE = {
   "neogitstatus",
   "Trouble",
   "DressingInput",
+  "toggleterm",
   "",
   nil,
 }

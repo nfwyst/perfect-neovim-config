@@ -37,7 +37,12 @@ SET_AUTOCMDS({
     "FileType",
     {
       pattern = { "markdown", "gitcommit" },
-      command = "silent!setlocal wrap | setlocal spell",
+      callback = function()
+        if IS_WINDOWS then
+          return
+        end
+        SET_OPTS({ wrap = true, spell = true }, true)
+      end,
       group = AUTOGROUP("_markdown_git", { clear = true }),
     },
   },

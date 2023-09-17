@@ -6,7 +6,12 @@ end
 
 function DEFINE_SIGNS(signs)
   for name, sign in pairs(signs) do
-    vim.fn.sign_define(name, { text = sign, numhl = "" })
+    local opt = { text = sign, numhl = "" }
+    local is_table = type(sign) == "table"
+    if is_table then
+      opt = MERGE_TABLE(opt, sign)
+    end
+    vim.fn.sign_define(name, opt)
   end
 end
 
@@ -21,9 +26,17 @@ function USER_COMMAND(name, func)
 end
 
 function SET_HIGHLIGHT(table)
-  for k, v in pairs(table) do
-    vim.api.nvim_set_hl(0, k, v)
+  for _, v in ipairs(table) do
+    vim.cmd.highlight({ v, bang = true })
   end
+end
+
+function SHOW_CURSOR()
+  SET_HIGHLIGHT(CURSOR_HILIGHT_OPTS)
+end
+
+function HIDE_CURSOR()
+  SET_HIGHLIGHT({ "Cursor blend=100" })
 end
 
 function SET_BUF_KEY_MAPS(table)
@@ -84,9 +97,13 @@ function SET_GLOBAL_OPTIONS(opts)
   end
 end
 
-function SET_OPTS(opts)
+function SET_OPTS(opts, is_local)
   for k, v in pairs(opts) do
-    vim.opt[k] = v
+    if is_local then
+      vim.opt_local[k] = v
+    else
+      vim.opt[k] = v
+    end
   end
 end
 
@@ -99,10 +116,16 @@ function TABLE_CONTAINS(table, value)
   return false
 end
 
-function SetWorkspacePathGlobal()
+function SETWORKSPACEPATHGLOBAL()
   local _, util = pcall(require, "lspconfig/util")
-  WORKSPACE_PATH = util.root_pattern(".git")(vim.fn.expand("%:p")) or vim.loop.cwd()
+  local get_root = util.root_pattern(UNPACK(PROJECT_PATTERNS))
+  WORKSPACE_PATH = get_root(vim.fn.expand("%:p")) or vim.loop.cwd()
   print("cwd set to: " .. WORKSPACE_PATH)
+end
+
+function UNPACK(table)
+  local up = table.unpack or unpack
+  return up(table)
 end
 
 function IS_ABSOLUTE_PATH(path)
@@ -115,4 +138,51 @@ function SET_AUTOCMDS(list)
     local defs = item[2]
     AUTOCMD(event, defs)
   end
+end
+
+function SET_COLORSCHEME(scheme)
+  if scheme ~= DEFAULT_COLORSCHEME then
+    return
+  end
+  vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
+end
+
+function GET_CURRENT_BUFFER()
+  return vim.api.nvim_get_current_buf()
+end
+
+function IS_PACKAGE_LOADED(pkg)
+  return package.loaded[pkg]
+end
+
+function GET_CURRENT_FILE_PATH()
+  return vim.fn.expand("%")
+end
+
+function SAVE(force, callback)
+  local filename = GET_CURRENT_FILE_PATH()
+  callback = callback or function() end
+  if filename == "" then
+    vim.ui.input({ prompt = "Enter a file name: " }, function(fname)
+      if not fname then
+        vim.notify("No file name, cant save")
+      else
+        vim.cmd.write({ fname, bang = force ~= false })
+        callback()
+      end
+    end)
+  else
+    vim.cmd.write({ bang = force ~= false })
+    callback()
+  end
+end
+
+function QUIT(force)
+  vim.cmd.quit({ bang = force ~= false })
+end
+
+function SAVE_THEN_QUIT(force)
+  SAVE(force, function()
+    QUIT(force)
+  end)
 end

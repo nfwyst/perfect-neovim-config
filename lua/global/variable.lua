@@ -6,9 +6,20 @@ AUTOGROUP = vim.api.nvim_create_augroup
 TELESCOPE_LAYOUT_CONFIG = { width = 0.85, height = 0.75 }
 WORKSPACE_PATH = vim.loop.cwd()
 SCHEME_BACKGROUND = "dark"
-MAX_FILE_LENGTH = 2000
+MAX_FILE_LENGTH = 1000
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 OS_SEP = IS_WINDOWS and "\\" or "/"
+DEFAULT_COLORSCHEME = "tokyonight"
+CURSOR_HILIGHT_OPTS = {
+  "Cursor guibg=#5f87af ctermbg=67 blend=0",
+  "iCursor guibg=#ffffaf ctermbg=229",
+  "rCursor guibg=#d70000 ctermbg=124",
+}
+
+--- Manual open debug from command line
+if DAP_DEBUG_ENABLED == nil then
+  DAP_DEBUG_ENABLED = false
+end
 
 --- Manual mode doesn't automatically change root directory
 if MANUAL_MODE == nil then
@@ -23,15 +34,19 @@ OBSIDIAN_DIR = FORMAT_PATH_BY_OS(HOME_PATH .. "/Documents/Obsidian Vault/persona
 LAZY_PATH = DATA_PATH .. FORMAT_PATH_BY_OS("/lazy/lazy.nvim")
 SNIPPET_PATH = CONFIG_PATH .. FORMAT_PATH_BY_OS("/snippets")
 
+TSX_COMMENT_INCLUDED_FILES = {
+  "javascriptreact",
+  "typescriptreact",
+  "javascript",
+  "typescript",
+}
+
 LSP_SERVERS = {
   "jsonls",
   "lua_ls",
-  "clangd",
-  "cmake",
   "cssls",
   "gopls",
   "html",
-  "sqlls",
   "tsserver",
   "yamlls",
   "tailwindcss",
@@ -60,63 +75,59 @@ INVALID_FILETYPE = {
   nil,
 }
 
-TREESITTER_IGNORE = {
-  "phpdoc",
-  "org",
-  "norg",
-  "pascal",
-  "c_sharp",
-  "java",
-  "kotlin",
-  "php",
-  "erlang",
-  "elixir",
-  "julia",
-  "fish",
-  "fortran",
-  "perl",
-  "ruby",
-  "swift",
-  "fusion",
-  "hcl",
-  "terraform",
+TREESITTER_ENSURE_INSTALL = {
+  "markdown",
+  "markdown_inline",
+  "bash",
+  "html",
+  "json",
+  "javascript",
+  "typescript",
+  "tsx",
+  "css",
+  "scss",
+  "regex",
+  "yaml",
+  "go",
+  "lua",
 }
 
 TELESCOPE_IGNORE_PATTERNS = {
-  "vendor/*",
+  "^.git/",
+  "^.dart_tool/",
+  "^.github/",
+  "^.gradle/",
+  "^.idea/",
+  "^.settings/",
+  "^.vscode/",
+  "^.umi/",
+  "^.cache/",
+  "^.husky/",
+  "^.vale/",
+  "smalljre_*/",
+  "build/",
+  "lib/",
+  "env/",
+  "vendor/",
   "dist/",
+  "temp/",
+  "gradle/",
+  "target/",
+  "node_modules/",
+  "__snapshots__/",
+  "__pycache__/",
+  "%.webp",
   "%.lock",
   "%-lock.yaml",
   "%-lock.json",
-  "__pycache__/*",
   "%.sqlite3",
   "%.ipynb",
-  "node_modules/*",
   "%.jpg",
   "%.jpeg",
   "%.png",
   "%.svg",
   "%.otf",
   "%.ttf",
-  ".git/",
-  "%.webp",
-  ".dart_tool/",
-  ".github/",
-  ".gradle/",
-  ".idea/",
-  ".settings/",
-  ".vscode/",
-  ".umi/",
-  ".cache/",
-  ".husky/",
-  "__pycache__/",
-  "build/",
-  "lib/",
-  "env/",
-  "temp/",
-  "gradle/",
-  "node_modules/",
-  "target/",
   "%.pdb",
   "%.dll",
   "%.class",
@@ -130,28 +141,28 @@ TELESCOPE_IGNORE_PATTERNS = {
   "%.docx",
   "%.min.js",
   "%.met",
-  "smalljre_*/*",
-  ".vale/",
-  "__snapshots__",
 }
 
-TELESCOPE_RG_ARGS = {
-  "--glob=!*.svg",
-  "--glob=!yarn.lock",
-  "--glob=!pnpm-lock.yaml",
-  "--glob=!package-lock.json",
-  "--glob=!dist",
-  "--glob=!build",
-  "--glob=!lib",
-  "--glob=!temp",
-  "--glob=!.umi",
-  "--glob=!.cache",
-  "--glob=!.git",
-  "--glob=!.github",
-  "--glob=!.vscode",
-  "--glob=!.husky",
-  "--glob=!__snapshots__",
-  "--glob=!node_modules",
-  "--glob=!*.map",
-  "--glob=!*.min.js",
+PROJECT_PATTERNS = {
+  ".git",
+  "_darcs",
+  ".hg",
+  ".bzr",
+  ".svn",
+  "Makefile",
+  "webpack.*js",
+  "node_modules",
+}
+
+LSP_SYMBOLS = {
+  "Class",
+  "Function",
+  "Method",
+  "Constructor",
+  "Interface",
+  "Module",
+  "Struct",
+  "Trait",
+  "Field",
+  "Property",
 }

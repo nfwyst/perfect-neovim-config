@@ -8,13 +8,14 @@ end
 
 return {
   "codota/tabnine-nvim",
+  event = "InsertEnter",
   build = tabnine_build_path(),
   config = function()
     local tabnine = require("tabnine")
     tabnine.setup({
       disable_auto_comment = true,
-      accept_keymap = "<tab>",
-      dismiss_keymap = "<C-]>",
+      accept_keymap = "<c-n>",
+      dismiss_keymap = "<c-]>",
       debounce_ms = 800,
       suggestion_color = { gui = "#808080", cterm = 244 },
       exclude_filetypes = INVALID_FILETYPE,

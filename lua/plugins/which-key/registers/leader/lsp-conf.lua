@@ -2,7 +2,7 @@ return {
   name = "LSP",
   a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
   d = {
-    "<cmd>Telescope Telescope diagnostics bufnr=0<cr>",
+    "<cmd>Telescope diagnostics bufnr=0<cr>",
     "Document Diagnostics",
   },
   w = {
@@ -25,9 +25,6 @@ return {
   q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
   Q = { "<cmd>lua vim.diagnostic.setqflist()<cr>", "All Quickfix" },
   r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-  s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-  S = {
-    "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-    "Workspace Symbols",
-  },
+  s = { "<cmd>DocumentSymbols<cr>", "Document Symbols" },
+  S = { "<cmd>WorkspaceSymbols<cr>", "Workspace Symbols" },
 }

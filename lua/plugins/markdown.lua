@@ -1,6 +1,7 @@
 return {
   "ellisonleao/glow.nvim",
   cmd = "Glow",
+  ft = "markdown",
   config = function()
     local glow = require("glow")
     glow.setup({

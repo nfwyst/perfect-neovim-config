@@ -21,14 +21,46 @@ local registers = {
   { ilconf, options },
 }
 
+local function init()
+  SET_USER_COMMANDS({
+    Save = function()
+      pcall(SAVE, true)
+    end,
+    SaveThenQuit = function()
+      pcall(SAVE_THEN_QUIT, true)
+    end,
+    Quit = function()
+      pcall(QUIT, true)
+    end,
+  })
+end
+
 return {
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  keys = {
+    "<leader>",
+    "<c-w>",
+    "g",
+    "]",
+    "[",
+    "y",
+    "'",
+    "z",
+    '"',
+    "`",
+    "c",
+    "v",
+    "d",
+    "!",
+    ">",
+    "<",
+  },
   config = function()
     local which_key = require("which-key")
     for _, item in ipairs(registers) do
       which_key.register(item[1], item[2])
     end
+    init()
 
     which_key.setup({
       plugins = {

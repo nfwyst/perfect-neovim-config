@@ -4,7 +4,7 @@ local ftMap = {
   python = { "indent" },
 }
 
-local function set_key_map(ufo)
+local function init(ufo)
   SET_KEY_MAPS({
     n = {
       { lhs = "zR", rhs = ufo.openAllFolds },
@@ -17,10 +17,11 @@ end
 
 return {
   "kevinhwang91/nvim-ufo",
+  event = "VeryLazy",
   dependencies = { "kevinhwang91/promise-async" },
   config = function()
     local ufo = require("ufo")
-    set_key_map(ufo)
+    init(ufo)
     ufo.setup({
       provider_selector = function(_, filetype)
         if TABLE_CONTAINS(INVALID_FILETYPE, filetype) then

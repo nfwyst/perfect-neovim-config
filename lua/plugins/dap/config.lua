@@ -7,99 +7,118 @@ local pwa_node = {
   },
 }
 
-DEFINE_SIGNS({
-  DapBreakpoint = "🟥",
-  DapStopped = "🟦",
-})
-
-SET_USER_COMMANDS({
-  DebugNode = function()
-    local dap = require("dap")
-    local dap_utils = require("dap.utils")
-    dap.run({
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch file",
-      program = "${file}",
-      cwd = "${workspaceFolder}",
-      runtimeExecutable = "node",
-      sourceMaps = true,
-      processId = dap_utils.pick_process,
-      skipFiles = { "<node_internals>/**/*.js" },
-    })
-  end,
-  DebugJest = function()
-    local dap = require("dap")
-    dap.run({
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch Jest",
-      cwd = "${workspaceFolder}",
-      runtimeExecutable = "node",
-      runtimeArgs = {
-        "./node_modules/jest/bin/jest.js",
-        "--runInBand",
-      },
-      console = "integratedTerminal",
-      internalConsoleOptions = "neverOpen",
-      sourceMaps = true,
-      skipFiles = { "<node_internals>/**/*.js" },
-    })
-  end,
-  SetBreakPointCondition = function()
-    local dap = require("dap")
-    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-  end,
-  DapRuntoCursor = function()
-    local dap = require("dap")
-    dap.run_to_cursor()
-  end,
-  ClearBreakpoints = function()
-    local dap = require("dap")
-    dap.clear_breakpoints()
-  end,
-  SetExceptionBreakpoints = function()
-    local dap = require("dap")
-    dap.set_exception_breakpoints({ "all" })
-  end,
-  DapUiHover = function()
-    local widgets = require("dap.ui.widgets")
-    widgets.hover()
-  end,
-  DapUiScopes = function()
-    local widgets = require("dap.ui.widgets")
-    widgets.centered_float(widgets.scopes)
-  end,
-  DapUp = function()
-    local dap = require("dap")
-    dap.Up()
-  end,
-  DapDown = function()
-    local dap = require("dap")
-    dap.Down()
-  end,
-  DapOpenRepl = function()
-    local dap = require("dap")
-    dap.repl.open({}, "vsplit")
-  end,
-  DapCloseRepl = function()
-    local dap = require("dap")
-    dap.repl.close()
-  end,
-  DapUiOpen = function()
-    local dapui = require("dapui")
-    dapui.open()
-  end,
-  DapUiClose = function()
-    local dapui = require("dapui")
-    dapui.close()
-  end,
-})
+local function init(dap, dap_utils)
+  DEFINE_SIGNS({
+    DapBreakpoint = "🟥",
+    DapStopped = "🟦",
+  })
+  SET_USER_COMMANDS({
+    DebugNode = function()
+      dap.run({
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        runtimeExecutable = "node",
+        sourceMaps = true,
+        processId = dap_utils.pick_process,
+        skipFiles = { "<node_internals>/**/*.js" },
+      })
+    end,
+    DebugJest = function()
+      dap.run({
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch Jest",
+        cwd = "${workspaceFolder}",
+        runtimeExecutable = "node",
+        runtimeArgs = {
+          "./node_modules/jest/bin/jest.js",
+          "--runInBand",
+        },
+        console = "integratedTerminal",
+        internalConsoleOptions = "neverOpen",
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**/*.js" },
+      })
+    end,
+    SetBreakPointCondition = function()
+      dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+    end,
+    DapRuntoCursor = function()
+      dap.run_to_cursor()
+    end,
+    ClearBreakpoints = function()
+      dap.clear_breakpoints()
+    end,
+    SetExceptionBreakpoints = function()
+      dap.set_exception_breakpoints({ "all" })
+    end,
+    DapUiHover = function()
+      local widgets = require("dap.ui.widgets")
+      widgets.hover()
+    end,
+    DapUiScopes = function()
+      local widgets = require("dap.ui.widgets")
+      widgets.centered_float(widgets.scopes)
+    end,
+    DapUp = function()
+      dap.Up()
+    end,
+    DapDown = function()
+      dap.Down()
+    end,
+    DapOpenRepl = function()
+      dap.repl.open({}, "vsplit")
+    end,
+    DapCloseRepl = function()
+      dap.repl.close()
+    end,
+    DapUiOpen = function()
+      local dapui = require("dapui")
+      dapui.open()
+    end,
+    DapUiClose = function()
+      local dapui = require("dapui")
+      dapui.close()
+    end,
+  })
+end
 
 return {
   "mfussenegger/nvim-dap",
+  enabled = DAP_DEBUG_ENABLED,
+  cmd = {
+    "DapSetLogLevel",
+    "DapShowLog",
+    "DapContinue",
+    "DapToggleBreakpoint",
+    "DapToggleRepl",
+    "DapStepOver",
+    "DapStepInto",
+    "DapStepOut",
+    "DapTerminate",
+    "SetBreakPointCondition",
+    "DapRuntoCursor",
+    "ClearBreakpoints",
+    "SetExceptionBreakpoints",
+    "DebugNode",
+    "DebugJest",
+    "DapUiHover",
+    "DapUiScopes",
+    "DapUiOpen",
+    "DapUiClose",
+    "DapUp",
+    "DapDown",
+    "DapOpenRepl",
+    "DapCloseRepl",
+    "Telescope dap",
+  },
   config = function()
     local dap = require("dap")
+    local dap_utils = require("dap.utils")
     dap.adapters["pwa-node"] = pwa_node
+    init(dap, dap_utils)
   end,
 }

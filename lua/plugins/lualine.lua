@@ -55,7 +55,7 @@ local progress = {
   function()
     local current_line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
-    local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+    local chars = { "  ", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
     local line_ratio = current_line / total_lines
     local index = math.ceil(line_ratio * #chars)
     return chars[index]
@@ -68,9 +68,7 @@ local spaces = function()
 end
 
 local lsps = function()
-  local bufnr = vim.api.nvim_get_current_buf()
-
-  local clients = vim.lsp.buf_get_clients(bufnr)
+  local clients = vim.lsp.buf_get_clients(GET_CURRENT_BUFFER())
   if next(clients) == nil then
     return ""
   end
@@ -82,61 +80,56 @@ local lsps = function()
   return "\u{f085} " .. table.concat(c, "|")
 end
 
+local debugger = {
+  function()
+    return "  " .. require("dap").status()
+  end,
+  cond = function()
+    return IS_PACKAGE_LOADED("dap") and require("dap").status() ~= ""
+  end,
+  color = { fg = "#ff9e64" },
+}
+
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons", "mfussenegger/nvim-dap" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VeryLazy",
   config = function()
     local lualine = require("lualine")
     local lazy_status = require("lazy.status")
-    local dap = require("dap")
     lualine.setup({
       options = {
         icons_enabled = true,
-        theme = "auto",
+        theme = DEFAULT_COLORSCHEME or "auto",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = { "alpha", "dashboard" },
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { mode },
-        lualine_b = { branch },
-        lualine_c = {
+        lualine_a = { mode, branch },
+        lualine_b = {
           diagnostics,
           filetype,
           lsps,
         },
+        lualine_c = {},
         lualine_x = {
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
           },
+        },
+        lualine_y = {
           tabnine,
           diff,
-          {
-            function()
-              return "  " .. dap.status()
-            end,
-            cond = function()
-              return dap.status() ~= ""
-            end,
-            color = { fg = "#ff9e64" },
-          },
+          debugger,
           spaces,
           "encoding",
+          location,
         },
-        lualine_y = { location },
         lualine_z = { progress },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
       },
       tabline = {},
       extensions = {},

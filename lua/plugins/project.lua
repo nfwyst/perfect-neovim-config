@@ -1,8 +1,8 @@
 return {
   "ahmedkhalf/project.nvim",
+  event = "VeryLazy",
   config = function()
-    local project = require("project_nvim")
-    project.setup({
+    require("project_nvim").setup({
       ---@usage set to false to disable project.nvim.
       --- This is on by default since it's currently the expected behavior.
       active = true,
@@ -23,7 +23,7 @@ return {
       detection_methods = { "pattern", "lsp" },
 
       ---@usage patterns used to detect root dir, when **"pattern"** is in detection_methods
-      patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "webpack.*js", "node_modules" },
+      patterns = PROJECT_PATTERNS,
 
       ---@ Show hidden files in telescope when searching for files in a project
       show_hidden = false,
@@ -38,7 +38,7 @@ return {
       ---@type string
       ---@usage path to store the project history for use in telescope
       datapath = DATA_PATH,
-      after_project_selection_callback = SetWorkspacePathGlobal,
+      after_project_selection_callback = SETWORKSPACEPATHGLOBAL,
     })
   end,
 }

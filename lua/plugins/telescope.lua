@@ -1,5 +1,4 @@
-local function find_text(path, undercursor)
-  local themes = require("telescope.themes")
+local function find_text(builtin, themes, path, undercursor)
   local theme = themes.get_ivy({
     layout_config = {
       height = 0.6,
@@ -7,13 +6,9 @@ local function find_text(path, undercursor)
     },
   })
   theme.cwd = WORKSPACE_PATH
-  theme.additional_args = function()
-    return TELESCOPE_RG_ARGS
-  end
   if path then
     theme.search_dir = path
   end
-  local builtin = require("telescope.builtin")
   if undercursor then
     builtin.grep_string(theme)
     return
@@ -21,74 +16,107 @@ local function find_text(path, undercursor)
   builtin.live_grep(theme)
 end
 
-SET_USER_COMMANDS({
-  FindText = find_text,
-  FindTextCursor = function()
-    find_text(nil, true)
-  end,
-  FindFiles = function()
-    local themes = require("telescope.themes")
-    local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
-    theme.cwd = WORKSPACE_PATH
-    local builtin = require("telescope.builtin")
-    builtin.find_files(theme)
-  end,
-  FindFilesWithGit = function()
-    local themes = require("telescope.themes")
-    local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
-    theme.cwd = WORKSPACE_PATH
-    local builtin = require("telescope.builtin")
-    builtin.git_files(theme)
-  end,
-  FindTextWithPath = function()
-    vim.ui.input({ prompt = "Enter search dir path:" }, function(path)
-      if not path then
-        return
-      end
-      find_text(path)
-    end)
-  end,
-  SetWorkspacePathGlobal = function()
-    local _, util = pcall(require, "lspconfig/util")
-    WORKSPACE_PATH = util.root_pattern(".git")(vim.fn.expand("%:p")) or vim.loop.cwd()
-    print("cwd set to: " .. WORKSPACE_PATH)
-  end,
-  SetWorkspacePathLocal = function()
-    WORKSPACE_PATH = vim.loop.cwd() or ""
-    print("cwd set to: " .. WORKSPACE_PATH)
-  end,
-  SetWorkspacePathCustom = function()
-    vim.ui.input({ prompt = "input path: " }, function(path)
-      if not path then
-        return
-      end
-      if IS_ABSOLUTE_PATH(path) then
-        WORKSPACE_PATH = path
-        print("cwd set to: " .. WORKSPACE_PATH)
-        return
-      end
-      local relativePath = vim.loop.cwd()
-      WORKSPACE_PATH = string.format("%s" .. OS_SEP .. "%s", relativePath, FORMAT_PATH_BY_OS(path))
+local function init(builtin, themes)
+  SET_USER_COMMANDS({
+    FindText = function(path, undercursor)
+      find_text(builtin, themes, path, undercursor)
+    end,
+    FindTextCursor = function()
+      find_text(builtin, themes, nil, true)
+    end,
+    FindFiles = function()
+      local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
+      theme.cwd = WORKSPACE_PATH
+      builtin.find_files(theme)
+    end,
+    FindFilesWithGit = function()
+      local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
+      theme.cwd = WORKSPACE_PATH
+      builtin.git_files(theme)
+    end,
+    FindTextWithPath = function()
+      vim.ui.input({ prompt = "Enter search dir path:" }, function(path)
+        if not path then
+          return
+        end
+        find_text(builtin, themes, path)
+      end)
+    end,
+    SetWorkspacePathGlobal = SETWORKSPACEPATHGLOBAL,
+    SetWorkspacePathLocal = function()
+      WORKSPACE_PATH = vim.loop.cwd() or ""
       print("cwd set to: " .. WORKSPACE_PATH)
-    end)
-  end,
-})
+    end,
+    SetWorkspacePathCustom = function()
+      vim.ui.input({ prompt = "input path: " }, function(path)
+        if not path then
+          return
+        end
+        if IS_ABSOLUTE_PATH(path) then
+          WORKSPACE_PATH = path
+          print("cwd set to: " .. WORKSPACE_PATH)
+          return
+        end
+        local relativePath = vim.loop.cwd()
+        WORKSPACE_PATH = string.format("%s" .. OS_SEP .. "%s", relativePath, FORMAT_PATH_BY_OS(path))
+        print("cwd set to: " .. WORKSPACE_PATH)
+      end)
+    end,
+    DocumentSymbols = function()
+      builtin.lsp_document_symbols({ symbols = LSP_SYMBOLS })
+    end,
+    WorkspaceSymbols = function()
+      builtin.lsp_dynamic_workspace_symbols({ symbols = LSP_SYMBOLS })
+    end,
+  })
+end
 
 return {
   "nvim-telescope/telescope.nvim",
+  cmd = {
+    "FindText",
+    "FindTextCursor",
+    "FindFiles",
+    "FindFilesWithGit",
+    "FindTextWithPath",
+    "Telescope",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "mfussenegger/nvim-dap",
-    "nvim-telescope/telescope-dap.nvim",
-    "ahmedkhalf/project.nvim",
+    { "nvim-telescope/telescope-dap.nvim", enabled = DAP_DEBUG_ENABLED },
+    "nvim-telescope/telescope-project.nvim",
   },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    init(require("telescope.builtin"), require("telescope.themes"))
 
-    telescope.load_extension("dap")
+    if DAP_DEBUG_ENABLED then
+      telescope.load_extension("dap")
+    end
     telescope.load_extension("projects")
+
+    local function flash(prompt_bufnr)
+      if not IS_PACKAGE_LOADED("flash") then
+        return
+      end
+      require("flash").jump({
+        pattern = "^",
+        label = { after = { 0, 0 } },
+        search = {
+          mode = "search",
+          exclude = {
+            function(win)
+              return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+            end,
+          },
+        },
+        action = function(match)
+          local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+          picker:set_selection(match.pos[1] - 1)
+        end,
+      })
+    end
 
     telescope.setup({
       defaults = {
@@ -123,8 +151,10 @@ return {
             ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             ["<C-l>"] = actions.complete_tag,
             ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
+            ["<c-s>"] = flash,
           },
           n = {
+            s = flash,
             ["<esc>"] = actions.close,
             ["q"] = actions.close,
             ["<CR>"] = actions.select_default,
@@ -153,24 +183,11 @@ return {
         },
       },
       pickers = {
-        -- Default configuration for builtin pickers goes here:
-        -- picker_name = {
-        --   picker_config_key = value,
-        --   ...
-        -- }
-        -- Now the picker_config_key will be applied every time you call this
-        -- builtin picker
         planets = {
           show_pluto = true,
         },
       },
-      extensions = {
-        -- Your extension configuration goes here:
-        -- extension_name = {
-        --   extension_config_key = value,
-        -- }
-        -- please take a look at the readme of the extension you want to configure
-      },
+      extensions = {},
     })
   end,
 }

@@ -1,25 +1,31 @@
-KEY_MAP("n", "gf", function()
-  if require("obsidian").util.cursor_on_markdown_link() then
-    return "<cmd>ObsidianFollowLink<cr>"
-  else
-    return "gf"
-  end
-end, { expr = true })
+local function init()
+  KEY_MAP("n", "gf", function()
+    if require("obsidian").util.cursor_on_markdown_link() then
+      return "<cmd>ObsidianFollowLink<cr>"
+    else
+      return "gf"
+    end
+  end, { expr = true })
+end
 
 return {
   "epwalsh/obsidian.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  event = { "BufReadPre", "BufNewFile" },
   enabled = not IS_WINDOWS,
-  opts = {
-    dir = OBSIDIAN_DIR,
-    completion = {
-      nvim_cmp = true,
-    },
-    daily_notes = {
-      folder = "dailies",
-    },
-  },
+  ft = "markdown",
+  config = function()
+    local obsidian = require("obsidian")
+    obsidian.setup({
+      dir = OBSIDIAN_DIR,
+      completion = {
+        nvim_cmp = true,
+      },
+      daily_notes = {
+        folder = "dailies",
+      },
+    })
+    init()
+  end,
 }

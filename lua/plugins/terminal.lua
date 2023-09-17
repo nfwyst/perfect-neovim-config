@@ -8,45 +8,46 @@ local function multi_term(idWithSize, direction)
   vim.cmd(params)
 end
 
-SET_USER_COMMANDS({
-  TermKeymap = function()
-    SET_BUF_KEY_MAPS({
-      t = {
-        { lhs = "<esc>", rhs = [[<C-\><C-n>]] },
-        { lhs = "jk", rhs = [[<C-\><C-n>]] },
-        { lhs = "<C-h>", rhs = [[<C-\><C-n><C-W>h]] },
-        { lhs = "<C-j>", rhs = [[<C-\><C-n><C-W>j]] },
-        { lhs = "<C-k>", rhs = [[<C-\><C-n><C-W>k]] },
-        { lhs = "<C-l>", rhs = [[<C-\><C-n><C-W>l]] },
-      },
-    })
-  end,
-  ToggleTerminalHorizontal = function()
-    vim.ui.input({ prompt = "please input the id and size for terminal: " }, function(idWithSize)
-      if not idWithSize then
-        return
-      end
-      multi_term(idWithSize, "horizontal")
-    end)
-  end,
-  ToggleTerminalVertical = function()
-    vim.ui.input({ prompt = "Please input the id and size for terminal: " }, function(idWithSize)
-      if not idWithSize then
-        return
-      end
-      multi_term(idWithSize, "vertical")
-    end)
-  end,
-})
+local function set_commands()
+  SET_USER_COMMANDS({
+    TermKeymap = function()
+      SET_BUF_KEY_MAPS({
+        t = {
+          { lhs = "<esc>", rhs = [[<C-\><C-n>]] },
+          { lhs = "jk", rhs = [[<C-\><C-n>]] },
+          { lhs = "<C-h>", rhs = [[<C-\><C-n><C-W>h]] },
+          { lhs = "<C-j>", rhs = [[<C-\><C-n><C-W>j]] },
+          { lhs = "<C-k>", rhs = [[<C-\><C-n><C-W>k]] },
+          { lhs = "<C-l>", rhs = [[<C-\><C-n><C-W>l]] },
+        },
+      })
+    end,
+    ToggleTerminalHorizontal = function()
+      vim.ui.input({ prompt = "please input the id and size for terminal: " }, function(idWithSize)
+        if not idWithSize then
+          return
+        end
+        multi_term(idWithSize, "horizontal")
+      end)
+    end,
+    ToggleTerminalVertical = function()
+      vim.ui.input({ prompt = "Please input the id and size for terminal: " }, function(idWithSize)
+        if not idWithSize then
+          return
+        end
+        multi_term(idWithSize, "vertical")
+      end)
+    end,
+  })
+  AUTOCMD("TermOpen", {
+    command = "silent!TermKeymap",
+    pattern = "term://*",
+    group = AUTOGROUP("TermOpen", { clear = true }),
+  })
+end
 
-AUTOCMD("TermOpen", {
-  command = "silent!TermKeymap",
-  pattern = "term://*",
-  group = AUTOGROUP("TermOpen", { clear = true }),
-})
-
-local function init_instance()
-  Terminal = require("toggleterm.terminal").Terminal
+local function init_instance(term)
+  Terminal = term.terminal.Terminal
   local function newT(cmd)
     return Terminal:new({ cmd = cmd, hidden = true })
   end
@@ -86,14 +87,29 @@ local function bind_powershell()
   })
 end
 
+local function init(term)
+  init_instance(term)
+  set_commands()
+  if not IS_WINDOWS then
+    return
+  end
+  bind_powershell()
+end
+
 return {
   "akinsho/toggleterm.nvim",
+  cmd = {
+    "ToggleNode",
+    "ToggleNcdu",
+    "ToggleHtop",
+    "TogglePython",
+    "ToggleTerm",
+    "ToggleTerminalHorizontal",
+    "ToggleTerminalVertical",
+  },
   config = function()
     local toggleterm = require("toggleterm")
-    init_instance()
-    if IS_WINDOWS then
-      bind_powershell()
-    end
+    init(toggleterm)
     toggleterm.setup({
       size = 20,
       open_mapping = [[<c-\>]],

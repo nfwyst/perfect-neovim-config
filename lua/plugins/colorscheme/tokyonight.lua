@@ -1,10 +1,12 @@
+local name = "tokyonight"
+
 return {
   "folke/tokyonight.nvim",
-  name = "tokyonight",
+  name = name,
   lazy = false,
   priority = 1000,
   config = function()
-    local tokyonight = require("tokyonight")
+    local tokyonight = require(name)
     tokyonight.setup({
       light_style = "day",
       transparent = true,
@@ -16,6 +18,6 @@ return {
       },
       lualine_bold = true,
     })
-    vim.cmd.colorscheme("tokyonight")
+    SET_COLORSCHEME(name)
   end,
 }

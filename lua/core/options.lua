@@ -45,6 +45,7 @@ SET_OPTS({
   shortmess = vim.opt.shortmess + "c", -- don't give ins-completion-menu messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
   background = SCHEME_BACKGROUND,
+  guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 
@@ -56,16 +57,11 @@ SET_GLOBAL_OPTIONS({
   editorconfig = true,
 })
 
-local gray = "#3E4452"
-SET_HIGHLIGHT({
-  LineNr = { fg = "#737aa2" },
-  CursorLineNr = { fg = "#dddddd" },
-  ColorColumn = {
-    bg = gray,
-    fg = gray,
-    sp = gray,
-    nocombine = true,
-  },
-})
+SET_HIGHLIGHT(
+  MERGE_TABLE(
+    { "LineNr guifg=#737aa2 ctermfg=#737aa2", "CursorLineNr guifg=#dddddd ctermfg=#dddddd" },
+    CURSOR_HILIGHT_OPTS
+  )
+)
 
 vim.cmd.language("en_US")

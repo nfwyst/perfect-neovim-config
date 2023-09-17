@@ -1,10 +1,12 @@
+local name = "NeoSolarized"
+
 return {
   "Tsuzat/NeoSolarized.nvim",
-  name = "NeoSolarized",
+  name = name,
   lazy = false,
   priority = 1000,
   config = function()
-    local solarized = require("NeoSolarized")
+    local solarized = require(name)
     solarized.setup({
       style = SCHEME_BACKGROUND,
       transparent = true,
@@ -18,5 +20,6 @@ return {
         undercurl = false,
       },
     })
+    SET_COLORSCHEME(name)
   end,
 }

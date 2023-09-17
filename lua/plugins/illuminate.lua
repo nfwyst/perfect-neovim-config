@@ -1,9 +1,5 @@
-local function callback()
-  local buffer = vim.api.nvim_get_current_buf()
-  local ok, illuminate = pcall(require, "illuminate")
-  if not ok then
-    return
-  end
+local function callback(illuminate)
+  local buffer = GET_CURRENT_BUFFER()
   SET_KEY_MAPS({
     n = {
       {
@@ -24,14 +20,22 @@ local function callback()
   })
 end
 
-AUTOCMD("FileType", { callback = callback })
+local function init(illuminate)
+  AUTOCMD("FileType", {
+    callback = function()
+      callback(illuminate)
+    end,
+  })
+end
 
 return {
   "RRethy/vim-illuminate",
   event = { "BufReadPost", "BufNewFile" },
   config = function()
     local illuminate = require("illuminate")
+    init(illuminate)
     illuminate.configure({
+      modes_allowlist = { "n", "no", "nt" },
       filetypes_denylist = INVALID_FILETYPE,
       large_file_cutoff = MAX_FILE_LENGTH,
       large_file_overrides = {

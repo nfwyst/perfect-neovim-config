@@ -1,15 +1,15 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-  },
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local configs = require("nvim-treesitter.configs")
     local install = require("nvim-treesitter.install")
     install.prefer_git = false
     configs.setup({
-      ensure_installed = "all", -- one of "all" or a list of languages
-      ignore_install = TREESITTER_IGNORE, -- List of parsers to ignore installing
+      ensure_installed = TREESITTER_ENSURE_INSTALL, -- one of "all" or a list of languages
+      ignore_install = { "" }, -- List of parsers to ignore installing
+      sync_install = false,
+      auto_install = true,
       highlight = {
         enable = true, -- false will disable the whole extension
       },

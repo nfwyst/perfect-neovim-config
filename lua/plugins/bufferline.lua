@@ -1,25 +1,27 @@
-AUTOCMD("BufRead", {
-  callback = function()
-    AUTOCMD("BufWinEnter", {
-      once = true,
-      callback = function()
-        vim.cmd("silent!normal! '\"")
-        pcall(function()
-          local bufdelete = require("bufdelete")
-          local bufferline = require("bufferline")
-          local buffers = bufferline.get_elements().elements
-          if #buffers >= 30 then
-            vim.cmd("wa!")
-            bufdelete.bufdelete(buffers[1].id, false)
-          end
-        end)
-      end,
-    })
-  end,
-})
+local function init(bufferline)
+  AUTOCMD("BufRead", {
+    callback = function()
+      AUTOCMD("BufWinEnter", {
+        once = true,
+        callback = function()
+          vim.cmd("silent!normal! '\"")
+          pcall(function()
+            local bufdelete = require("bufdelete")
+            local buffers = bufferline.get_elements().elements
+            if #buffers >= 30 then
+              vim.cmd("wa!")
+              bufdelete.bufdelete(buffers[1].id, false)
+            end
+          end)
+        end,
+      })
+    end,
+  })
+end
 
 return {
   "akinsho/bufferline.nvim",
+  event = { "BufReadPost", "BufAdd", "BufNewFile" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local bufferline = require("bufferline")
@@ -176,5 +178,6 @@ return {
         },
       },
     })
+    init(bufferline)
   end,
 }

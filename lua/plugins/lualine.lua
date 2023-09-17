@@ -64,7 +64,7 @@ local progress = {
 }
 
 local spaces = function()
-  return "space:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  return "space:" .. GET_BUFFER_OPT(0, "shiftwidth")
 end
 
 local lsps = function()

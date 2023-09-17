@@ -1,7 +1,7 @@
 local function organize_imports()
   vim.lsp.buf.execute_command({
     command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
+    arguments = { GET_BUFFER_NAME(0) },
   })
 end
 

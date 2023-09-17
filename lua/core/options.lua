@@ -59,7 +59,7 @@ SET_GLOBAL_OPTIONS({
 
 SET_HIGHLIGHT(
   MERGE_TABLE(
-    { "LineNr guifg=#737aa2 ctermfg=#737aa2", "CursorLineNr guifg=#dddddd ctermfg=#dddddd" },
+    { "LineNr guifg=#737aa2", "CursorLineNr guifg=#dddddd" },
     CURSOR_HILIGHT_OPTS
   )
 )

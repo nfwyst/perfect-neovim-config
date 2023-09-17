@@ -1,27 +1,63 @@
+local function restore_position(bufnr)
+  local ft = vim.bo[bufnr].filetype
+  local last_known_line = vim.api.nvim_buf_get_mark(bufnr, '"')[1]
+  if
+    not (ft:match("commit") and ft:match("rebase"))
+    and last_known_line > 1
+    and last_known_line <= vim.api.nvim_buf_line_count(bufnr)
+  then
+    vim.api.nvim_feedkeys([[g`"]], "nx", false)
+  end
+end
+
+local function delete_oldest_buffers(bufferline)
+  local buffers = bufferline.get_elements().elements
+  if #buffers > 100 then
+    vim.cmd("wa!")
+    require("bufdelete").bufdelete(buffers[1].id, false)
+  end
+end
+
 local function init(bufferline)
   AUTOCMD("BufRead", {
-    callback = function()
+    callback = function(event)
       AUTOCMD("BufWinEnter", {
         once = true,
+        buffer = event.buf,
         callback = function()
-          vim.cmd("silent!normal! '\"")
-          pcall(function()
-            local bufdelete = require("bufdelete")
-            local buffers = bufferline.get_elements().elements
-            if #buffers >= 30 then
-              vim.cmd("wa!")
-              bufdelete.bufdelete(buffers[1].id, false)
-            end
-          end)
+          restore_position(event.buf)
+          local dlok, err = pcall(delete_oldest_buffers, bufferline)
+          if dlok then
+            return
+          end
+          vim.notify(err or "", vim.log.levels.ERROR)
         end,
       })
+    end,
+  })
+  AUTOCMD("User", {
+    pattern = "BDeletePost*",
+    group = AUTOGROUP("alpha_on_empty", { clear = true }),
+    callback = function(event)
+      local bufname = GET_BUFFER_NAME(event.buf)
+      local bufft = GET_BUFFER_OPT(event.buf, "filetype")
+      local is_empty = bufname == "" and bufft == ""
+      if not is_empty then
+        return
+      end
+      local tree_ok, tree_api = pcall(require, "nvim-tree.api")
+      if tree_ok then
+        tree_api.tree.close()
+      end
+      vim.cmd("Alpha")
+      vim.cmd(event.buf .. "bwipeout")
     end,
   })
 end
 
 return {
   "akinsho/bufferline.nvim",
-  event = { "BufReadPost", "BufAdd", "BufNewFile" },
+  event = { "BufReadPost", "BufAdd", "BufNew" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local bufferline = require("bufferline")

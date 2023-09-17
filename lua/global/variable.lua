@@ -10,6 +10,7 @@ MAX_FILE_LENGTH = 1000
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
+MAX_BUFFER_SIZE = 100
 CURSOR_HILIGHT_OPTS = {
   "Cursor guibg=#5f87af ctermbg=67 blend=0",
   "iCursor guibg=#ffffaf ctermbg=229",

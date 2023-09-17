@@ -186,3 +186,11 @@ function SAVE_THEN_QUIT(force)
     QUIT(force)
   end)
 end
+
+function GET_BUFFER_NAME(bufnr)
+  return vim.api.nvim_buf_get_name(bufnr)
+end
+
+function GET_BUFFER_OPT(bufnr, optname)
+  return vim.api.nvim_buf_get_option(bufnr, optname)
+end

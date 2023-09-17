@@ -29,7 +29,9 @@ local mode = {
 local tabnine = {
   "tabnine",
   fmt = function(str)
-    return string.gsub(str, " pro", "")
+    local result = string.gsub(str, " pro", "")
+    local is_pro = STR_INCLUDES(str, "pro", 1, true)
+    return is_pro and result .. "" or result
   end,
 }
 

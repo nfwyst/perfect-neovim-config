@@ -194,3 +194,7 @@ end
 function GET_BUFFER_OPT(bufnr, optname)
   return vim.api.nvim_buf_get_option(bufnr, optname)
 end
+
+function STR_INCLUDES(str, pattern, init, plain)
+  return string.find(str, pattern, init, plain) ~= nil
+end

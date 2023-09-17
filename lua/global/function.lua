@@ -116,7 +116,7 @@ function TABLE_CONTAINS(table, value)
   return false
 end
 
-function SETWORKSPACEPATHGLOBAL()
+function SET_WORKSPACE_PATH_GLOBAL()
   local _, util = pcall(require, "lspconfig/util")
   local get_root = util.root_pattern(UNPACK(PROJECT_PATTERNS))
   WORKSPACE_PATH = get_root(vim.fn.expand("%:p")) or vim.loop.cwd()

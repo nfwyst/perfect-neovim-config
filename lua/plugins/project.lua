@@ -38,7 +38,7 @@ return {
       ---@type string
       ---@usage path to store the project history for use in telescope
       datapath = DATA_PATH,
-      after_project_selection_callback = SETWORKSPACEPATHGLOBAL,
+      after_project_selection_callback = SET_WORKSPACE_PATH_GLOBAL,
     })
   end,
 }

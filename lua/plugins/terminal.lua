@@ -10,18 +10,6 @@ end
 
 local function set_commands()
   SET_USER_COMMANDS({
-    TermKeymap = function()
-      SET_BUF_KEY_MAPS({
-        t = {
-          { lhs = "<esc>", rhs = [[<C-\><C-n>]] },
-          { lhs = "jk", rhs = [[<C-\><C-n>]] },
-          { lhs = "<C-h>", rhs = [[<C-\><C-n><C-W>h]] },
-          { lhs = "<C-j>", rhs = [[<C-\><C-n><C-W>j]] },
-          { lhs = "<C-k>", rhs = [[<C-\><C-n><C-W>k]] },
-          { lhs = "<C-l>", rhs = [[<C-\><C-n><C-W>l]] },
-        },
-      })
-    end,
     ToggleTerminalHorizontal = function()
       vim.ui.input({ prompt = "please input the id and size for terminal: " }, function(idWithSize)
         if not idWithSize then
@@ -40,14 +28,25 @@ local function set_commands()
     end,
   })
   AUTOCMD("TermOpen", {
-    command = "silent!TermKeymap",
+    callback = function()
+      SET_BUF_KEY_MAPS({
+        t = {
+          { lhs = "<esc>", rhs = [[<C-\><C-n>]] },
+          { lhs = "jk", rhs = [[<C-\><C-n>]] },
+          { lhs = "<C-h>", rhs = [[<C-\><C-n><C-W>h]] },
+          { lhs = "<C-j>", rhs = [[<C-\><C-n><C-W>j]] },
+          { lhs = "<C-k>", rhs = [[<C-\><C-n><C-W>k]] },
+          { lhs = "<C-l>", rhs = [[<C-\><C-n><C-W>l]] },
+        },
+      })
+    end,
     pattern = "term://*",
     group = AUTOGROUP("TermOpen", { clear = true }),
   })
 end
 
-local function init_instance(term)
-  Terminal = term.terminal.Terminal
+local function init_instance(terminal)
+  Terminal = terminal.Terminal
   local function newT(cmd)
     return Terminal:new({ cmd = cmd, hidden = true })
   end
@@ -87,8 +86,8 @@ local function bind_powershell()
   })
 end
 
-local function init(term)
-  init_instance(term)
+local function init(terminal)
+  init_instance(terminal)
   set_commands()
   if not IS_WINDOWS then
     return
@@ -107,10 +106,9 @@ return {
     "ToggleTerminalHorizontal",
     "ToggleTerminalVertical",
   },
+  keys = [[<c-\>]],
   config = function()
-    local toggleterm = require("toggleterm")
-    init(toggleterm)
-    toggleterm.setup({
+    require("toggleterm").setup({
       size = 20,
       open_mapping = [[<c-\>]],
       hide_numbers = true,
@@ -132,5 +130,6 @@ return {
         },
       },
     })
+    init(require("toggleterm.terminal"))
   end,
 }

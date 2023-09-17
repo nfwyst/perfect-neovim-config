@@ -42,7 +42,7 @@ local function init(builtin, themes)
         find_text(builtin, themes, path)
       end)
     end,
-    SetWorkspacePathGlobal = SETWORKSPACEPATHGLOBAL,
+    SetWorkspacePathGlobal = SET_WORKSPACE_PATH_GLOBAL,
     SetWorkspacePathLocal = function()
       WORKSPACE_PATH = vim.loop.cwd() or ""
       print("cwd set to: " .. WORKSPACE_PATH)

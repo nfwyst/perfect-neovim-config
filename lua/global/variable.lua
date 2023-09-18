@@ -82,6 +82,8 @@ TREESITTER_ENSURE_INSTALL = {
   "bash",
   "html",
   "json",
+  "jsdoc",
+  "jsonc",
   "javascript",
   "typescript",
   "tsx",

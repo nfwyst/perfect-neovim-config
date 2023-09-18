@@ -10,6 +10,7 @@ end
 return {
   "rcarriga/nvim-notify",
   event = "VeryLazy",
+  cmd = "DissmissNotification",
   config = function()
     local notify = require("notify")
     notify.setup({

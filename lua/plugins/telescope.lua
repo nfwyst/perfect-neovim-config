@@ -80,6 +80,11 @@ return {
     "FindFilesWithGit",
     "FindTextWithPath",
     "Telescope",
+    "SetWorkspacePathGlobal",
+    "SetWorkspacePathLocal",
+    "SetWorkspacePathCustom",
+    "DocumentSymbols",
+    "WorkspaceSymbols",
   },
   dependencies = {
     "nvim-lua/plenary.nvim",

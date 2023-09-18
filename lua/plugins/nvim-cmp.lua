@@ -18,9 +18,9 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
-    require("luasnip.loaders.from_vscode").lazy_load({
-      paths = { [1] = SNIPPET_PATH },
-    })
+    local snip_loader = require("luasnip.loaders.from_vscode")
+    snip_loader.lazy_load()
+    snip_loader.lazy_load({ paths = { SNIPPET_PATH } })
     local border = MERGE_TABLE(cmp.config.window.bordered(), {
       scrollbar = false,
       col_offset = 1,

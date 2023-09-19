@@ -4,6 +4,16 @@ function MERGE_TABLE(...)
   return vim.tbl_deep_extend("force", ...)
 end
 
+function MERGE_ARRAYS(...)
+  local arr = {}
+  for _, array in ipairs({ ... }) do
+    for _, value in ipairs(array) do
+      table.insert(arr, value)
+    end
+  end
+  return arr
+end
+
 function DEFINE_SIGNS(signs)
   for name, sign in pairs(signs) do
     local opt = { text = sign, numhl = "" }
@@ -197,4 +207,8 @@ end
 
 function STR_INCLUDES(str, pattern, init, plain)
   return string.find(str, pattern, init, plain) ~= nil
+end
+
+function SET_TIMEOUT(func, timeout)
+  vim.defer_fn(func, timeout or 0)
 end

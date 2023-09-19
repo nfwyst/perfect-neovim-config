@@ -58,6 +58,11 @@ SET_GLOBAL_OPTIONS({
   editorconfig = true,
 })
 
-SET_HIGHLIGHT(MERGE_TABLE({ "LineNr guifg=#737aa2", "CursorLineNr guifg=#dddddd" }, CURSOR_HILIGHT_OPTS))
+SET_TIMEOUT(function()
+  SET_HIGHLIGHT(MERGE_ARRAYS(CURSOR_HILIGHT_OPTS, {
+    "LineNr guifg=#737aa2",
+    "CursorLineNr guifg=#aaaaaa",
+  }))
+end)
 
 vim.cmd.language("en_US")

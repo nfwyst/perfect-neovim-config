@@ -7,39 +7,39 @@ SET_KEY_MAPS({
   -- normal mode
   n = {
     -- window navigation
-    { lhs = "<C-h>", rhs = "<C-w>h" },
-    { lhs = "<C-j>", rhs = "<C-w>j" },
-    { lhs = "<C-k>", rhs = "<C-w>k" },
-    { lhs = "<C-l>", rhs = "<C-w>l" },
+    { lhs = "<c-h>", rhs = "<c-w>h" },
+    { lhs = "<c-j>", rhs = "<c-w>j" },
+    { lhs = "<c-k>", rhs = "<c-w>k" },
+    { lhs = "<c-l>", rhs = "<c-w>l" },
     -- resize with arrows
-    { lhs = "<C-Up>", rhs = "<cmd>resize -2<cr>" },
-    { lhs = "<C-Down>", rhs = "<cmd>resize +2<cr>" },
-    { lhs = "<C-Left>", rhs = "<cmd>vertical resize -2<cr>" },
-    { lhs = "<C-Right>", rhs = "<cmd>vertical resize +2<cr>" },
+    { lhs = "<c-Up>", rhs = "<cmd>resize -2<cr>" },
+    { lhs = "<c-Down>", rhs = "<cmd>resize +2<cr>" },
+    { lhs = "<c-Left>", rhs = "<cmd>vertical resize -2<cr>" },
+    { lhs = "<c-Right>", rhs = "<cmd>vertical resize +2<cr>" },
     -- buffers navigation
-    { lhs = "<S-l>", rhs = "<cmd>bnext<cr>" },
-    { lhs = "<S-h>", rhs = "<cmd>bprevious<cr>" },
+    { lhs = "<s-l>", rhs = "<cmd>bnext<cr>" },
+    { lhs = "<s-h>", rhs = "<cmd>bprevious<cr>" },
     -- Move text up and down
-    { lhs = "J", rhs = "<Esc><cmd>m .+1<CR>==gi" },
-    { lhs = "K", rhs = "<Esc><cmd>m .-2<CR>==gi" },
+    { lhs = "<s-j>", rhs = ":m .+1<cr>==" },
+    { lhs = "<s-k>", rhs = ":m .-2<cr>==" },
     -- Switch between first column and first character
     { lhs = "0", rhs = "col('.') == 1 ? '^': '0'", opts = { expr = true } },
   },
   -- visual mode
   v = {
     -- move text up and down
-    { lhs = "J", rhs = "<cmd>m .+1<cr>==" },
-    { lhs = "K", rhs = "<cmd>m .-2<cr>==" },
+    { lhs = "<s-j>", rhs = ":m '>+1<cr>gv=gv" },
+    { lhs = "<s-k>", rhs = ":m '<-2<cr>gv=gv" },
     { lhs = "p", rhs = '"_dP' },
     -- stay in indent mode when indent
-    { lhs = "<", rhs = "<gv" },
-    { lhs = ">", rhs = ">gv" },
+    { lhs = "<", rhs = "<gv^" },
+    { lhs = ">", rhs = ">gv^" },
   },
   -- visual block mode
   x = {
     -- move text up and down
-    { lhs = "J", rhs = "<cmd>move '>+1<cr>gv-gv" },
-    { lhs = "K", rhs = "<cmd>move '<-2<cr>gv-gv" },
+    { lhs = "<s-j>", rhs = ":m '>+1<cr>gv=gv" },
+    { lhs = "<s-k>", rhs = ":m '<-2<cr>gv=gv" },
   },
   -- insert mode
   i = {

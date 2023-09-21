@@ -14,4 +14,5 @@ return {
   c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
   d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
   f = { "<cmd>FindFilesWithGit<cr>", "Find Git Files" },
+  h = { "<cmd>FindGitHiddenFiles<cr>", "Find Hidden Files" },
 }

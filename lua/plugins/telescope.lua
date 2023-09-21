@@ -18,6 +18,15 @@ local function find_text(builtin, themes, path, undercursor)
   builtin.live_grep(theme)
 end
 
+local function find_files(builtin, themes, config)
+  local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
+  theme.cwd = WORKSPACE_PATH
+  if config ~= nil then
+    theme = MERGE_TABLE(theme, config)
+  end
+  builtin.find_files(theme)
+end
+
 local function init(builtin, themes)
   SET_USER_COMMANDS({
     FindText = function(path, undercursor)
@@ -27,9 +36,10 @@ local function init(builtin, themes)
       find_text(builtin, themes, nil, true)
     end,
     FindFiles = function()
-      local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
-      theme.cwd = WORKSPACE_PATH
-      builtin.find_files(theme)
+      find_files(builtin, themes)
+    end,
+    FindGitHiddenFiles = function()
+      find_files(builtin, themes, { no_ignore = true })
     end,
     FindFilesWithGit = function()
       local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
@@ -79,6 +89,7 @@ return {
     "FindText",
     "FindTextCursor",
     "FindFiles",
+    "FindGitHiddenFiles",
     "FindFilesWithGit",
     "FindTextWithPath",
     "Telescope",
@@ -206,6 +217,7 @@ return {
         lsp_workspace_symbols = picker_opt,
         quickfix = picker_opt,
         tags = picker_opt,
+        find_files = { hidden = true },
       },
       extensions = {},
     })

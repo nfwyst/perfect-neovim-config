@@ -41,6 +41,7 @@ local register = {
   m = { "<cmd>Glow<cr>", "Preview markdown" },
   M = { "<cmd>Mason<cr>", "Open mason installer" },
   L = { "<cmd>Lazy<cr>", "Open lazy installer" },
+  i = { "<cmd>set modifiable<cr>", "Set modifiable" },
   o = {
     name = "Obsidian/Outline/Open",
     b = require(get_path("obsidian")),

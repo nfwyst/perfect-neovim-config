@@ -13,8 +13,9 @@ make neovim as a perfect ide for development
 7. glow -- for markdown support, preview...
 8. gzip
 9. wget
-11. rust
-12. tree-sitter -- for parser generator
+10. rust
+11. tree-sitter -- for parser generator
+12. sed -- for formatter to use
 
 # Optional dependencies
 
@@ -74,5 +75,6 @@ you can create your code template, for example in javascript.json:
 # find and replace all
 
 you can find and replace all with telescope and quickfix list, here is the steps:
+
 1. press ctrl+q add the search result to the quickfix list above telescope view
 2. enter `:cdo s/what you want to replace/what you want to be/g | update`, update will write the buffer to disk after replace finished.

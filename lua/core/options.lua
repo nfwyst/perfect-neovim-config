@@ -46,8 +46,8 @@ SET_OPTS({
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
   background = SCHEME_BACKGROUND,
   guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
-  fileformat = IS_WINDOWS and "dos" or "unix",
-  fileformats = IS_WINDOWS and "dos" or "unix",
+  fileformat = "unix",
+  fileformats = "unix,dos",
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

@@ -1,6 +1,12 @@
 local function init()
   AUTOCMD({ "BufWritePost" }, {
-    command = "silent!FormatWriteLock",
+    callback = function()
+      vim.cmd.silent({ "FormatWriteLock", bang = true })
+      if IS_WINDOWS then
+        vim.cmd.e({ "++ff=dos", bang = true })
+        vim.cmd.set("ff=unix")
+      end
+    end,
   })
 end
 

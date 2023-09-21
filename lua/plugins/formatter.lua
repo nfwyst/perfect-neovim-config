@@ -1,15 +1,3 @@
-local function init()
-  AUTOCMD({ "BufWritePost" }, {
-    callback = function()
-      vim.cmd.silent({ "FormatWriteLock", bang = true })
-      if IS_WINDOWS then
-        vim.cmd.e({ "++ff=dos", bang = true })
-        vim.cmd.set("ff=unix")
-      end
-    end,
-  })
-end
-
 local function require_formatter(lang, runner)
   return {
     require("formatter.filetypes." .. lang)[runner],
@@ -24,8 +12,7 @@ return {
   "mhartington/formatter.nvim",
   cmd = { "Format", "FormatWrite", "FormatLock", "FormatWriteLock" },
   config = function()
-    local formatter = require("formatter")
-    formatter.setup({
+    require("formatter").setup({
       filetype = {
         javascript = require_prettier("javascript"),
         javascriptreact = require_prettier("javascriptreact"),
@@ -43,6 +30,5 @@ return {
         },
       },
     })
-    init()
   end,
 }

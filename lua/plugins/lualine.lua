@@ -130,6 +130,7 @@ return {
           debugger,
           spaces,
           "encoding",
+          "fileformat",
           location,
         },
         lualine_z = { progress },

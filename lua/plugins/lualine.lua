@@ -114,6 +114,7 @@ return {
           diagnostics,
           filetype,
           lsps,
+          "searchcount",
         },
         lualine_c = {},
         lualine_x = {

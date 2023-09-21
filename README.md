@@ -16,6 +16,7 @@ make neovim as a perfect ide for development
 10. rust
 11. tree-sitter -- for parser generator
 12. sed -- for formatter to use
+13. rg -- for telescope to work
 
 # Optional dependencies
 

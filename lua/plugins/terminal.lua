@@ -76,6 +76,9 @@ local function init_instance(terminal)
 end
 
 local function bind_powershell()
+  if not IS_WINDOWS then
+    return
+  end
   SET_OPTS({
     shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
     shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -86,13 +89,11 @@ local function bind_powershell()
   })
 end
 
+bind_powershell()
+
 local function init(terminal)
   init_instance(terminal)
   set_commands()
-  if not IS_WINDOWS then
-    return
-  end
-  bind_powershell()
 end
 
 return {

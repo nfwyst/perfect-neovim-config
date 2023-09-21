@@ -1,9 +1,11 @@
+local file_layout = { width = 0.85, height = 0.75 }
+local text_layout = { height = 0.6, preview_width = 0.35 }
+local other_layout = { width = 1000, height = 1000, preview_width = 0.33 }
+local picker_opt = { fname_width = 500 }
+
 local function find_text(builtin, themes, path, undercursor)
   local theme = themes.get_ivy({
-    layout_config = {
-      height = 0.6,
-      preview_width = 0.35,
-    },
+    layout_config = text_layout,
   })
   theme.cwd = WORKSPACE_PATH
   if path then
@@ -25,12 +27,12 @@ local function init(builtin, themes)
       find_text(builtin, themes, nil, true)
     end,
     FindFiles = function()
-      local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
+      local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
       theme.cwd = WORKSPACE_PATH
       builtin.find_files(theme)
     end,
     FindFilesWithGit = function()
-      local theme = themes.get_dropdown({ previewer = false, layout_config = TELESCOPE_LAYOUT_CONFIG })
+      local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
       theme.cwd = WORKSPACE_PATH
       builtin.git_files(theme)
     end,
@@ -132,6 +134,7 @@ return {
         preview = {
           filesize_limit = 3,
         },
+        layout_config = { horizontal = other_layout },
         file_ignore_patterns = TELESCOPE_IGNORE_PATTERNS,
         mappings = {
           i = {
@@ -188,9 +191,21 @@ return {
         },
       },
       pickers = {
-        planets = {
-          show_pluto = true,
-        },
+        planets = { show_pluto = true },
+        current_buffer_tags = picker_opt,
+        jumplist = picker_opt,
+        loclist = picker_opt,
+        lsp_definitions = picker_opt,
+        lsp_document_symbols = picker_opt,
+        lsp_dynamic_workspace_symbols = picker_opt,
+        lsp_implementations = picker_opt,
+        lsp_incoming_calls = picker_opt,
+        lsp_outgoing_calls = picker_opt,
+        lsp_references = picker_opt,
+        lsp_type_definitions = picker_opt,
+        lsp_workspace_symbols = picker_opt,
+        quickfix = picker_opt,
+        tags = picker_opt,
       },
       extensions = {},
     })

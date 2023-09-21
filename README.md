@@ -11,6 +11,10 @@ make neovim as a perfect ide for development
 5. htop -- an interactive process viewer
 6. python3
 7. glow -- for markdown support, preview...
+8. gzip
+9. wget
+11. rust
+12. tree-sitter -- for parser generator
 
 # Optional dependencies
 

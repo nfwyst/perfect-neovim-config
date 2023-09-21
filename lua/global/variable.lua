@@ -3,7 +3,6 @@ CONFIG_PATH = vim.fn.stdpath("config")
 HOME_PATH = vim.fn.expand("~")
 AUTOCMD = vim.api.nvim_create_autocmd
 AUTOGROUP = vim.api.nvim_create_augroup
-TELESCOPE_LAYOUT_CONFIG = { width = 0.85, height = 0.75 }
 WORKSPACE_PATH = vim.loop.cwd()
 SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1000

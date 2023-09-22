@@ -1,6 +1,6 @@
 local file_layout = { width = 0.85, height = 0.75 }
 local text_layout = { height = 0.6, preview_width = 0.35 }
-local other_layout = { width = 1000, height = 1000, preview_width = 0.33 }
+local other_layout = { width = 1000, height = 1000, preview_width = 0.3 }
 local picker_opt = { fname_width = 500 }
 
 local function find_text(builtin, themes, path, undercursor)
@@ -57,7 +57,7 @@ local function init(builtin, themes)
     SetWorkspacePathGlobal = SET_WORKSPACE_PATH_GLOBAL,
     SetWorkspacePathLocal = function()
       WORKSPACE_PATH = vim.loop.cwd() or ""
-      print("cwd set to: " .. WORKSPACE_PATH)
+      vim.notify("cwd set to: " .. WORKSPACE_PATH)
     end,
     SetWorkspacePathCustom = function()
       vim.ui.input({ prompt = "input path: " }, function(path)
@@ -66,12 +66,12 @@ local function init(builtin, themes)
         end
         if IS_ABSOLUTE_PATH(path) then
           WORKSPACE_PATH = path
-          print("cwd set to: " .. WORKSPACE_PATH)
+          vim.notify("cwd set to: " .. WORKSPACE_PATH)
           return
         end
         local relativePath = vim.loop.cwd()
         WORKSPACE_PATH = string.format("%s" .. OS_SEP .. "%s", relativePath, FORMAT_PATH_BY_OS(path))
-        print("cwd set to: " .. WORKSPACE_PATH)
+        vim.notify("cwd set to: " .. WORKSPACE_PATH)
       end)
     end,
     DocumentSymbols = function()

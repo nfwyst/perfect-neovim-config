@@ -5,7 +5,11 @@ end
 local register = {
   b = require(get_path("buffer")),
   g = require(get_path("git")),
-  l = require(get_path("lsp")),
+  l = {
+    name = "Lsp/Leetcode",
+    s = require(get_path("lsp")),
+    c = require(get_path("leetcode")),
+  },
   W = require(get_path("workspace")),
   c = {
     name = "Clipboard/Chatgpt",

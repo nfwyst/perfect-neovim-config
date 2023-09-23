@@ -52,6 +52,7 @@ LSP_SERVERS = {
   "tailwindcss",
   "marksman",
   "eslint",
+  "svelte",
 }
 
 INVALID_FILETYPE = {
@@ -92,6 +93,7 @@ TREESITTER_ENSURE_INSTALL = {
   "yaml",
   "go",
   "lua",
+  "svelte",
 }
 
 TELESCOPE_IGNORE_PATTERNS = {

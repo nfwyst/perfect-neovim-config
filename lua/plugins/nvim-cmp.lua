@@ -4,6 +4,7 @@ SET_OPTS({
 
 return {
   "hrsh7th/nvim-cmp",
+  cond = not IS_VSCODE,
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",

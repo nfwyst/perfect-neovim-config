@@ -1,5 +1,6 @@
 return {
   "ellisonleao/glow.nvim",
+  cond = not IS_VSCODE,
   cmd = "Glow",
   ft = "markdown",
   config = function()

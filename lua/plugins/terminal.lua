@@ -98,6 +98,7 @@ end
 
 return {
   "akinsho/toggleterm.nvim",
+  cond = not IS_VSCODE,
   cmd = {
     "ToggleNode",
     "ToggleNcdu",
@@ -106,6 +107,7 @@ return {
     "ToggleTerm",
     "ToggleTerminalHorizontal",
     "ToggleTerminalVertical",
+    "ToggleLazygit",
   },
   keys = [[<c-\>]],
   config = function()

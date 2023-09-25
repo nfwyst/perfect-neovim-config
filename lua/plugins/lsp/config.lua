@@ -74,6 +74,7 @@ end
 
 return {
   "neovim/nvim-lspconfig",
+  cond = not IS_VSCODE,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",

@@ -94,6 +94,7 @@ local debugger = {
 
 return {
   "nvim-lualine/lualine.nvim",
+  cond = not IS_VSCODE,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VeryLazy",
   config = function()

@@ -8,6 +8,7 @@ end
 
 return {
   "codota/tabnine-nvim",
+  cond = not IS_VSCODE,
   build = tabnine_build_path(),
   config = function()
     local tabnine = require("tabnine")

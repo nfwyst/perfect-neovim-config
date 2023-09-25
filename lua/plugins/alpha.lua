@@ -20,6 +20,7 @@ end
 
 return {
   "goolord/alpha-nvim",
+  cond = not IS_VSCODE,
   event = "VimEnter",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()

@@ -10,7 +10,7 @@ local function init_hi()
       "@variable guifg=" .. color.fg0,
       "Normal guifg=" .. color.fg0,
       "Comment guifg=" .. color.fg2,
-      "CursorLine guibg=" .. color.bg0,
+      -- "CursorLine guibg=" .. color.bg0,
     }))
   end)
 end

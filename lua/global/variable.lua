@@ -6,6 +6,7 @@ AUTOGROUP = vim.api.nvim_create_augroup
 WORKSPACE_PATH = vim.loop.cwd()
 SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1000
+IS_VSCODE = vim.g.vscode ~= nil
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"

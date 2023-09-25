@@ -37,6 +37,7 @@ end
 
 return {
   "folke/which-key.nvim",
+  cond = not IS_VSCODE,
   keys = {
     "<leader>",
     "<c-w>",

@@ -10,6 +10,7 @@ end
 
 return {
   "mfussenegger/nvim-lint",
+  cond = not IS_VSCODE,
   event = "VeryLazy",
   config = function()
     local lint = require("lint")

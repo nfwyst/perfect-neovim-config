@@ -10,10 +10,11 @@ end
 
 return {
   "epwalsh/obsidian.nvim",
+  enabled = not IS_WINDOWS,
+  cond = not IS_VSCODE,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  enabled = not IS_WINDOWS,
   ft = "markdown",
   config = function()
     local obsidian = require("obsidian")

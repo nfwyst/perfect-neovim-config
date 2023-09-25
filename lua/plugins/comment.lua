@@ -1,5 +1,6 @@
 return {
   "numToStr/Comment.nvim",
+  cond = not IS_VSCODE,
   keys = {
     { "gb", mode = { "n", "o" } },
     { "gb", mode = "x" },

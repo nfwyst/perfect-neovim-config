@@ -103,6 +103,7 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
+  cond = not IS_VSCODE,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = {
     "NvimTreeToggle",

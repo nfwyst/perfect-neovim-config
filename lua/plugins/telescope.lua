@@ -85,6 +85,7 @@ end
 
 return {
   "nvim-telescope/telescope.nvim",
+  cond = not IS_VSCODE,
   cmd = {
     "FindText",
     "FindTextCursor",

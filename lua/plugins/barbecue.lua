@@ -18,6 +18,7 @@ end
 return {
   "utilyre/barbecue.nvim",
   name = "barbecue",
+  cond = not IS_VSCODE,
   event = "VeryLazy",
   dependencies = {
     "SmiteshP/nvim-navic",

@@ -10,6 +10,7 @@ end
 
 return {
   "mhartington/formatter.nvim",
+  cond = not IS_VSCODE,
   cmd = { "Format", "FormatWrite", "FormatLock", "FormatWriteLock" },
   config = function()
     require("formatter").setup({

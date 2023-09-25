@@ -1,5 +1,6 @@
 return {
   "luukvbaal/statuscol.nvim",
+  cond = not IS_VSCODE,
   event = { "BufReadPost", "BufNewFile" },
   config = function()
     local statuscol = require("statuscol")

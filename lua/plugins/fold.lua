@@ -17,6 +17,7 @@ end
 
 return {
   "kevinhwang91/nvim-ufo",
+  cond = not IS_VSCODE,
   event = "VeryLazy",
   dependencies = { "kevinhwang91/promise-async" },
   config = function()

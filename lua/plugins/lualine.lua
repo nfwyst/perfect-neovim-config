@@ -8,15 +8,18 @@ local diagnostics = {
   always_visible = true,
 }
 
-local hide_in_width = function()
-  return vim.fn.winwidth(0) > 80
+local show_on_width = function(width)
+  if not width then
+    width = 80
+  end
+  return vim.fn.winwidth(0) > width
 end
 
 local diff = {
   "diff",
   colored = false,
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width,
+  cond = show_on_width,
 }
 
 local mode = {
@@ -31,6 +34,10 @@ local tabnine = {
   fmt = function(str)
     local result = string.gsub(str, " pro", "")
     local is_pro = STR_INCLUDES(str, "pro", 1, true)
+    local width = vim.fn.winwidth(0)
+    if width < 75 then
+      return ""
+    end
     return is_pro and result .. "" or result
   end,
 }
@@ -66,12 +73,17 @@ local progress = {
 }
 
 local spaces = function()
+  local width = vim.fn.winwidth(0)
+  if width < 56 then
+    return ""
+  end
   return "space:" .. GET_BUFFER_OPT(0, "shiftwidth")
 end
 
 local lsps = function()
   local clients = vim.lsp.buf_get_clients(GET_CURRENT_BUFFER())
-  if next(clients) == nil then
+  local width = vim.fn.winwidth(0)
+  if next(clients) == nil or width < 66 then
     return ""
   end
 
@@ -130,8 +142,8 @@ return {
           diff,
           debugger,
           spaces,
-          "encoding",
-          "fileformat",
+          { cond = show_on_width, "encoding" },
+          { cond = show_on_width, "fileformat" },
           location,
         },
         lualine_z = { progress },

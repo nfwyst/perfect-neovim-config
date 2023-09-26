@@ -6,8 +6,7 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    local tokyonight = require(name)
-    tokyonight.setup({
+    require(name).setup({
       light_style = "day",
       transparent = true,
       styles = {

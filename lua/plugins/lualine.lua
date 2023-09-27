@@ -6,6 +6,10 @@ local diagnostics = {
   colored = false,
   update_in_insert = false,
   always_visible = true,
+  cond = function()
+    local is_disabled = vim.diagnostic.is_disabled()
+    return not is_disabled
+  end,
 }
 
 local show_on_width = function(width)

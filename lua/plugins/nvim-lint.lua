@@ -19,6 +19,8 @@ return {
       typescript = { "eslint" },
       typescriptreact = { "eslint" },
       javascriptreact = { "eslint" },
+      sh = { "shellcheck" },
+      zsh = { "shellcheck" },
     }
     init(lint)
   end,

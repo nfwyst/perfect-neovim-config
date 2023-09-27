@@ -26,6 +26,8 @@ make neovim as a perfect ide for development
 4. clang_format -- c/c++ formatter
 5. eslint -- additional js/ts diagnostic it can work with tsserver lsp, so its ok
 6. fortune -- show a random quotation from a collection of quotes in alpha dashboard
+7. shfmt -- sehll formater `go install mvdan.cc/sh/v3/cmd/shfmt@latest`, then set environment variable for go path bin folder
+8. shellcheck -- shell linter
 
 # Install
 

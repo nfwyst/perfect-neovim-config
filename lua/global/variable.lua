@@ -54,6 +54,7 @@ LSP_SERVERS = {
   "marksman",
   "eslint",
   "svelte",
+  "bashls",
 }
 
 INVALID_FILETYPE = {

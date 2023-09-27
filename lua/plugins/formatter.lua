@@ -26,6 +26,7 @@ return {
         jsonc = require_prettier("json"),
         markdown = require_prettier("markdown"),
         yaml = require_prettier("yaml"),
+        sh = require_formatter("sh", "shfmt"),
         ["*"] = {
           require("formatter.filetypes.any").remove_trailing_whitespace,
         },

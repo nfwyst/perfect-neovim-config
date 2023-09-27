@@ -1,3 +1,12 @@
+local function bind_ft()
+  local map = {
+    zsh = "bash",
+  }
+  for key, value in pairs(map) do
+    vim.treesitter.language.register(value, key)
+  end
+end
+
 return {
   "nvim-treesitter/nvim-treesitter",
   cond = not IS_VSCODE,
@@ -20,5 +29,6 @@ return {
       indent = { enable = true },
       context_commentstring = { enable = true, enable_autocmd = false },
     })
+    bind_ft()
   end,
 }

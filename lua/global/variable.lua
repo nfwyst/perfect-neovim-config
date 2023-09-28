@@ -8,6 +8,7 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1000
 IS_VSCODE = vim.g.vscode ~= nil
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
+IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux")) == "Linux"
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
 MAX_BUFFER_SIZE = 100

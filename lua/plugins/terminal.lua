@@ -75,21 +75,25 @@ local function init_instance(terminal)
   })
 end
 
-local function bind_powershell()
-  if not IS_WINDOWS then
-    return
+local function bind_shell()
+  if IS_LINUX then
+    SET_OPTS({
+      shell = vim.fn.executable("zsh") == 1 and "zsh" or vim.opt.shell:get(),
+    })
   end
-  SET_OPTS({
-    shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-    shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
-    shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-    shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
-    shellquote = "",
-    shellxquote = "",
-  })
+  if IS_WINDOWS then
+    SET_OPTS({
+      shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+      shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+      shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+      shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+      shellquote = "",
+      shellxquote = "",
+    })
+  end
 end
 
-bind_powershell()
+bind_shell()
 
 local function init(terminal)
   init_instance(terminal)

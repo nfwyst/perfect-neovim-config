@@ -28,6 +28,7 @@ make neovim as a perfect ide for development
 6. fortune -- show a random quotation from a collection of quotes in alpha dashboard
 7. shfmt -- sehll formater `go install mvdan.cc/sh/v3/cmd/shfmt@latest`, then set environment variable for go path bin folder
 8. shellcheck -- shell linter
+9. beautysh -- zshell formater
 
 # Install
 

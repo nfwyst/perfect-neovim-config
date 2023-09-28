@@ -29,6 +29,7 @@ make neovim as a perfect ide for development
 7. shfmt -- sehll formater `go install mvdan.cc/sh/v3/cmd/shfmt@latest`, then set environment variable for go path bin folder
 8. shellcheck -- shell linter
 9. beautysh -- zshell formater
+10. zsh -- a shell with some useful plugins
 
 # Install
 
@@ -57,6 +58,20 @@ git clone https://github.com/nfwyst/perfect-neovim-config.git ~/.config/nvim
 10. marks, text objects
 11. find and replace all
 12. folds, spelling etc...
+13. nerd font
+14. vscode integration
+
+# Nerd Font
+
+a font that has a collection of icons builtin, you can install the prebuild 0xProto font
+
+# Vscode integration
+
+The config file can work with vscode, and the `VSCode Neovim` plugin is required.
+there are some suggested plugins:
+
+- Apc Customize UI++
+- VSCode Animations
 
 # Custom snippets
 

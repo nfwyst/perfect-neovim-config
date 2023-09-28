@@ -61,12 +61,18 @@ local function get_options(cmp_nvim_lsp, server)
   return opts
 end
 
-local function try_load(conf, exclude_filetypes)
+local function try_load(conf, exclude_filetypes, include_filetypes)
   local try_add = conf.manager.try_add
   conf.manager.try_add = function(config)
     local disabled = TABLE_CONTAINS(exclude_filetypes, vim.bo.filetype)
     if disabled then
       return
+    end
+    if include_filetypes ~= nil then
+      local enabled = TABLE_CONTAINS(include_filetypes, vim.bo.filetype)
+      if not enabled then
+        return
+      end
     end
     return try_add(config)
   end
@@ -90,7 +96,7 @@ return {
         goto continue
       end
       conf.setup(opts)
-      try_load(conf, opts.exclude_filetypes or {})
+      try_load(conf, opts.exclude_filetypes or {}, opts.include_filetypes)
       ::continue::
     end
 

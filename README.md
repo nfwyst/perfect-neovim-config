@@ -30,6 +30,7 @@ make neovim as a perfect ide for development
 8. shellcheck -- shell linter
 9. beautysh -- zshell formater
 10. zsh -- a shell with some useful plugins
+11. xclip -- clipboard tool for linux
 
 # Install
 

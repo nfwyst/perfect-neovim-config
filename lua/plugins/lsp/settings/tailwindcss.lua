@@ -1,4 +1,4 @@
 return {
-  exclude_filetypes = { "javascript", "typescript", "css", "less", "scss", "sass", "html" },
+  include_filetypes = { "javascriptreact", "typescriptreact" },
   disabled = IS_WINDOWS,
 }

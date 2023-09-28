@@ -26,6 +26,7 @@ local register = {
     t = require(get_path("treesitter")),
     n = require(get_path("tabnine")),
   },
+  Q = { "<cmd>ccl<cr>", "Close QuickFix" },
   u = { "<cmd>DissmissNotification</cr>", "Dismiss Notifications" },
   a = { "<cmd>Alpha<cr>", "Alpha" },
   e = { "<cmd>NvimTreeToggle<cr>", "File tree" },

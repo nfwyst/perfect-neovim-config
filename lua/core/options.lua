@@ -27,8 +27,9 @@ SET_OPTS({
   relativenumber = true, -- enable relative number
   numberwidth = 2, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = false, -- display lines as one long line
+  wrap = true, -- display lines as one long line
   linebreak = true, -- wrap by word
+  scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- scroll left to right
   inccommand = "split", -- show preview in split window when in %s mode to replace something
   lazyredraw = true, -- don't redraw while executing macros (good performance config)
@@ -43,9 +44,10 @@ SET_OPTS({
   foldnestmax = 7, -- fold nest dont more than 7, default limit is 20
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
   shortmess = vim.opt.shortmess + "c", -- don't give ins-completion-menu messages
-  whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
+  whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allowed move the cursor to previous/next line
   background = SCHEME_BACKGROUND,
   guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
+  guifont = "0xProto Nerd Font Mono:h18",
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

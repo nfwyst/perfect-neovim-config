@@ -11,7 +11,6 @@ local common_sources = {
 
 local function setup_cmdline(cmp)
   local mapping = cmp.mapping.preset.cmdline()
-  vim.notify("setup cmdline")
   cmp.setup.cmdline("/", {
     mapping = mapping,
     sources = {

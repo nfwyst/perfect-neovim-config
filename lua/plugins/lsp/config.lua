@@ -45,11 +45,9 @@ local function on_attach(client)
 end
 
 local function get_options(cmp_nvim_lsp, server)
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
   local opts = {
     on_attach = on_attach,
-    capabilities = cmp_nvim_lsp.default_capabilities(capabilities),
+    capabilities = cmp_nvim_lsp.default_capabilities(),
   }
   local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
   if has_custom_opts then
@@ -82,9 +80,7 @@ return {
   "neovim/nvim-lspconfig",
   cond = not IS_VSCODE,
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-  },
+  dependencies = { "hrsh7th/cmp-nvim-lsp" },
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")

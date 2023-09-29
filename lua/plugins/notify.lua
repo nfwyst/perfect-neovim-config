@@ -11,7 +11,6 @@ return {
   "rcarriga/nvim-notify",
   cond = not IS_VSCODE,
   event = "VeryLazy",
-  cmd = "DissmissNotification",
   config = function()
     local notify = require("notify")
     notify.setup({

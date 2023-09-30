@@ -12,6 +12,7 @@ IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux")) == "L
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
 MAX_BUFFER_SIZE = 100
+LSP_DOC_WIDTH = 60
 CURSOR_HILIGHT_OPTS = {
   "Cursor guibg=#5f87af ctermbg=67 blend=0",
   "iCursor guibg=#ffffaf ctermbg=229",
@@ -73,8 +74,9 @@ INVALID_FILETYPE = {
   "startify",
   "neogitstatus",
   "Trouble",
-  "DressingInput",
   "toggleterm",
+  "lazy",
+  "noice",
   "",
   nil,
 }

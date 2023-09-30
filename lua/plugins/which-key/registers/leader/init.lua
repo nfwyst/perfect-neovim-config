@@ -26,6 +26,7 @@ local register = {
     t = require(get_path("treesitter")),
     n = require(get_path("tabnine")),
   },
+  n = require(get_path("noice")),
   Q = { "<cmd>ccl<cr>", "Close QuickFix" },
   u = { "<cmd>DissmissNotification</cr>", "Dismiss Notifications" },
   a = { "<cmd>Alpha<cr>", "Alpha" },

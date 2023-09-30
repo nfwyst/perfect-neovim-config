@@ -13,7 +13,7 @@ SET_AUTOCMDS({
     "TextYankPost",
     {
       pattern = "*",
-      command = "silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})",
+      command = "silent!lua vim.highlight.on_yank({higroup = 'Visual', timeout = 200})",
       group = _general_settings,
     },
   },
@@ -31,6 +31,18 @@ SET_AUTOCMDS({
       pattern = "qf",
       command = "silent!set nobuflisted",
       group = _general_settings,
+    },
+  },
+  {
+    "FileType",
+    {
+      pattern = "lazy",
+      callback = function()
+        SET_OPTS({ cursorline = true }, true)
+        if GET_HIGHLIGHT("Cursor").blend == 100 then
+          SHOW_CURSOR()
+        end
+      end,
     },
   },
   {

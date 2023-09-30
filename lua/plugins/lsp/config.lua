@@ -29,7 +29,8 @@ local function init()
 
   local with_opt = {
     border = "rounded",
-    width = 60,
+    width = LSP_DOC_WIDTH,
+    max_width = GET_MAX_WIDTH(),
   }
   vim.diagnostic.config(config)
   local handlers = vim.lsp.handlers

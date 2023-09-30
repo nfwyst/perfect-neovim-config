@@ -9,36 +9,14 @@ local common_sources = {
   { name = "path", max_item_count = 10 },
 }
 
-local function setup_cmdline(cmp)
-  local mapping = cmp.mapping.preset.cmdline()
-  cmp.setup.cmdline("/", {
-    mapping = mapping,
-    sources = {
-      { name = "buffer" },
-    },
-  })
-  cmp.setup.cmdline(":", {
-    mapping = mapping,
-    sources = cmp.config.sources(common_sources, {
-      {
-        name = "cmdline",
-        option = {
-          ignore_cmds = { "Man", "!" },
-        },
-      },
-    }),
-  })
-end
-
 return {
   "hrsh7th/nvim-cmp",
   cond = not IS_VSCODE,
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-cmdline",
     "onsails/lspkind.nvim",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -55,7 +33,6 @@ return {
       scrollbar = false,
       col_offset = 1,
     })
-    setup_cmdline(cmp)
     cmp.setup({
       enabled = function()
         return not TABLE_CONTAINS(INVALID_FILETYPE, vim.bo.filetype)

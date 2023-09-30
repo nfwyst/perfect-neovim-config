@@ -1,6 +1,5 @@
 return {
   "folke/flash.nvim",
-  config = true,
   keys = {
     {
       "s",

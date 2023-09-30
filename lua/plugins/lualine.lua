@@ -29,20 +29,21 @@ local diff = {
 local mode = {
   "mode",
   fmt = function(str)
-    return "--" .. str .. "--"
+    return str
   end,
+  padding = { right = 0, left = 1 },
 }
 
 local tabnine = {
   "tabnine",
   fmt = function(str)
-    local result = string.gsub(str, " pro", "")
-    local is_pro = STR_INCLUDES(str, "pro", 1, true)
+    local result = string.gsub(str, " pro", "")
+    result = string.gsub(result, "⌬ tabnine", "tn ")
     local width = vim.fn.winwidth(0)
     if width < 75 then
       return ""
     end
-    return is_pro and result .. "" or result
+    return result
   end,
 }
 
@@ -84,6 +85,16 @@ local spaces = function()
   return "space:" .. GET_BUFFER_OPT(0, "shiftwidth")
 end
 
+local noice_mode = {
+  function()
+    return require("noice").api.statusline.mode.get()
+  end,
+  cond = function()
+    return IS_PACKAGE_LOADED("noice") and require("noice").api.statusline.mode.has()
+  end,
+  color = { fg = "#ffffff" },
+}
+
 local lsps = function()
   local clients = vim.lsp.buf_get_clients(GET_CURRENT_BUFFER())
   local width = vim.fn.winwidth(0)
@@ -95,7 +106,7 @@ local lsps = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return "\u{f085} " .. table.concat(c, "|")
+  return " " .. table.concat(c, "•")
 end
 
 local debugger = {
@@ -126,7 +137,7 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { mode, branch },
+        lualine_a = { mode, noice_mode, branch },
         lualine_b = {
           diagnostics,
           filetype,

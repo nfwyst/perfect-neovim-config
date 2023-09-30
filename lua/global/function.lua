@@ -49,6 +49,10 @@ function HIDE_CURSOR()
   SET_HIGHLIGHT({ "Cursor blend=100" })
 end
 
+function GET_HIGHLIGHT(name)
+  return vim.api.nvim_get_hl(0, { name = name })
+end
+
 function SET_BUF_KEY_MAPS(table)
   for mode, maps in pairs(table) do
     for _, v in ipairs(maps) do
@@ -63,6 +67,13 @@ function SET_KEY_MAPS(table)
       KEY_MAP(mode, v.lhs, v.rhs, v.opts)
     end
   end
+end
+
+function GET_MAX_WIDTH(offset)
+  offset = offset or 20
+  local win_width = vim.fn.winwidth(0)
+  local width = win_width - offset
+  return width > 0 and width or -width
 end
 
 local function key_exists(mode, lhs)

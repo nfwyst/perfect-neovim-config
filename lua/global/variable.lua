@@ -5,7 +5,8 @@ AUTOCMD = vim.api.nvim_create_autocmd
 AUTOGROUP = vim.api.nvim_create_augroup
 WORKSPACE_PATH = vim.loop.cwd()
 SCHEME_BACKGROUND = "dark"
-MAX_FILE_LENGTH = 1000
+MAX_FILE_LENGTH = 1200
+MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
 IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
 IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux")) == "Linux"

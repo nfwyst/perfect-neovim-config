@@ -13,7 +13,7 @@ end
 local function delete_oldest_buffers(bufferline)
   local buffers = bufferline.get_elements().elements
   if #buffers > 100 then
-    vim.cmd("wa!")
+    vim.cmd.write("a!")
     require("bufdelete").bufdelete(buffers[1].id, false)
   end
 end

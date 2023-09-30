@@ -1,3 +1,13 @@
+local colorizer = {
+  name = "colorizer",
+  opts = {
+    defer = true,
+  },
+  disable = function()
+    vim.cmd("ColorizerDetachFromBuffer")
+  end,
+}
+
 return {
   "lunarvim/bigfile.nvim",
   cond = not IS_VSCODE,
@@ -17,6 +27,7 @@ return {
         "syntax",
         "vimopts",
         "filetype",
+        colorizer,
       },
     })
   end,

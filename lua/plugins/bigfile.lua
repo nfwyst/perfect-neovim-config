@@ -1,5 +1,6 @@
 return {
   "lunarvim/bigfile.nvim",
+  cond = not IS_VSCODE,
   event = { "FileReadPre", "BufReadPre", "User FileOpened" },
   config = function()
     require("bigfile").config({

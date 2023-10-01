@@ -83,6 +83,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = { "hrsh7th/cmp-nvim-lsp" },
   config = function()
+    require("lspconfig.ui.windows").default_options.border = "rounded"
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 

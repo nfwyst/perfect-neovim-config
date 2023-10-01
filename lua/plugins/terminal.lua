@@ -128,13 +128,14 @@ return {
       direction = "float",
       close_on_exit = true,
       shell = vim.o.shell,
+      highlights = {
+        FloatBorder = {
+          link = "FloatBorder",
+        },
+      },
       float_opts = {
         border = "curved",
         winblend = 0,
-        highlights = {
-          border = "Normal",
-          background = "Normal",
-        },
       },
     })
     init(require("toggleterm.terminal"))

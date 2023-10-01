@@ -203,7 +203,8 @@ function QUIT(force)
 end
 
 function SAVE_THEN_QUIT(force)
-  vim.cmd.x({ "a", bang = force ~= false })
+  vim.cmd.wa({ bang = force ~= false })
+  QUIT(force)
 end
 
 function GET_BUFFER_NAME(bufnr)

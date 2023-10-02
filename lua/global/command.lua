@@ -5,7 +5,7 @@ SET_USER_COMMANDS({
   ExitInsertMode = function()
     local ok, snip = pcall(require, "luasnip")
     if not ok then
-      vim.notify("luasnip is not installed...")
+      LOG_WARN("plugin missing", "luasnip is not installed...")
     end
     if ok then
       snip.unlink_current()

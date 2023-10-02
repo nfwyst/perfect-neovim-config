@@ -34,8 +34,10 @@ local function init()
   }
   vim.diagnostic.config(config)
   local handlers = vim.lsp.handlers
-  handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, with_opt)
-  handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, with_opt)
+  handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, with_opt)
+  handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, with_opt)
 end
 
 local function on_attach(client)
@@ -50,7 +52,8 @@ local function get_options(cmp_nvim_lsp, server)
     on_attach = on_attach,
     capabilities = cmp_nvim_lsp.default_capabilities(),
   }
-  local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
+  local has_custom_opts, server_custom_opts =
+    pcall(require, "plugins.lsp.settings." .. server)
   if has_custom_opts then
     if server_custom_opts.disabled then
       return nil

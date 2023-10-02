@@ -19,7 +19,8 @@ local function find_text(builtin, themes, path, undercursor)
 end
 
 local function find_files(builtin, themes, config)
-  local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
+  local theme =
+    themes.get_dropdown({ previewer = false, layout_config = file_layout })
   theme.cwd = WORKSPACE_PATH
   if config ~= nil then
     theme = MERGE_TABLE(theme, config)
@@ -42,7 +43,8 @@ local function init(builtin, themes)
       find_files(builtin, themes, { no_ignore = true })
     end,
     FindFilesWithGit = function()
-      local theme = themes.get_dropdown({ previewer = false, layout_config = file_layout })
+      local theme =
+        themes.get_dropdown({ previewer = false, layout_config = file_layout })
       theme.cwd = WORKSPACE_PATH
       builtin.git_files(theme)
     end,
@@ -57,7 +59,7 @@ local function init(builtin, themes)
     SetWorkspacePathGlobal = SET_WORKSPACE_PATH_GLOBAL,
     SetWorkspacePathLocal = function()
       WORKSPACE_PATH = vim.loop.cwd() or ""
-      vim.notify("cwd set to: " .. WORKSPACE_PATH)
+      LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)
     end,
     SetWorkspacePathCustom = function()
       vim.ui.input({ prompt = "input path: " }, function(path)
@@ -66,12 +68,16 @@ local function init(builtin, themes)
         end
         if IS_ABSOLUTE_PATH(path) then
           WORKSPACE_PATH = path
-          vim.notify("cwd set to: " .. WORKSPACE_PATH)
+          LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)
           return
         end
         local relativePath = vim.loop.cwd()
-        WORKSPACE_PATH = string.format("%s" .. OS_SEP .. "%s", relativePath, FORMAT_PATH_BY_OS(path))
-        vim.notify("cwd set to: " .. WORKSPACE_PATH)
+        WORKSPACE_PATH = string.format(
+          "%s" .. OS_SEP .. "%s",
+          relativePath,
+          FORMAT_PATH_BY_OS(path)
+        )
+        LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)
       end)
     end,
     DocumentSymbols = function()
@@ -126,12 +132,14 @@ return {
           mode = "search",
           exclude = {
             function(win)
-              return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+              return vim.bo[vim.api.nvim_win_get_buf(win)].filetype
+                ~= "TelescopeResults"
             end,
           },
         },
         action = function(match)
-          local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+          local picker =
+            require("telescope.actions.state").get_current_picker(prompt_bufnr)
           picker:set_selection(match.pos[1] - 1)
         end,
       })
@@ -166,7 +174,8 @@ return {
             ["<PageUp>"] = actions.results_scrolling_up,
             ["<PageDown>"] = actions.results_scrolling_down,
             ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-            ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+            ["<S-Tab>"] = actions.toggle_selection
+              + actions.move_selection_better,
             ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
             ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             ["<C-l>"] = actions.complete_tag,
@@ -182,7 +191,8 @@ return {
             ["<C-v>"] = actions.select_vertical,
             ["<C-t>"] = actions.select_tab,
             ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-            ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+            ["<S-Tab>"] = actions.toggle_selection
+              + actions.move_selection_better,
             ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
             ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             ["j"] = actions.move_selection_next,

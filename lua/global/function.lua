@@ -141,7 +141,7 @@ function SET_WORKSPACE_PATH_GLOBAL()
   local _, util = pcall(require, "lspconfig/util")
   local get_root = util.root_pattern(UNPACK(PROJECT_PATTERNS))
   WORKSPACE_PATH = get_root(vim.fn.expand("%:p")) or vim.loop.cwd()
-  vim.notify("cwd set to: " .. WORKSPACE_PATH)
+  LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)
 end
 
 function UNPACK(table)
@@ -186,7 +186,7 @@ function SAVE(force)
   if filename == "" then
     vim.ui.input({ prompt = "Enter a file name: " }, function(fname)
       if not fname then
-        vim.notify("No file name, cant save")
+        LOG_ERROR("cant save", "file name missing")
       else
         vim.cmd.write({ fname, bang = bang })
       end
@@ -248,5 +248,23 @@ function PCALL(f, ...)
   if ok or not err then
     return
   end
-  vim.notify(err, vim.log.levels.ERROR)
+  LOG_ERROR("pcall error", err)
+end
+
+function LOG_INFO(title, message)
+  vim.notify(message, vim.log.levels.INFO, {
+    title = title,
+  })
+end
+
+function LOG_ERROR(title, message)
+  vim.notify(message, vim.log.levels.ERROR, {
+    title = title,
+  })
+end
+
+function LOG_WARN(title, message)
+  vim.notify(message, vim.log.levels.WARN, {
+    title = title,
+  })
 end

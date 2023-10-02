@@ -39,7 +39,11 @@ return {
 
           return {
             exe = "beautysh",
-            args = { "-i", shiftwidth, util.escape_path(util.get_current_buffer_file_path()) },
+            args = {
+              "-i",
+              shiftwidth,
+              util.escape_path(util.get_current_buffer_file_path()),
+            },
           }
         end,
         ["*"] = {

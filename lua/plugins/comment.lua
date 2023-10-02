@@ -25,7 +25,9 @@ return {
       if not TABLE_CONTAINS(TSX_COMMENT_INCLUDED_FILES, vim.bo.filetype) then
         return
       end
-      local prehook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+      local prehook = require(
+        "ts_context_commentstring.integrations.comment_nvim"
+      ).create_pre_hook()
       prehook(ctx)
     end,
   },

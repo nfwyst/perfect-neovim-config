@@ -69,7 +69,17 @@ local progress = {
   function()
     local current_line = vim.fn.line(".")
     local total_lines = vim.fn.line("$")
-    local chars = { "  ", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+    local chars = {
+      "  ",
+      "▁▁",
+      "▂▂",
+      "▃▃",
+      "▄▄",
+      "▅▅",
+      "▆▆",
+      "▇▇",
+      "██",
+    }
     local line_ratio = current_line / total_lines
     local index = math.ceil(line_ratio * #chars)
     return chars[index]
@@ -90,7 +100,8 @@ local noice_mode = {
     return require("noice").api.statusline.mode.get()
   end,
   cond = function()
-    return IS_PACKAGE_LOADED("noice") and require("noice").api.statusline.mode.has()
+    return IS_PACKAGE_LOADED("noice")
+      and require("noice").api.statusline.mode.has()
   end,
   color = { fg = "#ffffff" },
 }

@@ -3,28 +3,38 @@ local function multi_term(idWithSize, direction)
   if not id and not size and not idWithSize then
     return
   end
-  local params =
-    string.format("%dToggleTerm size=%d direction=%s", not id and idWithSize or id, not size and 80 or size, direction)
+  local params = string.format(
+    "%dToggleTerm size=%d direction=%s",
+    not id and idWithSize or id,
+    not size and 80 or size,
+    direction
+  )
   vim.cmd(params)
 end
 
 local function set_commands()
   SET_USER_COMMANDS({
     ToggleTerminalHorizontal = function()
-      vim.ui.input({ prompt = "please input the id and size for terminal: " }, function(idWithSize)
-        if not idWithSize then
-          return
+      vim.ui.input(
+        { prompt = "please input the id and size for terminal: " },
+        function(idWithSize)
+          if not idWithSize then
+            return
+          end
+          multi_term(idWithSize, "horizontal")
         end
-        multi_term(idWithSize, "horizontal")
-      end)
+      )
     end,
     ToggleTerminalVertical = function()
-      vim.ui.input({ prompt = "Please input the id and size for terminal: " }, function(idWithSize)
-        if not idWithSize then
-          return
+      vim.ui.input(
+        { prompt = "Please input the id and size for terminal: " },
+        function(idWithSize)
+          if not idWithSize then
+            return
+          end
+          multi_term(idWithSize, "vertical")
         end
-        multi_term(idWithSize, "vertical")
-      end)
+      )
     end,
   })
   AUTOCMD("TermOpen", {

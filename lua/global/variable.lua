@@ -8,8 +8,10 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1200
 MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
-IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows")) == "Windows"
-IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux")) == "Linux"
+IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows"))
+  == "Windows"
+IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux"))
+  == "Linux"
 IS_WIN_LINUX = IS_LINUX or IS_WINDOWS
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
@@ -35,7 +37,8 @@ function FORMAT_PATH_BY_OS(path)
   return not IS_WINDOWS and path or string.gsub(path, "/", OS_SEP)
 end
 
-OBSIDIAN_DIR = FORMAT_PATH_BY_OS(HOME_PATH .. "/Documents/Obsidian Vault/personal")
+OBSIDIAN_DIR =
+  FORMAT_PATH_BY_OS(HOME_PATH .. "/Documents/Obsidian Vault/personal")
 LAZY_PATH = DATA_PATH .. FORMAT_PATH_BY_OS("/lazy/lazy.nvim")
 SNIPPET_PATH = CONFIG_PATH .. FORMAT_PATH_BY_OS("/snippets")
 

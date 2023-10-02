@@ -29,6 +29,9 @@ return {
     if not ok then
       return
     end
-    cmp.event:on("confirm_done", for_cmp.on_confirm_done({ map_char = { tex = "" } }))
+    cmp.event:on(
+      "confirm_done",
+      for_cmp.on_confirm_done({ map_char = { tex = "" } })
+    )
   end,
 }

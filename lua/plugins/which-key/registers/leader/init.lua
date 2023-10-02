@@ -28,7 +28,7 @@ local register = {
   },
   n = require(get_path("noice")),
   Q = { "<cmd>ccl<cr>", "Close QuickFix" },
-  u = { "<cmd>DissmissNotification</cr>", "Dismiss Notifications" },
+  u = { "<cmd>DissmissNotification<cr>", "Dismiss Notifications" },
   a = { "<cmd>Alpha<cr>", "Alpha" },
   e = { "<cmd>NvimTreeToggle<cr>", "File tree" },
   E = { "<cmd>NvimTreeFindFile<cr>", "Location file in tree" },

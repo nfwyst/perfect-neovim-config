@@ -26,11 +26,7 @@ local function init(bufferline)
         buffer = event.buf,
         callback = function()
           restore_position(event.buf)
-          local dlok, err = pcall(delete_oldest_buffers, bufferline)
-          if dlok then
-            return
-          end
-          vim.notify(err or "", vim.log.levels.ERROR)
+          PCALL(delete_oldest_buffers, bufferline)
         end,
       })
     end,

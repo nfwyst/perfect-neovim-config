@@ -180,30 +180,28 @@ function GET_CURRENT_FILE_PATH()
   return vim.fn.expand("%")
 end
 
-function SAVE(force, callback)
+function SAVE(force)
+  local bang = force ~= nil and force ~= false
   local filename = GET_CURRENT_FILE_PATH()
-  callback = callback or function() end
   if filename == "" then
     vim.ui.input({ prompt = "Enter a file name: " }, function(fname)
       if not fname then
         vim.notify("No file name, cant save")
       else
-        vim.cmd.write({ fname, bang = force ~= false })
-        callback()
+        vim.cmd.write({ fname, bang = bang })
       end
     end)
   else
-    vim.cmd.write({ bang = force ~= false })
-    callback()
+    vim.cmd.write({ bang = bang })
   end
 end
 
 function QUIT(force)
-  vim.cmd.quit({ bang = force ~= false })
+  vim.cmd.quit({ bang = force ~= nil and force ~= false })
 end
 
 function SAVE_THEN_QUIT(force)
-  vim.cmd.wa({ bang = force ~= false })
+  vim.cmd.wa({ bang = force ~= nil and force ~= false })
   QUIT(force)
 end
 
@@ -243,4 +241,12 @@ function IS_FILE_URI(path)
   else
     return false
   end
+end
+
+function PCALL(f, ...)
+  local ok, err = f(...)
+  if ok or not err then
+    return
+  end
+  vim.notify(err, vim.log.levels.ERROR)
 end

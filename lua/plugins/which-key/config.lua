@@ -24,13 +24,13 @@ local registers = {
 local function init()
   SET_USER_COMMANDS({
     Save = function()
-      pcall(SAVE, true)
+      PCALL(SAVE)
     end,
     SaveThenQuit = function()
-      pcall(SAVE_THEN_QUIT, true)
+      PCALL(SAVE_THEN_QUIT)
     end,
     Quit = function()
-      pcall(QUIT, true)
+      PCALL(QUIT)
     end,
   })
 end

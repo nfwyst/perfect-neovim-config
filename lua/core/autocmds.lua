@@ -4,8 +4,16 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = { "qf", "help", "man", "lspinfo" },
-      command = "nnoremap <silent> <buffer> q :close<cr>",
+      pattern = { "qf", "help", "gitconfig", "man", "lspinfo" },
+      callback = function(event)
+        local match = event.match
+        if match ~= "gitconfig" then
+          vim.cmd.nnoremap("<silent> <buffer> q :close<cr>")
+        end
+        if match == "help" or match == "gitconfig" then
+          vim.opt_local.list = false
+        end
+      end,
       group = _general_settings,
     },
   },

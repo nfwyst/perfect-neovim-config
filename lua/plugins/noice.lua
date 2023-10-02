@@ -47,6 +47,11 @@ local function init(noice, lsp)
     },
   })
   clear_hack()
+  SET_TIMEOUT(function()
+    SET_HIGHLIGHT({
+      "NoiceScrollbar blend=100",
+    })
+  end)
 end
 
 return {

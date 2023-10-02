@@ -90,7 +90,7 @@ local function key_exists(mode, lhs)
   return exists
 end
 
-function BUF_KEY_MAP(mode, lhs, rhs, opts)
+function BUF_KEY_MAP(mode, lhs, rhs, opts, bufnr)
   local has_key = key_exists(mode, lhs)
   if has_key then
     return
@@ -98,7 +98,7 @@ function BUF_KEY_MAP(mode, lhs, rhs, opts)
   opts = opts or {}
   local silent = opts.silent ~= false
   opts = MERGE_TABLE({ noremap = true, silent = silent }, opts)
-  vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+  vim.api.nvim_buf_set_keymap(bufnr or 0, mode, lhs, rhs, opts)
 end
 
 function KEY_MAP(mode, lhs, rhs, opts)

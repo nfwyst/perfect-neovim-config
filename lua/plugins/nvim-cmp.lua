@@ -1,5 +1,5 @@
 SET_OPTS({
-  completeopt = { "menuone", "noselect" },
+  completeopt = { "menu", "menuone", "noselect" },
 })
 
 local common_sources = {

@@ -222,3 +222,25 @@ end
 function SET_TIMEOUT(func, timeout)
   vim.defer_fn(func, timeout or 0)
 end
+
+function IS_FILE_URI(path)
+  if type(path) ~= "string" then
+    return false
+  end
+
+  if not path:match("^[/\\]") then
+    return false
+  end
+
+  if path:match("[*?<>|]") then
+    return false
+  end
+
+  local f = io.open(path, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end

@@ -1,3 +1,9 @@
+local function clear_hack()
+  SET_TIMEOUT(function()
+    require("noice.util.hacks").reset_augroup()
+  end)
+end
+
 local function init(noice, lsp)
   SET_KEY_MAPS({
     c = {
@@ -40,6 +46,7 @@ local function init(noice, lsp)
       },
     },
   })
+  clear_hack()
 end
 
 return {

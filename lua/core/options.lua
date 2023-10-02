@@ -5,8 +5,8 @@ SET_OPTS({
   encoding = "utf-8", -- the encoding written to a file
   ignorecase = true, -- ignore case in search patterns
   mouse = "a", -- allow the mouse to be used in neovim
-  pumheight = 7, -- pop up menu height
-  showmode = false, -- we don't need to see things like -- INSERT -- anymore
+  pumheight = 10, -- maximum number of entries in a popup
+  showmode = false, -- dont show mode since use lualine
   showtabline = 2, -- always show tabs
   smartcase = true, -- smart case
   smartindent = true, -- make indenting smarter again
@@ -43,11 +43,24 @@ SET_OPTS({
   foldlevelstart = 99,
   foldnestmax = 7, -- fold nest dont more than 7, default limit is 20
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
-  shortmess = vim.opt.shortmess + "cIWs", -- don't give ins-completion-menu messages
+  shortmess = vim.opt.shortmess + "cCIWs", --  flags to shorten/silent vim messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allowed move the cursor to previous/next line
   background = SCHEME_BACKGROUND,
   guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
   guifont = "0xProto Nerd Font Mono:h18",
+  autowrite = true, -- enable autowrite
+  conceallevel = 3, -- hide * markup for bold and italic
+  confirm = true, -- confirm to save changes before exiting modified buffer
+  formatoptions = "jcroqlnt", -- tcqj
+  grepformat = "%f:%l:%c:%m", -- grep command output format, %f filename, %l row, %c column, %m content
+  grepprg = "rg --vimgrep", -- external program for grep, default is ripgrep
+  list = true, -- show some invisible characters like tabs etc
+  sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }, -- seesions that will save when exiting
+  shiftround = true, -- round indent to multiple of shiftwidth
+  splitkeep = "screen", -- keep screen layout not changing
+  undolevels = IS_WIN_LINUX and 300 or 10000, -- more big, more undo can do
+  wildmode = "longest:full,full", -- command line completion mode
+  winminwidth = 5, -- minimum width of window
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

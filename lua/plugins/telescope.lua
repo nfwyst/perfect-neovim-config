@@ -141,7 +141,7 @@ return {
       defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
-        path_display = { "absolute" },
+        path_display = { "truncate" },
         wrap_results = true,
         preview = {
           filesize_limit = 3,

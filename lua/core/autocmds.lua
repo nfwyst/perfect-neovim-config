@@ -21,7 +21,18 @@ SET_AUTOCMDS({
     "BufWinEnter",
     {
       pattern = "*",
-      command = "silent!set formatoptions-=cro",
+      callback = function(buf)
+        local bufnr = buf.buf
+        if GET_BUFFER_OPT(bufnr, "buflisted") then
+          return
+        end
+        local filename = GET_BUFFER_NAME(bufnr)
+        local is_file = IS_FILE_URI(filename)
+        if not is_file then
+          return
+        end
+        vim.opt_local.buflisted = true
+      end,
       group = _general_settings,
     },
   },

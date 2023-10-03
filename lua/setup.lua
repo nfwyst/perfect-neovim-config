@@ -16,6 +16,9 @@ require("lazy").setup({
   { import = "plugins.dap" },
   { import = "plugins.which-key" },
   { import = "plugins.colorscheme" },
+  { import = "plugins.ui" },
+  { import = "plugins.ai" },
+  { import = "plugins.note" },
 }, {
   install = {
     colorscheme = { "tokyonight", "NeoSolarized" },

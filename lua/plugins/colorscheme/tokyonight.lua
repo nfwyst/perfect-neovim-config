@@ -1,4 +1,7 @@
 local name = "tokyonight"
+local fg = "#CBE0F0"
+local fg_dark = "#B4D0E9"
+local border = "#547998"
 
 return {
   "folke/tokyonight.nvim",
@@ -16,6 +19,13 @@ return {
         keywords = { italic = false },
       },
       lualine_bold = true,
+      on_colors = function(colors)
+        colors.border = border
+        colors.fg = fg
+        colors.fg_dark = fg_dark
+        colors.fg_float = fg
+        colors.fg_sidebar = fg_dark
+      end,
     })
     SET_COLORSCHEME(name)
   end,

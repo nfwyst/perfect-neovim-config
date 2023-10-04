@@ -19,6 +19,7 @@ require("lazy").setup({
   { import = "plugins.ui" },
   { import = "plugins.ai" },
   { import = "plugins.note" },
+  { import = "plugins.style" },
 }, {
   install = {
     colorscheme = { "tokyonight", "NeoSolarized" },

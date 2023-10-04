@@ -6,4 +6,5 @@ return {
   r = { "<cmd>Telescope registers<cr>", "Registers" },
   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   c = { "<cmd>Telescope commands<cr>", "Commands" },
+  b = { "<cmd>Telescope resume<cr>", "Resume" },
 }

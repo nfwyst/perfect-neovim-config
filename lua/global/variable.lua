@@ -59,7 +59,6 @@ LSP_SERVERS = {
   "yamlls",
   "tailwindcss",
   "marksman",
-  "eslint",
   "svelte",
   "bashls",
 }

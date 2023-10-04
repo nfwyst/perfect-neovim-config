@@ -18,7 +18,7 @@ end
 return {
   "kevinhwang91/nvim-ufo",
   cond = not IS_VSCODE,
-  event = "VeryLazy",
+  keys = "z",
   dependencies = { "kevinhwang91/promise-async" },
   config = function()
     local ufo = require("ufo")

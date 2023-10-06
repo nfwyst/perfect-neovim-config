@@ -14,8 +14,8 @@ return {
     local tabnine = require("tabnine")
     tabnine.setup({
       disable_auto_comment = true,
-      accept_keymap = "<c-n>",
-      dismiss_keymap = "<c-]>",
+      accept_keymap = "<c-i>",
+      dismiss_keymap = "<c-d>",
       debounce_ms = 800,
       suggestion_color = { gui = "#808080", cterm = 244 },
       exclude_filetypes = INVALID_FILETYPE,

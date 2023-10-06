@@ -37,6 +37,10 @@ local mode = {
 local tabnine = {
   "tabnine",
   fmt = function(str)
+    local disabeld = STR_INCLUDES(str, "disabled")
+    if disabeld then
+      return nil
+    end
     local result = string.gsub(str, " pro", "")
     result = string.gsub(result, "⌬ tabnine", "tn ")
     local width = vim.fn.winwidth(0)

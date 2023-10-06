@@ -9,7 +9,7 @@ local function multi_term(idWithSize, direction)
     not size and 80 or size,
     direction
   )
-  vim.cmd(params)
+  RUN_CMD(params)
 end
 
 local function set_commands()

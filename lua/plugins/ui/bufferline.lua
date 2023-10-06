@@ -45,8 +45,8 @@ local function init(bufferline)
       if tree_ok then
         tree_api.tree.close()
       end
-      vim.cmd("Alpha")
-      vim.cmd(event.buf .. "bwipeout")
+      RUN_CMD("Alpha")
+      RUN_CMD(event.buf .. "bwipeout")
     end,
   })
 end

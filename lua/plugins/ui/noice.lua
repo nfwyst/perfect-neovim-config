@@ -77,6 +77,7 @@ return {
               { find = "%d more lines" },
               { find = "E486:" },
               { find = "E490:" },
+              { find = "^/" },
             },
           },
           opts = { skip = true },

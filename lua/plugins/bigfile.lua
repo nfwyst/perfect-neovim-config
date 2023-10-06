@@ -1,12 +1,11 @@
-local colorizer = {
-  name = "colorizer",
+local my_feature = {
+  name = "my_feature",
   opts = {
     defer = true,
   },
   disable = function()
-    if vim.fn.exists(":ColorizerDetachFromBuffer") ~= 0 then
-      vim.cmd("ColorizerDetachFromBuffer")
-    end
+    RUN_CMD("ColorizerDetachFromBuffer")
+    RUN_CMD("TabnineDisable")
   end,
 }
 
@@ -33,7 +32,7 @@ return {
         "syntax",
         "vimopts",
         "filetype",
-        colorizer,
+        my_feature,
       },
     })
   end,

@@ -217,6 +217,13 @@ function STR_INCLUDES(str, pattern, init, plain)
   return string.find(str, pattern, init, plain) ~= nil
 end
 
+function RUN_CMD(command)
+  if vim.fn.exists(":" .. command) == 0 then
+    return
+  end
+  PCALL(vim.cmd, command)
+end
+
 function SET_TIMEOUT(func, timeout)
   vim.defer_fn(func, timeout or 0)
 end

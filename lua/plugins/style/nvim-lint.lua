@@ -11,6 +11,8 @@ local function init(lint)
   end)
 end
 
+local fe = { "eslint_d" }
+
 return {
   "mfussenegger/nvim-lint",
   cond = not IS_VSCODE,
@@ -18,11 +20,11 @@ return {
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
-      javascript = { "eslint_d" },
-      typescript = { "eslint_d" },
-      typescriptreact = { "eslint_d" },
-      javascriptreact = { "eslint_d" },
-      svelte = { "eslint_d" },
+      javascript = fe,
+      typescript = fe,
+      typescriptreact = fe,
+      javascriptreact = fe,
+      svelte = fe,
       sh = { "shellcheck" },
       zsh = { "shellcheck" },
     }

@@ -11,6 +11,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   cond = not IS_VSCODE,
   event = { "BufReadPost", "BufNewFile" },
+  cmd = { "TSUpdate", "TSUpdateSync", "TSInstall" },
   config = function()
     local configs = require("nvim-treesitter.configs")
     local install = require("nvim-treesitter.install")

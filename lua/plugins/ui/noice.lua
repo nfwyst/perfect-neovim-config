@@ -47,11 +47,6 @@ local function init(noice, lsp)
     },
   })
   clear_hack()
-  SET_TIMEOUT(function()
-    SET_HIGHLIGHT({
-      "NoiceScrollbar blend=100",
-    })
-  end)
 end
 
 return {
@@ -102,6 +97,7 @@ return {
       },
       views = {
         hover = {
+          scrollbar = false,
           border = {
             style = "rounded",
             padding = { 0, 1 },

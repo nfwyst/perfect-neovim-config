@@ -13,7 +13,10 @@ local options = {
 }
 
 local registers = {
-  { leader_conf, MERGE_TABLE(options, { prefix = "<leader>" }) },
+  {
+    leader_conf,
+    MERGE_TABLE(options, { prefix = "<leader>", mode = { "n", "v" } }),
+  },
   { g_conf, MERGE_TABLE(options, { prefix = "g" }) },
   { comment_conf.normal, options },
   { comment_conf.visual_block, MERGE_TABLE(options, { mode = "x" }) },

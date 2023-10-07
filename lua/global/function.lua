@@ -49,8 +49,12 @@ function HIDE_CURSOR()
   SET_HIGHLIGHT({ "Cursor blend=100" })
 end
 
-function GET_HIGHLIGHT(name)
-  return vim.api.nvim_get_hl(0, { name = name })
+function GET_HIGHLIGHT(name, opt)
+  local ht = vim.api.nvim_get_hl(0, { name = name })
+  if not opt then
+    return ht
+  end
+  return ht[opt]
 end
 
 function SET_BUF_KEY_MAPS(table)

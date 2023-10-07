@@ -8,10 +8,9 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1200
 MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
-IS_WINDOWS = string.sub(vim.loop.os_uname().sysname, 1, string.len("Windows"))
-  == "Windows"
-IS_LINUX = string.sub(vim.loop.os_uname().sysname, 1, string.len("Linux"))
-  == "Linux"
+local sysname = vim.loop.os_uname().sysname
+IS_WINDOWS = string.sub(sysname, 1, string.len("Windows")) == "Windows"
+IS_LINUX = string.sub(sysname, 1, string.len("Linux")) == "Linux"
 IS_WIN_LINUX = IS_LINUX or IS_WINDOWS
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
@@ -74,6 +73,7 @@ INVALID_FILETYPE = {
   "lspinfo",
   "gitcommit",
   "TelescopePrompt",
+  "DressingInput",
   "spectre_panel",
   "startify",
   "neogitstatus",

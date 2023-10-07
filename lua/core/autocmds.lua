@@ -4,7 +4,7 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = { "qf", "help", "gitconfig", "man", "lspinfo" },
+      pattern = { "qf", "help", "gitconfig", "man", "lspinfo", "DressingInput" },
       callback = function(event)
         local match = event.match
         if match ~= "gitconfig" then
@@ -55,12 +55,15 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = "lazy",
-      callback = function()
-        SET_OPTS({ cursorline = true }, true)
-        if GET_HIGHLIGHT("Cursor").blend == 100 then
+      pattern = { "lazy", "DressingInput" },
+      callback = function(event)
+        if GET_HIGHLIGHT("Cursor", "blend") == 100 then
           SHOW_CURSOR()
         end
+        if event.match == "DressingInput" then
+          return
+        end
+        SET_OPTS({ cursorline = true }, true)
       end,
     },
   },

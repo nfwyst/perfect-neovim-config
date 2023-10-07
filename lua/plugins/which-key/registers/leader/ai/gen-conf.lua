@@ -1,0 +1,16 @@
+return {
+  name = "Gen with llms",
+  p = { "<cmd>Gen<cr>", "Select prompt" },
+  g = { "<cmd>Gen Generate<cr>", "Generate" },
+  u = { "<cmd>Gen Summarize<cr>", "Summarize" },
+  a = { "<cmd>Gen Ask<cr>", "Ask" },
+  c = { "<cmd>Gen Change<cr>", "Change" },
+  s = { "<cmd>Gen Enhance_Grammar_Spelling<cr>", "Enhance grammar spelling" },
+  w = { "<cmd>Gen Enhance_Wording<cr>", "Enhance wording" },
+  m = { "<cmd>Gen Make_Concise<cr>", "Make concise" },
+  l = { "<cmd>Gen Make_List<cr>", "Make list" },
+  t = { "<cmd>Gen Make_Table<cr>", "Make table" },
+  r = { "<cmd>Gen Review_Code<cr>", "Review code" },
+  e = { "<cmd>Gen Enhance_Code<cr>", "Enhance code" },
+  o = { "<cmd>Gen Change_Code<cr>", "Change code" },
+}

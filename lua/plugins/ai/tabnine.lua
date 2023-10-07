@@ -8,13 +8,13 @@ end
 
 return {
   "codota/tabnine-nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE and not IS_LINUX,
   build = tabnine_build_path(),
   config = function()
     local tabnine = require("tabnine")
     tabnine.setup({
       disable_auto_comment = true,
-      accept_keymap = "<c-i>",
+      accept_keymap = "<c-t>",
       dismiss_keymap = "<c-d>",
       debounce_ms = 800,
       suggestion_color = { gui = "#808080", cterm = 244 },

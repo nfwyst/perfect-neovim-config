@@ -55,6 +55,13 @@ SET_OPTS({
   grepformat = "%f:%l:%c:%m", -- grep command output format, %f filename, %l row, %c column, %m content
   grepprg = "rg --vimgrep", -- external program for grep, default is ripgrep
   list = not IS_WIN_LINUX, -- show some invisible characters like tabs etc
+  listchars = {
+    tab = "▓░",
+    trail = "•",
+    extends = "»",
+    precedes = "«",
+    nbsp = "░",
+  },
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }, -- seesions that will save when exiting
   shiftround = true, -- round indent to multiple of shiftwidth
   splitkeep = "screen", -- keep screen layout not changing

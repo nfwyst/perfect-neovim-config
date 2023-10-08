@@ -7,6 +7,7 @@ AUTOCMD("VimLeave", {
 
 return {
   "David-Kunz/gen.nvim",
+  cond = not IS_VSCODE,
   cmd = "Gen",
   config = function()
     require("gen").model = "mistral:instruct"

@@ -16,7 +16,7 @@ local show_on_width = function(width)
   if not width then
     width = 80
   end
-  return vim.fn.winwidth(0) > width
+  return vim.o.columns > width
 end
 
 local diff = {
@@ -43,7 +43,7 @@ local tabnine = {
     end
     local result = string.gsub(str, " pro", "")
     result = string.gsub(result, "⌬ tabnine", "tn ")
-    local width = vim.fn.winwidth(0)
+    local width = vim.o.columns
     if width < 75 then
       return ""
     end
@@ -92,7 +92,7 @@ local progress = {
 }
 
 local spaces = function()
-  local width = vim.fn.winwidth(0)
+  local width = vim.o.columns
   if width < 56 then
     return ""
   end
@@ -112,7 +112,7 @@ local noice_mode = {
 
 local lsps = function()
   local clients = vim.lsp.buf_get_clients(GET_CURRENT_BUFFER())
-  local width = vim.fn.winwidth(0)
+  local width = vim.o.columns
   if next(clients) == nil or width < 66 then
     return ""
   end

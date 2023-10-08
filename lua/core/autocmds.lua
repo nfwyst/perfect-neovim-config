@@ -10,6 +10,9 @@ SET_AUTOCMDS({
         if match ~= "gitconfig" then
           vim.cmd.nnoremap("<silent> <buffer> q :close<cr>")
         end
+        if IS_WIN_LINUX then
+          return
+        end
         if match == "help" or match == "gitconfig" then
           vim.opt_local.list = false
         end

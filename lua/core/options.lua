@@ -24,7 +24,7 @@ SET_OPTS({
   softtabstop = 2, -- insert 2 spaces for a tab
   cursorline = true, -- highlight the current line
   number = true, -- set numbered lines
-  relativenumber = true, -- enable relative number
+  relativenumber = not IS_WIN_LINUX, -- enable relative number
   numberwidth = 2, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = true, -- display lines as one long line
@@ -54,7 +54,7 @@ SET_OPTS({
   formatoptions = "jcroqlnt", -- tcqj
   grepformat = "%f:%l:%c:%m", -- grep command output format, %f filename, %l row, %c column, %m content
   grepprg = "rg --vimgrep", -- external program for grep, default is ripgrep
-  list = true, -- show some invisible characters like tabs etc
+  list = not IS_WIN_LINUX, -- show some invisible characters like tabs etc
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }, -- seesions that will save when exiting
   shiftround = true, -- round indent to multiple of shiftwidth
   splitkeep = "screen", -- keep screen layout not changing

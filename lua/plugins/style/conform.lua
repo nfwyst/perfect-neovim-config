@@ -3,7 +3,7 @@ local c = { "clang_format" }
 local opt = {
   lsp_fallback = true,
   async = false,
-  timeout_ms = 500,
+  timeout_ms = 800,
 }
 
 local function init(conform)

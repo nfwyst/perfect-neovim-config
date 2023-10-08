@@ -7,12 +7,8 @@ local function init()
 end
 
 local black_list = {
-  "File",
   "Namespace",
-  "Package",
   "Enum",
-  "Variable",
-  "Constant",
   "String",
   "Number",
   "Boolean",
@@ -24,7 +20,6 @@ local black_list = {
   "Event",
   "Operator",
   "TypeParameter",
-  "Component",
   "Fragment",
 }
 
@@ -35,8 +30,6 @@ return {
   config = function()
     require("symbols-outline").setup({
       position = "left",
-      width = 20,
-      highlight_hovered_item = false,
       show_guides = false,
       symbol_blacklist = black_list,
     })

@@ -249,8 +249,7 @@ return {
     "NvimTreeRefresh",
   },
   config = function()
-    local nvim_tree = require("nvim-tree")
-    nvim_tree.setup({
+    require("nvim-tree").setup({
       sync_root_with_cwd = true,
       respect_buf_cwd = true,
       update_focused_file = {

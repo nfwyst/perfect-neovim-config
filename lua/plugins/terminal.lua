@@ -51,7 +51,7 @@ local function set_commands()
       })
     end,
     pattern = "term://*",
-    group = AUTOGROUP("TermOpen", { clear = true }),
+    group = AUTOGROUP("_TermOpen_", { clear = true }),
   })
 end
 

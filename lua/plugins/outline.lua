@@ -2,26 +2,9 @@ local function init()
   AUTOCMD("FileType", {
     pattern = "Outline",
     command = "silent!set nospell",
-    group = AUTOGROUP("_outlines", { clear = true }),
+    group = AUTOGROUP("_outlines_", { clear = true }),
   })
 end
-
-local black_list = {
-  "Namespace",
-  "Enum",
-  "String",
-  "Number",
-  "Boolean",
-  "Array",
-  "Object",
-  "Key",
-  "Null",
-  "EnumMember",
-  "Event",
-  "Operator",
-  "TypeParameter",
-  "Fragment",
-}
 
 return {
   "simrat39/symbols-outline.nvim",
@@ -31,7 +14,22 @@ return {
     require("symbols-outline").setup({
       position = "left",
       show_guides = false,
-      symbol_blacklist = black_list,
+      symbol_blacklist = {
+        "Namespace",
+        "Enum",
+        "String",
+        "Number",
+        "Boolean",
+        "Array",
+        "Object",
+        "Key",
+        "Null",
+        "EnumMember",
+        "Event",
+        "Operator",
+        "TypeParameter",
+        "Fragment",
+      },
     })
     init()
   end,

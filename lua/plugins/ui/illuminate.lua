@@ -22,6 +22,7 @@ end
 
 local function init(illuminate)
   AUTOCMD("FileType", {
+    group = AUTOGROUP("_illuminate_key_", { clear = true }),
     callback = function()
       callback(illuminate)
     end,

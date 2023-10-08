@@ -30,6 +30,7 @@ return {
         "stylua",
         "shfmt",
         "beautysh",
+        "js-debug-adapter",
       },
     })
   end,

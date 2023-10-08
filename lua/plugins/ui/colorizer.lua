@@ -9,6 +9,7 @@ local ft = {
   "javascriptreact",
   "typescript",
   "typescriptreact",
+  "svelte",
 }
 
 return {

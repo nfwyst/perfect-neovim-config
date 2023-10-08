@@ -11,7 +11,7 @@ end
 local function init()
   AUTOCMD("User", {
     pattern = "AlphaReady",
-    group = AUTOGROUP("_alpha", { clear = true }),
+    group = AUTOGROUP("_alpha_", { clear = true }),
     callback = function()
       SET_OPTS({ showtabline = 0, cursorline = true }, true)
     end,

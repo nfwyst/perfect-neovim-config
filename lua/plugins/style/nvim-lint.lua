@@ -1,6 +1,6 @@
 AUTOCMD("BufWritePost", {
   command = "Lint",
-  group = AUTOGROUP("lint", { clear = true }),
+  group = AUTOGROUP("_lint_", { clear = true }),
 })
 
 local function init(lint)
@@ -11,13 +11,12 @@ local function init(lint)
   end)
 end
 
-local fe = { "eslint_d" }
-
 return {
   "mfussenegger/nvim-lint",
   cond = not IS_VSCODE,
   cmd = "Lint",
   config = function()
+    local fe = { "eslint_d" }
     local lint = require("lint")
     lint.linters_by_ft = {
       javascript = fe,

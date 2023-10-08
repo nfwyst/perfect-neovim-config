@@ -19,35 +19,46 @@ local function delete_oldest_buffers(bufferline)
 end
 
 local function init(bufferline)
-  AUTOCMD("BufRead", {
-    callback = function(event)
-      AUTOCMD("BufWinEnter", {
-        once = true,
-        buffer = event.buf,
-        callback = function()
-          restore_position(event.buf)
-          PCALL(delete_oldest_buffers, bufferline)
+  local group = AUTOGROUP("_alpha_and_bufferline_", { clear = true })
+  SET_AUTOCMDS({
+    {
+      "BufRead",
+      {
+        group = group,
+        callback = function(event)
+          AUTOCMD("BufWinEnter", {
+            group = AUTOGROUP("_restore_pos_", { clear = true }),
+            once = true,
+            buffer = event.buf,
+            callback = function()
+              restore_position(event.buf)
+              PCALL(delete_oldest_buffers, bufferline)
+            end,
+          })
         end,
-      })
-    end,
-  })
-  AUTOCMD("User", {
-    pattern = "BDeletePost*",
-    group = AUTOGROUP("alpha_on_empty", { clear = true }),
-    callback = function(event)
-      local bufname = GET_BUFFER_NAME(event.buf)
-      local bufft = GET_BUFFER_OPT(event.buf, "filetype")
-      local is_empty = bufname == "" and bufft == ""
-      if not is_empty then
-        return
-      end
-      local tree_ok, tree_api = pcall(require, "nvim-tree.api")
-      if tree_ok then
-        tree_api.tree.close()
-      end
-      RUN_CMD("Alpha")
-      RUN_CMD(event.buf .. "bwipeout")
-    end,
+      },
+    },
+    {
+      "User",
+      {
+        pattern = "BDeletePost*",
+        group = group,
+        callback = function(event)
+          local bufname = GET_BUFFER_NAME(event.buf)
+          local bufft = GET_BUFFER_OPT(event.buf, "filetype")
+          local is_empty = bufname == "" and bufft == ""
+          if not is_empty then
+            return
+          end
+          local tree_ok, tree_api = pcall(require, "nvim-tree.api")
+          if tree_ok then
+            tree_api.tree.close()
+          end
+          RUN_CMD("Alpha")
+          RUN_CMD(event.buf .. "bwipeout")
+        end,
+      },
+    },
   })
 end
 

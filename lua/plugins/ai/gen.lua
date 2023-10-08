@@ -1,9 +1,11 @@
-AUTOCMD("VimLeave", {
-  group = vim.api.nvim_create_augroup("gen_leave", { clear = true }),
-  callback = function()
-    os.execute('pkill -f "ollama serve"')
-  end,
-})
+local function init()
+  AUTOCMD("VimLeave", {
+    group = AUTOGROUP("_gen_leave_", { clear = true }),
+    callback = function()
+      pcall(os.execute, 'pkill -f "ollama serve"')
+    end,
+  })
+end
 
 return {
   "David-Kunz/gen.nvim",
@@ -11,5 +13,6 @@ return {
   cmd = "Gen",
   config = function()
     require("gen").model = "mistral:instruct"
+    init()
   end,
 }

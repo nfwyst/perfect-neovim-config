@@ -51,7 +51,12 @@ SET_AUTOCMDS({
     "FileType",
     {
       pattern = "qf",
-      command = "silent!set nobuflisted",
+      callback = function()
+        SET_OPTS({
+          buflisted = false,
+          relativenumber = false,
+        }, true)
+      end,
       group = _general_settings,
     },
   },

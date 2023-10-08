@@ -1,11 +1,3 @@
-local function init()
-  AUTOCMD("FileType", {
-    pattern = "Outline",
-    command = "silent!set nospell",
-    group = AUTOGROUP("_outlines_", { clear = true }),
-  })
-end
-
 return {
   "simrat39/symbols-outline.nvim",
   cond = not IS_VSCODE,
@@ -31,6 +23,5 @@ return {
         "Fragment",
       },
     })
-    init()
   end,
 }

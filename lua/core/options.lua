@@ -71,7 +71,7 @@ SET_OPTS({
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 
-SET_GLOBAL_OPTIONS({
+SET_GLOBAL_OPTS({
   mapleader = " ",
   maplocalleader = " ",
   loaded_perl_provider = 0,

@@ -1,4 +1,4 @@
-local _general_settings = AUTOGROUP("_general_settings", { clear = true })
+local group = AUTOGROUP("_general_settings_", { clear = true })
 
 SET_AUTOCMDS({
   {
@@ -17,7 +17,7 @@ SET_AUTOCMDS({
           vim.opt_local.list = false
         end
       end,
-      group = _general_settings,
+      group = group,
     },
   },
   {
@@ -25,7 +25,7 @@ SET_AUTOCMDS({
     {
       pattern = "*",
       command = "silent!lua vim.highlight.on_yank({higroup = 'Visual', timeout = 200})",
-      group = _general_settings,
+      group = group,
     },
   },
   {
@@ -44,7 +44,7 @@ SET_AUTOCMDS({
         end
         vim.opt_local.buflisted = true
       end,
-      group = _general_settings,
+      group = group,
     },
   },
   {
@@ -57,7 +57,7 @@ SET_AUTOCMDS({
           relativenumber = false,
         }, true)
       end,
-      group = _general_settings,
+      group = group,
     },
   },
   {
@@ -73,6 +73,7 @@ SET_AUTOCMDS({
         end
         SET_OPTS({ cursorline = true }, true)
       end,
+      group = group,
     },
   },
   {
@@ -80,12 +81,12 @@ SET_AUTOCMDS({
     {
       pattern = { "markdown", "gitcommit" },
       callback = function()
-        if IS_WINDOWS then
+        if IS_WIN_LINUX then
           return
         end
         SET_OPTS({ wrap = true, spell = true }, true)
       end,
-      group = AUTOGROUP("_markdown_git", { clear = true }),
+      group = AUTOGROUP("_markdown_git_", { clear = true }),
     },
   },
   {
@@ -93,7 +94,7 @@ SET_AUTOCMDS({
     {
       pattern = "*",
       command = "silent!tabdo wincmd =",
-      group = AUTOGROUP("_auto_resize", { clear = true }),
+      group = AUTOGROUP("_auto_resize_", { clear = true }),
     },
   },
 })

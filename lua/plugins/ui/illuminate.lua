@@ -1,5 +1,4 @@
-local function callback(illuminate)
-  local buffer = GET_CURRENT_BUFFER()
+local function bind_keymap(illuminate, buffer)
   SET_KEY_MAPS({
     n = {
       {
@@ -23,8 +22,8 @@ end
 local function init(illuminate)
   AUTOCMD("FileType", {
     group = AUTOGROUP("_illuminate_key_", { clear = true }),
-    callback = function()
-      callback(illuminate)
+    callback = function(event)
+      bind_keymap(illuminate, event.buf)
     end,
   })
 end

@@ -209,7 +209,7 @@ local function on_attach(bufnr)
   })
 end
 
-SET_GLOBAL_OPTIONS({
+SET_GLOBAL_OPTS({
   loaded = true,
   loaded_netrw = true,
   loaded_netrwPlugin = true,

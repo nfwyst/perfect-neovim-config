@@ -116,7 +116,7 @@ function KEY_MAP(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-function SET_GLOBAL_OPTIONS(opts)
+function SET_GLOBAL_OPTS(opts)
   for k, v in pairs(opts) do
     vim.g[k] = v
   end

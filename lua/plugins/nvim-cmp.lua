@@ -25,6 +25,7 @@ return {
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+    luasnip.log.set_loglevel("error")
     local lspkind = require("lspkind")
     local snip_loader = require("luasnip.loaders.from_vscode")
     snip_loader.lazy_load()

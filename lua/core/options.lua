@@ -80,3 +80,4 @@ SET_GLOBAL_OPTS({
 })
 
 vim.cmd.language("en_US")
+vim.lsp.set_log_level(vim.log.levels.OFF)

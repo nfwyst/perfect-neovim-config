@@ -52,7 +52,6 @@ end
 return {
   "folke/noice.nvim",
   cond = not IS_VSCODE,
-  event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
@@ -61,6 +60,8 @@ return {
     local noice = require("noice")
     init(noice, require("noice.lsp"))
     noice.setup({
+      log = nil,
+      log_max_size = 0,
       health = {
         checker = false,
       },

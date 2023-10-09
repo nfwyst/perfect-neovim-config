@@ -18,7 +18,6 @@ end
 return {
   "rcarriga/nvim-notify",
   cond = not IS_VSCODE,
-  event = "VeryLazy",
   config = function()
     local notify = require("notify")
     vim.notify = notify

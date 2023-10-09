@@ -221,7 +221,10 @@ function STR_INCLUDES(str, pattern, init, plain)
   return string.find(str, pattern, init, plain) ~= nil
 end
 
-function RUN_CMD(command)
+function RUN_CMD(command, check)
+  if check and vim.fn.exists(":" .. command) == 0 then
+    return
+  end
   PCALL(vim.cmd, command)
 end
 
@@ -252,7 +255,7 @@ function IS_FILE_URI(path)
 end
 
 function PCALL(f, ...)
-  local ok, err = f(...)
+  local ok, err = pcall(f, ...)
   if ok or not err then
     return
   end

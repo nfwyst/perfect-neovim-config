@@ -20,6 +20,7 @@ return {
     local conform = require("conform")
     init(conform)
     conform.setup({
+      log_level = vim.log.levels.OFF,
       formatters_by_ft = {
         javascript = fe,
         typescript = fe,

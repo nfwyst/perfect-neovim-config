@@ -222,9 +222,6 @@ function STR_INCLUDES(str, pattern, init, plain)
 end
 
 function RUN_CMD(command)
-  if vim.fn.exists(":" .. command) == 0 then
-    return
-  end
   PCALL(vim.cmd, command)
 end
 

@@ -292,7 +292,7 @@ return {
         },
       },
       diagnostics = {
-        enable = not IS_WINDOWS,
+        enable = not IS_WIN_LINUX,
         show_on_open_dirs = true,
         severity = {
           min = vim.diagnostic.severity.ERROR,
@@ -316,7 +316,7 @@ return {
           ".DS_Store",
         },
       },
-      git = { ignore = false, enable = not IS_WINDOWS },
+      git = { ignore = false, enable = not IS_WIN_LINUX },
       view = {
         width = {
           max = "35%",

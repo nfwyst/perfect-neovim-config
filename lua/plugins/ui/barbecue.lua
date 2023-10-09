@@ -29,8 +29,8 @@ return {
       create_autocmd = false,
       show_basename = false,
       exclude_filetypes = INVALID_FILETYPE,
-      show_navic = not IS_WINDOWS,
-      attach_navic = not IS_WINDOWS,
+      show_navic = not IS_WIN_LINUX,
+      attach_navic = not IS_WIN_LINUX,
     })
     init()
   end,

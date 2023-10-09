@@ -4,6 +4,6 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
-    signs = not IS_WINDOWS,
+    signs = not IS_WIN_LINUX,
   },
 }

@@ -1,16 +1,3 @@
-AUTOCMD("FileType", {
-  pattern = {
-    "html",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript",
-    "javascript",
-    "svelte",
-  },
-  command = "silent!EmmetInstall",
-  group = AUTOGROUP("_emmet_", { clear = true }),
-})
-
 return {
   "mattn/emmet-vim",
   cmd = "EmmetInstall",

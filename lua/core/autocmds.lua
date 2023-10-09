@@ -4,7 +4,15 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = { "qf", "help", "gitconfig", "man", "lspinfo", "DressingInput" },
+      pattern = {
+        "qf",
+        "help",
+        "gitconfig",
+        "man",
+        "notify",
+        "lspinfo",
+        "DressingInput",
+      },
       callback = function(event)
         local match = event.match
         if match ~= "gitconfig" then
@@ -24,7 +32,9 @@ SET_AUTOCMDS({
     "TextYankPost",
     {
       pattern = "*",
-      command = "silent!lua vim.highlight.on_yank({higroup = 'Visual', timeout = 200})",
+      callback = function()
+        pcall(vim.highlight.on_yank, { higroup = "Visual", timeout = 200 })
+      end,
       group = group,
     },
   },

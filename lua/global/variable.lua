@@ -81,6 +81,7 @@ INVALID_FILETYPE = {
   "toggleterm",
   "lazy",
   "noice",
+  "notify",
   "",
   nil,
 }

@@ -4,8 +4,10 @@ return {
   h = { "<cmd>Noice history<cr>", "Noice history" },
   a = { "<cmd>Noice dismiss<cr>", "Noice Dismiss all" },
   e = { "<cmd>Noice errors<cr>", "Noice errors" },
-  d = { "<cmd>Noice disable<cr>", "Noice Disable" },
+  D = { "<cmd>Noice disable<cr>", "Noice Disable" },
   E = { "<cmd>Noice enable<cr>", "Noice Enable" },
   s = { "<cmd>Noice stats<cr>", "Noice stats" },
   t = { "<cmd>Noice telescope<cr>", "Noice telescope history" },
+  n = { "<cmd>Notifications<cr>", "Show notifications" },
+  d = { "<cmd>DissmissNotification<cr>", "Dismiss notifications" },
 }

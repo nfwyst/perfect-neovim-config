@@ -1,6 +1,9 @@
 SET_USER_COMMANDS({
   OpenCurFile = function()
-    vim.fn.system({ "open", vim.fn.expand("%") })
+    vim.fn.system({ "open", GET_CURRENT_FILE_PATH(true) })
+  end,
+  ShowFilePath = function()
+    LOG_INFO("current file path is", GET_CURRENT_FILE_PATH(true))
   end,
   ExitInsertMode = function()
     vim.cmd.stopinsert()

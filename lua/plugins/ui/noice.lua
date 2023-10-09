@@ -80,7 +80,7 @@ return {
               { find = "E490:" },
               { find = "E384:" },
               { find = "^/" },
-              { find = "method textDocument" },
+              { find = "textDocument" },
             },
           },
           opts = { skip = true },

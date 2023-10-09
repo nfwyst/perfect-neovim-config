@@ -144,7 +144,7 @@ end
 function SET_WORKSPACE_PATH_GLOBAL()
   local _, util = pcall(require, "lspconfig/util")
   local get_root = util.root_pattern(UNPACK(PROJECT_PATTERNS))
-  WORKSPACE_PATH = get_root(vim.fn.expand("%:p")) or vim.loop.cwd()
+  WORKSPACE_PATH = get_root(GET_CURRENT_FILE_PATH(true)) or vim.loop.cwd()
   LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)
 end
 
@@ -180,13 +180,13 @@ function IS_PACKAGE_LOADED(pkg)
   return package.loaded[pkg]
 end
 
-function GET_CURRENT_FILE_PATH()
-  return vim.fn.expand("%")
+function GET_CURRENT_FILE_PATH(absolute)
+  return vim.fn.expand(absolute and "%:p" or "%")
 end
 
 function SAVE(force)
   local bang = force ~= nil and force ~= false
-  local filename = GET_CURRENT_FILE_PATH()
+  local filename = GET_CURRENT_FILE_PATH(true)
   if filename == "" then
     vim.ui.input({ prompt = "Enter a file name: " }, function(fname)
       if not fname then

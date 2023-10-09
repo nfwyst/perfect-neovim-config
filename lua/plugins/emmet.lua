@@ -1,5 +1,6 @@
 return {
   "mattn/emmet-vim",
+  cond = not IS_VSCODE,
   cmd = "EmmetInstall",
   config = function()
     SET_GLOBAL_OPTS({

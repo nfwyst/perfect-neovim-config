@@ -10,6 +10,7 @@ local ft = {
   "typescript",
   "typescriptreact",
   "svelte",
+  "yaml",
 }
 
 return {

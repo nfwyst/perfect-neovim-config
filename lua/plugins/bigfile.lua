@@ -19,7 +19,7 @@ return {
         local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))
         local file_length = #file_contents
         local filetype = vim.filetype.match({ buf = bufnr })
-        if TABLE_CONTAINS({ "help", "text" }, filetype) then
+        if TABLE_CONTAINS({ "help", "text", "markdown" }, filetype) then
           return false
         end
         return file_length > MAX_FILE_LENGTH or filesize_mib > MAX_FILE_SIZE

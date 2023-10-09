@@ -52,12 +52,11 @@ end
 return {
   "folke/noice.nvim",
   cond = not IS_VSCODE,
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
   },
-  cmd = "Noice",
   config = function()
     local noice = require("noice")
     init(noice, require("noice.lsp"))

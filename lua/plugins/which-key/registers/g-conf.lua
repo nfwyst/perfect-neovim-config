@@ -1,5 +1,5 @@
 local register = {
-  c = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+  i = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
   d = {
     "<cmd>Telescope lsp_definitions<cr>",
     "Go to definition with telescope",

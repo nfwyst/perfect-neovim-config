@@ -31,6 +31,7 @@ make neovim as a perfect ide for development
 9. beautysh -- zshell formater
 10. zsh -- a shell with some useful plugins
 11. xclip -- clipboard tool for linux
+12. luarocks -- the package manager for Lua modules
 
 # Install
 

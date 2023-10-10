@@ -23,11 +23,13 @@ return {
     vim.notify = notify
     notify.setup({
       timeout = 3000,
+      animate = not IS_WIN_LINUX,
+      stages = IS_WIN_LINUX and "static" or "fade_in_slide_out",
       max_height = function()
-        return math.floor(vim.o.lines * 0.8)
+        return math.floor(vim.o.lines * 0.9)
       end,
       max_width = function()
-        return math.floor(vim.o.columns * 0.25)
+        return math.floor(vim.o.columns * 0.5)
       end,
       render = "wrapped-compact",
     })

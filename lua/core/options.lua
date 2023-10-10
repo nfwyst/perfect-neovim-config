@@ -27,7 +27,7 @@ SET_OPTS({
   relativenumber = not IS_WIN_LINUX, -- enable relative number
   numberwidth = 2, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = true, -- display lines as one long line
+  wrap = false, -- display lines as one long line, for performance
   linebreak = true, -- wrap by word
   scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- scroll left to right
@@ -76,6 +76,8 @@ SET_GLOBAL_OPTS({
   maplocalleader = " ",
   loaded_perl_provider = 0,
   loaded_ruby_provider = 0,
+  loaded_node_provider = 0,
+  loaded_python3_provider = 0,
   editorconfig = true,
 })
 

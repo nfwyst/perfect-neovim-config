@@ -75,7 +75,7 @@ return {
               { find = "%d fewer lines" },
               { find = "%d more lines" },
               { find = "%d+L, %d+B" },
-              { find = "%d+ lines yanked" },
+              { find = "%d+ lines " },
               { find = "No lines in buffer" },
               { find = "No information available" },
               { find = "not found:" },

@@ -142,7 +142,11 @@ function TABLE_CONTAINS(table, value)
 end
 
 function SET_WORKSPACE_PATH_GLOBAL()
-  local _, util = pcall(require, "lspconfig/util")
+  local ok, util = pcall(require, "lspconfig/util")
+  if not ok then
+    LOG_ERROR("pcall error", util)
+    return
+  end
   local get_root = util.root_pattern(UNPACK(PROJECT_PATTERNS))
   WORKSPACE_PATH = get_root(GET_CURRENT_FILE_PATH(true)) or vim.loop.cwd()
   LOG_INFO("changing workspace path", "new path: " .. WORKSPACE_PATH)

@@ -29,7 +29,7 @@ return {
         return math.floor(vim.o.lines * 0.9)
       end,
       max_width = function()
-        return math.floor(vim.o.columns * 0.5)
+        return math.floor(vim.o.columns * 0.3)
       end,
       render = "wrapped-compact",
     })

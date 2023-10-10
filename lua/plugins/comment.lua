@@ -19,14 +19,13 @@ return {
     "[t",
   },
   opts = {
-    pre_hook = function(ctx)
+    pre_hook = function(...)
       if not TABLE_CONTAINS(TSX_COMMENT_INCLUDED_FILES, vim.bo.filetype) then
         return
       end
-      local prehook = require(
-        "ts_context_commentstring.integrations.comment_nvim"
-      ).create_pre_hook()
-      prehook(ctx)
+      local mod = "ts_context_commentstring.integrations.comment_nvim"
+      local prehook = require(mod).create_pre_hook()
+      return prehook(...)
     end,
   },
 }

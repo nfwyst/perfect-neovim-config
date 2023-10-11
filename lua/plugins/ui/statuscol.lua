@@ -9,7 +9,7 @@ return {
       relculright = true,
       foldfunc = "builtin",
       setopt = true,
-      ft_ignore = INVALID_FILETYPE,
+      ft_ignore = MERGE_ARRAYS(INVALID_FILETYPE, { "git" }),
       segments = {
         {
           text = { builtin.foldfunc, " " },

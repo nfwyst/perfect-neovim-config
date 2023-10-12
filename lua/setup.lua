@@ -10,7 +10,14 @@ if not vim.loop.fs_stat(LAZY_PATH) then
 end
 vim.opt.rtp:prepend(LAZY_PATH)
 
-require("lazy").setup({
+local status_ok, lazy = pcall(require, "lazy")
+
+if not status_ok then
+  LOG_INFO("package manager installing...")
+  return
+end
+
+lazy.setup({
   { import = "plugins" },
   { import = "plugins.lsp" },
   { import = "plugins.dap" },

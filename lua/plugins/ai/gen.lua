@@ -12,7 +12,7 @@ return {
   cond = not IS_VSCODE,
   cmd = "Gen",
   config = function()
-    require("gen").model = "zephyr"
+    require("gen").model = "codellama"
     init()
   end,
 }

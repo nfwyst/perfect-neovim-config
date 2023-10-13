@@ -28,6 +28,7 @@ return {
         typescriptreact = fe,
         svelte = fe,
         css = fe,
+        scss = fe,
         html = fe,
         json = fe,
         jsonc = fe,

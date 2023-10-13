@@ -32,6 +32,7 @@ make neovim as a perfect ide for development
 10. zsh -- a shell with some useful plugins
 11. xclip -- clipboard tool for linux
 12. luarocks -- the package manager for Lua modules
+13. fd -- for telescope compatibility
 
 # Install
 

@@ -17,12 +17,6 @@ return {
       },
       disable_filetype = INVALID_FILETYPE,
       ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
-      enable_moveright = true,
-      disable_in_macro = false,
-      enable_afterquote = true,
-      map_bs = true,
-      map_c_w = false,
-      disable_in_visualblock = false,
       fast_wrap = {
         map = "<C-]>",
         chars = { "{", "[", "(", '"', "'" },

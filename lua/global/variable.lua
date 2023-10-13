@@ -74,6 +74,7 @@ INVALID_FILETYPE = {
   "gitcommit",
   "TelescopePrompt",
   "DressingInput",
+  "DressingSelect",
   "spectre_panel",
   "startify",
   "neogitstatus",
@@ -82,6 +83,9 @@ INVALID_FILETYPE = {
   "lazy",
   "noice",
   "notify",
+  "NeogitStatus",
+  "NeogitCommitMessage",
+  "mason",
   "",
   nil,
 }

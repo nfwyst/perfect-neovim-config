@@ -11,7 +11,6 @@ return {
       changedelete = { text = "~" },
       untracked = { text = "┆" },
     },
-    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
     watch_gitdir = {
       interval = 1000,
     },
@@ -19,5 +18,9 @@ return {
       relative_time = false,
     },
     max_file_length = MAX_FILE_LENGTH,
+    update_debounce = 200,
+    preview_config = {
+      border = "rounded",
+    },
   },
 }

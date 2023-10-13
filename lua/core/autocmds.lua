@@ -12,6 +12,7 @@ SET_AUTOCMDS({
         "notify",
         "lspinfo",
         "DressingInput",
+        "DressingSelect",
       },
       callback = function(event)
         local match = event.match
@@ -73,12 +74,14 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = { "lazy", "DressingInput" },
+      pattern = { "lazy", "DressingInput", "DressingSelect" },
       callback = function(event)
         if GET_HIGHLIGHT("Cursor", "blend") == 100 then
           SHOW_CURSOR()
         end
-        if event.match == "DressingInput" then
+        if
+          TABLE_CONTAINS({ "DressingSelect", "DressingInput" }, event.match)
+        then
           return
         end
         SET_OPTS({ cursorline = true }, true)
@@ -89,7 +92,7 @@ SET_AUTOCMDS({
   {
     "FileType",
     {
-      pattern = { "markdown", "gitcommit" },
+      pattern = { "markdown", "gitcommit", "NeogitCommitMessage" },
       callback = function()
         if IS_WIN_LINUX then
           return

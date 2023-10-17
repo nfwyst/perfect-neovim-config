@@ -13,6 +13,7 @@ SET_AUTOCMDS({
         "lspinfo",
         "DressingInput",
         "DressingSelect",
+        "DiffviewFileHistory",
       },
       callback = function(event)
         local match = event.match

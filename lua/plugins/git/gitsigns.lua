@@ -4,7 +4,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     signs = {
-      add = { text = "│" },
+      add = { text = "▎" },
       change = { text = "│" },
       delete = { text = "_" },
       topdelete = { text = "‾" },
@@ -13,9 +13,6 @@ return {
     },
     watch_gitdir = {
       interval = 1000,
-    },
-    current_line_blame_formatter_opts = {
-      relative_time = false,
     },
     max_file_length = MAX_FILE_LENGTH,
     update_debounce = 200,

@@ -10,7 +10,7 @@ end
 return {
   "nvim-treesitter/nvim-treesitter",
   cond = not IS_VSCODE,
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile", "CmdlineEnter" },
   cmd = {
     "TSUpdate",
     "TSUpdateSync",

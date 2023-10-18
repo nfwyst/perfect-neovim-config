@@ -101,6 +101,9 @@ return {
         view_search = false,
       },
       lsp = {
+        hover = {
+          silent = true,
+        },
         progress = {
           enabled = false,
         },

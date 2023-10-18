@@ -27,17 +27,17 @@ local function init()
     },
   }
 
-  local with_opt = {
+  local opt = {
     border = "rounded",
     width = LSP_DOC_WIDTH,
     max_width = GET_MAX_WIDTH(),
+    silent = true,
   }
   vim.diagnostic.config(config)
-  local handlers = vim.lsp.handlers
-  handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, with_opt)
-  handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, with_opt)
+
+  local hd = vim.lsp.handlers
+  hd["textDocument/hover"] = vim.lsp.with(hd.hover, opt)
+  hd["textDocument/signatureHelp"] = vim.lsp.with(hd.signature_help, opt)
 end
 
 local function on_attach(client)

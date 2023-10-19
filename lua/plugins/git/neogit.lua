@@ -2,6 +2,7 @@ local kd = { kind = "auto" }
 
 return {
   "neogitorg/neogit",
+  cond = not IS_VSCODE,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",

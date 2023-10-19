@@ -22,5 +22,6 @@ return {
   t = { "<cmd>DiffviewToggleFiles<cr>", "Diffview toggle files" },
   f = { "<cmd>DiffviewFocusFiles<cr>", "Diffview focus files" },
   e = { "<cmd>DiffviewRefresh<cr>", "Diffview refresh" },
-  y = { "<cmd>DiffviewFileHistory<cr>", "Diffview file history" },
+  y = { "<cmd>DiffviewFileHistory %<cr>", "Diffview current file history" },
+  a = { "<cmd>DiffviewFileHistory<cr>", "Diffview all file history" },
 }

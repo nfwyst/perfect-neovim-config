@@ -8,8 +8,6 @@ return {
     require("neorg").setup({
       load = {
         ["core.defaults"] = {},
-        ["core.concealer"] = {},
-        ["core.summary"] = {},
         ["core.completion"] = {
           config = { engine = "nvim-cmp" },
         },
@@ -21,10 +19,14 @@ return {
             },
           },
         },
-        ["core.export"] = {},
         ["core.export.markdown"] = {
           config = {
             extensions = "all",
+          },
+        },
+        ["core.presenter"] = {
+          config = {
+            zen_mode = "zen-mode",
           },
         },
         ["core.keybinds"] = {

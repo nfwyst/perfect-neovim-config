@@ -5,7 +5,7 @@ return {
     "List Buffer",
   },
   c = {
-    "<cmd>Bdelete!<cr>",
+    "<cmd>Bdelete<cr>",
     "Close Buffer",
   },
 }

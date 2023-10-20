@@ -49,7 +49,8 @@ SET_OPTS({
   guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
   guifont = "0xProto Nerd Font Mono:h18",
   autowrite = true, -- enable autowrite
-  conceallevel = 3, -- hide * markup for bold and italic
+  conceallevel = 2, -- hide * markup
+  concealcursor = "n", -- hide markup on cursor line when normal mode
   confirm = true, -- confirm to save changes before exiting modified buffer
   formatoptions = "jcroqlnt", -- tcqj
   grepformat = "%f:%l:%c:%m", -- grep command output format, %f filename, %l row, %c column, %m content

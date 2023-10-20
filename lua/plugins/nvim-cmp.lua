@@ -2,13 +2,6 @@ SET_OPTS({
   completeopt = { "menu", "menuone", "noselect" },
 })
 
-local common_sources = {
-  { name = "nvim_lsp", max_item_count = 10 },
-  { name = "nvim_lua", max_item_count = 10 },
-  { name = "buffer", max_item_count = 10 },
-  { name = "path", max_item_count = 10 },
-}
-
 return {
   "hrsh7th/nvim-cmp",
   cond = not IS_VSCODE,
@@ -85,9 +78,14 @@ return {
           ellipsis_char = "...",
         }),
       },
-      sources = cmp.config.sources(MERGE_ARRAYS({
+      sources = cmp.config.sources({
+        { name = "neorg", max_item_count = 10 },
         { name = "luasnip", max_item_count = 10 },
-      }, common_sources)),
+        { name = "nvim_lsp", max_item_count = 10 },
+        { name = "nvim_lua", max_item_count = 10 },
+        { name = "buffer", max_item_count = 10 },
+        { name = "path", max_item_count = 10 },
+      }),
       confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,

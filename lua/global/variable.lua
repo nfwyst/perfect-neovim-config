@@ -36,6 +36,7 @@ function FORMAT_PATH_BY_OS(path)
   return not IS_WINDOWS and path or string.gsub(path, "/", OS_SEP)
 end
 
+NOTE_DIR = FORMAT_PATH_BY_OS(HOME_PATH .. "/Documents/notes")
 OBSIDIAN_DIR =
   FORMAT_PATH_BY_OS(HOME_PATH .. "/Documents/Obsidian Vault/personal")
 LAZY_PATH = DATA_PATH .. FORMAT_PATH_BY_OS("/lazy/lazy.nvim")
@@ -109,6 +110,7 @@ TREESITTER_ENSURE_INSTALL = {
   "go",
   "lua",
   "svelte",
+  "norg",
 }
 
 TELESCOPE_IGNORE_PATTERNS = {

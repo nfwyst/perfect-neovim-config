@@ -1,11 +1,13 @@
+local mode = { "x", "n", "o" }
+
 return {
   "numToStr/Comment.nvim",
   cond = not IS_VSCODE,
   keys = {
-    "gb",
-    "gc",
-    "g>",
-    "g<lt>",
+    { "gb", mode = mode },
+    { "gc", mode = mode },
+    { "g>", mode = mode },
+    { "g<lt>", mode = mode },
     "gbc",
     "gcc",
     "gco",
@@ -15,8 +17,6 @@ return {
     "g>b",
     "g<lt>c",
     "g<lt>b",
-    "]t",
-    "[t",
   },
   opts = {
     pre_hook = function(...)

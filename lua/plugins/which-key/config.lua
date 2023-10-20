@@ -12,6 +12,11 @@ local options = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local other = {
+  [">."] = "Neorg promote no recursively",
+  ["<,"] = "Neorg demote no recursively",
+}
+
 local registers = {
   {
     leader_conf,
@@ -22,6 +27,7 @@ local registers = {
   { comment_conf.visual_block, MERGE_TABLE(options, { mode = "x" }) },
   { fold_conf, options },
   { ilconf, options },
+  { other, options },
 }
 
 local function init()

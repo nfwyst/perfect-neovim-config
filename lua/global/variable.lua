@@ -186,3 +186,5 @@ LSP_SYMBOLS = {
   "Field",
   "Property",
 }
+
+WHICHKEY_MODE = { "x", "n", "o", "v" }

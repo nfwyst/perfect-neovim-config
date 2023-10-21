@@ -1,13 +1,11 @@
-local mode = { "x", "n", "o" }
-
 return {
   "numToStr/Comment.nvim",
   cond = not IS_VSCODE,
   keys = {
-    { "gb", mode = mode },
-    { "gc", mode = mode },
-    { "g>", mode = mode },
-    { "g<lt>", mode = mode },
+    { "gb", mode = WHICHKEY_MODE },
+    { "gc", mode = WHICHKEY_MODE },
+    { "g>", mode = WHICHKEY_MODE },
+    { "g<lt>", mode = WHICHKEY_MODE },
     "gbc",
     "gcc",
     "gco",

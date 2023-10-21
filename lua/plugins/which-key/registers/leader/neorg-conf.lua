@@ -5,8 +5,8 @@ end
 
 local function journal(name)
   return function()
-    vim.cmd("Neorg workspace notes")
-    vim.cmd("Neorg journal " .. name)
+    RUN_CMD("Neorg workspace notes")
+    RUN_CMD("Neorg journal " .. name)
   end
 end
 

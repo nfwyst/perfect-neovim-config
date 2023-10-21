@@ -8,6 +8,10 @@ return {
     require("neorg").setup({
       load = {
         ["core.defaults"] = {},
+        ["core.concealer"] = {},
+        ["core.summary"] = {},
+        ["core.export"] = {},
+        ["core.export.markdown"] = {},
         ["core.completion"] = {
           config = { engine = "nvim-cmp" },
         },
@@ -19,11 +23,6 @@ return {
             },
           },
         },
-        ["core.export.markdown"] = {
-          config = {
-            extensions = "all",
-          },
-        },
         ["core.presenter"] = {
           config = {
             zen_mode = "zen-mode",
@@ -32,7 +31,7 @@ return {
         ["core.keybinds"] = {
           config = {
             default_keybinds = true,
-            neorg_leader = "<leader>no",
+            neorg_leader = "<leader>n",
             hook = function(keybinds)
               local leader_keys = {
                 "nn",

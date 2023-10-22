@@ -31,4 +31,5 @@ return {
   r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
   s = { "<cmd>DocumentSymbols<cr>", "Document Symbols" },
   S = { "<cmd>WorkspaceSymbols<cr>", "Workspace Symbols" },
+  o = { "<cmd>OrganizeImports<cr>", "OrganizeImports" },
 }

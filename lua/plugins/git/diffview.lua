@@ -9,5 +9,18 @@ return {
     "DiffviewRefresh",
     "DiffviewFileHistory",
   },
-  config = true,
+  config = function()
+    require("diffview").setup({
+      hooks = {
+        diff_buf_read = function()
+          SET_OPTS({
+            number = false,
+            relativenumber = false,
+            statuscolumn = "",
+            foldcolumn = "0",
+          }, true)
+        end,
+      },
+    })
+  end,
 }

@@ -1,5 +1,6 @@
 return {
   "nvim-neorg/neorg",
+  cond = not IS_VSCODE,
   build = ":Neorg sync-parsers",
   dependencies = { "nvim-lua/plenary.nvim" },
   ft = "norg",

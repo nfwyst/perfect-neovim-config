@@ -2,6 +2,7 @@ local statuscolumn = ""
 
 return {
   "folke/zen-mode.nvim",
+  cond = not IS_VSCODE,
   cmd = "ZenMode",
   dependencies = {
     { "utilyre/barbecue.nvim", name = "barbecue" },

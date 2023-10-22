@@ -51,6 +51,7 @@ local register = {
   L = { "<cmd>Lazy<cr>", "Open lazy installer" },
   I = { "<cmd>set modifiable<cr>", "Set modifiable" },
   s = { ":'<,'>!sort<cr>", "Sort selected" },
+  z = { "<cmd>ZenMode<cr>", "Zen mode" },
   o = {
     name = "Obsidian/Outline",
     b = require(get_path("obsidian")),

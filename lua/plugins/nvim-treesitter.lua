@@ -29,6 +29,7 @@ return {
       auto_install = true,
       highlight = {
         enable = true, -- false will disable the whole extension
+        additional_vim_regex_highlighting = { "markdown" },
       },
       autopairs = {
         enable = true,

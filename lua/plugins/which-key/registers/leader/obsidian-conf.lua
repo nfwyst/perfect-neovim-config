@@ -10,4 +10,6 @@ return {
   l = { "<cmd>ObsidianLink<cr>", "Link to a note" },
   c = { "<cmd>ObsidianLinkNew<cr>", "Create note and link" },
   f = { "<cmd>ObsidianFollowLink<cr>", "Follow note under cursor" },
+  i = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
+  w = { "<cmd>ObsidianWorkspace<cr>", "Switch workspace" },
 }

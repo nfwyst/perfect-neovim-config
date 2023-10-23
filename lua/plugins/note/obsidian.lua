@@ -19,12 +19,25 @@ return {
   config = function()
     local obsidian = require("obsidian")
     obsidian.setup({
-      dir = OBSIDIAN_DIR,
+      workspaces = {
+        { name = "work", path = OBSIDIAN_WORK_DIR },
+        { name = "personal", path = OBSIDIAN_DIR },
+      },
       completion = {
         nvim_cmp = true,
       },
+      log_level = vim.log.levels.OFF,
       daily_notes = {
         folder = "dailies",
+      },
+      templates = {
+        subdir = "templates",
+        -- a map for custom variables, the key should be the variable and the value a function
+        substitutions = {
+          yesterday = function()
+            return os.date("%Y-%m-%d", os.time() - 86400)
+          end,
+        },
       },
     })
     init()

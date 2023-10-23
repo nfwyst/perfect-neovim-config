@@ -57,11 +57,11 @@ return {
     "rcarriga/nvim-notify",
   },
   config = function()
+    local M = require("noice.util.call")
+    function M:log() end
     local noice = require("noice")
     init(noice, require("noice.lsp"))
     noice.setup({
-      log = nil,
-      log_max_size = 0,
       health = {
         checker = false,
       },

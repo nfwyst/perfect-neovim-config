@@ -10,7 +10,7 @@ end
 
 return {
   "epwalsh/obsidian.nvim",
-  enabled = not IS_WIN_LINUX,
+  enabled = not IS_WINDOWS,
   cond = not IS_VSCODE,
   dependencies = {
     "nvim-lua/plenary.nvim",

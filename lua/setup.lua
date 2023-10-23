@@ -28,6 +28,7 @@ lazy.setup({
   { import = "plugins.note" },
   { import = "plugins.style" },
   { import = "plugins.git" },
+  { import = "plugins.navigation" },
 }, {
   install = {
     colorscheme = { "tokyonight", "NeoSolarized" },

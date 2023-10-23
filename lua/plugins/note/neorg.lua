@@ -7,6 +7,9 @@ return {
   cmd = "Neorg",
   config = function()
     require("neorg").setup({
+      logger = {
+        use_file = false,
+      },
       load = {
         ["core.defaults"] = {},
         ["core.concealer"] = {},

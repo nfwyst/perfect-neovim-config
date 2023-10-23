@@ -115,18 +115,18 @@ return {
         },
         duplicate_selected = {
           fg = { attribute = "fg", highlight = "TabLineSel" },
-          bg = { attribute = "bg", highlight = "TabLineSel" },
-          underline = true,
+          bg = { attribute = "bg", highlight = "Normal" },
+          underline = false,
         },
         duplicate_visible = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
-          underline = true,
+          underline = false,
         },
         duplicate = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
-          underline = true,
+          underline = false,
         },
         modified = {
           fg = { attribute = "fg", highlight = "TabLine" },

@@ -114,7 +114,6 @@ return {
     "DapDown",
     "DapOpenRepl",
     "DapCloseRepl",
-    "Telescope dap",
   },
   config = function()
     local dap = require("dap")

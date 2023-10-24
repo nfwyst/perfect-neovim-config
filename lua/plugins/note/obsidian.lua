@@ -6,16 +6,31 @@ local function init()
       return "gf"
     end
   end, { expr = true })
+  SET_USER_COMMANDS({
+    EnableObsidian = function() end,
+  })
 end
 
 return {
   "epwalsh/obsidian.nvim",
-  enabled = not IS_WIN_LINUX,
   cond = not IS_VSCODE,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  cmd = {
+    "EnableObsidian",
+    "ObsidianBacklinks",
+    "ObsidianToday",
+    "ObsidianYesterday",
+    "ObsidianOpen",
+    "ObsidianNew",
+    "ObsidianSearch",
+    "ObsidianQuickSwitch",
+    "ObsidianLink",
+    "ObsidianLinkNew",
+    "ObsidianFollowLink",
+    "ObsidianTemplate",
+    "ObsidianWorkspace",
   },
-  ft = "markdown",
+  ft = not IS_WIN_LINUX and "markdown" or nil,
   config = function()
     local obsidian = require("obsidian")
     obsidian.setup({

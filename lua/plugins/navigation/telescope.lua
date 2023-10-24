@@ -106,20 +106,11 @@ return {
     "DocumentSymbols",
     "WorkspaceSymbols",
   },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    { "nvim-telescope/telescope-dap.nvim", enabled = DAP_DEBUG_ENABLED },
-    "nvim-telescope/telescope-project.nvim",
-  },
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     init(require("telescope.builtin"), require("telescope.themes"))
-
-    if DAP_DEBUG_ENABLED then
-      telescope.load_extension("dap")
-    end
-    telescope.load_extension("projects")
 
     local function flash(prompt_bufnr)
       if not IS_PACKAGE_LOADED("flash") then

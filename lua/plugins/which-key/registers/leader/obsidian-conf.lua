@@ -12,4 +12,5 @@ return {
   f = { "<cmd>ObsidianFollowLink<cr>", "Follow note under cursor" },
   i = { "<cmd>ObsidianTemplate<cr>", "Insert template" },
   w = { "<cmd>ObsidianWorkspace<cr>", "Switch workspace" },
+  e = { "<cmd>EnableObsidian<cr>", "Enable obsidian" },
 }

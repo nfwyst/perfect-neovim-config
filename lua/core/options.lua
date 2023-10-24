@@ -35,6 +35,7 @@ SET_OPTS({
   lazyredraw = false, -- don't redraw while executing macros (good performance config), if use noice need to turn this off...
   redrawtime = 7000, -- redraw timeout, otherwise to set syntax off
   title = true, -- show title
+  titlestring = "%{fnamemodify(getcwd(), ':t')} - nvim(%{getpid()})",
   ch = 0, -- automatically hide and show command line
   spell = false, -- enable builtin spell check that work with treesitter, so it can do well in comment spell checking
   laststatus = 3, -- enable global status line

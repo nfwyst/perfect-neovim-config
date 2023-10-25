@@ -30,7 +30,6 @@ SET_KEY_MAPS({
     -- move text up and down
     { lhs = "<s-j>", rhs = ":m '>+1<cr>gv=gv" },
     { lhs = "<s-k>", rhs = ":m '<-2<cr>gv=gv" },
-    { lhs = "p", rhs = '"_dP' },
     -- stay in indent mode when indent
     { lhs = "<", rhs = "<gv^" },
     { lhs = ">", rhs = ">gv^" },

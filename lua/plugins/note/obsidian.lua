@@ -6,9 +6,7 @@ local function init()
       return "gf"
     end
   end, { expr = true })
-  SET_USER_COMMANDS({
-    EnableObsidian = function() end,
-  })
+  USER_COMMAND("EnableObsidian", function() end)
 end
 
 return {

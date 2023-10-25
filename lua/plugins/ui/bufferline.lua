@@ -92,6 +92,7 @@ return {
         buffer_visible = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
+          italic = false,
         },
         close_button = {
           fg = { attribute = "fg", highlight = "TabLine" },
@@ -117,16 +118,19 @@ return {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "Normal" },
           underline = false,
+          italic = false,
         },
         duplicate_visible = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
           underline = false,
+          italic = false,
         },
         duplicate = {
           fg = { attribute = "fg", highlight = "TabLine" },
           bg = { attribute = "bg", highlight = "TabLine" },
           underline = false,
+          italic = false,
         },
         modified = {
           fg = { attribute = "fg", highlight = "TabLine" },

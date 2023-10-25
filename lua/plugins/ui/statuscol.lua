@@ -33,11 +33,16 @@ return {
           },
           click = "v:lua.ScSa",
         },
-        { text = { " ", builtin.lnumfunc }, click = "v:lua.ScLa" },
+        {
+          text = { " ", builtin.lnumfunc, " " },
+          condition = { true, builtin.not_empty },
+          click = "v:lua.ScLa",
+        },
         {
           sign = {
-            name = { ".*" },
-            colwidth = 2,
+            namespace = { "gitsigns" },
+            colwidth = 1,
+            wrap = true,
           },
           click = "v:lua.ScSa",
         },

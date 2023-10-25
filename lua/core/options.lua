@@ -69,6 +69,7 @@ SET_OPTS({
   undolevels = IS_WIN_LINUX and 300 or 10000, -- more big, more undo can do
   wildmode = "longest:full,full", -- command line completion mode
   winminwidth = 5, -- minimum width of window
+  showcmd = false,
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

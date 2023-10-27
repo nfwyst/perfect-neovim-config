@@ -70,6 +70,7 @@ SET_OPTS({
   wildmode = "longest:full,full", -- command line completion mode
   winminwidth = 5, -- minimum width of window
   showcmd = false,
+  ruler = false,
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

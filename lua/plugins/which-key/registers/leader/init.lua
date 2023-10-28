@@ -30,6 +30,7 @@ local register = {
   h = require(get_path("harpoon")),
   i = require(get_path("noice")),
   n = require(get_path("neorg")),
+  N = require(get_path("pomodoro")),
   v = { "<cmd>ShowFilePath<cr>", "Show file path" },
   Q = { "<cmd>ccl<cr>", "Close QuickFix" },
   A = { "<cmd>Alpha<cr>", "Alpha" },

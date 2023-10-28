@@ -104,8 +104,7 @@ local noice_mode = {
     return require("noice").api.statusline.mode.get()
   end,
   cond = function()
-    return IS_PACKAGE_LOADED("noice")
-      and require("noice").api.statusline.mode.has()
+    return require("noice").api.statusline.mode.has()
   end,
   color = { fg = "#ffffff" },
 }
@@ -134,6 +133,16 @@ local debugger = {
   color = { fg = "#ff9e64" },
 }
 
+local timer = {
+  function()
+    return require("nomodoro").status()
+  end,
+  cond = function()
+    return IS_PACKAGE_LOADED("nomodoro")
+  end,
+  padding = { left = 0, right = 1 },
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   cond = not IS_VSCODE,
@@ -151,11 +160,6 @@ return {
         disabled_filetypes = { "alpha", "dashboard" },
         ignore_focus = { "NvimTree" },
         globalstatus = true,
-        refresh = {
-          statusline = 10000,
-          tabline = 10000,
-          winbar = 10000,
-        },
       },
       sections = {
         lualine_a = { mode, noice_mode, branch },
@@ -181,6 +185,7 @@ return {
           { cond = show_on_width, "encoding" },
           { cond = show_on_width, "fileformat" },
           location,
+          timer,
         },
         lualine_z = { progress },
       },

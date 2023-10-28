@@ -151,6 +151,11 @@ return {
         disabled_filetypes = { "alpha", "dashboard" },
         ignore_focus = { "NvimTree" },
         globalstatus = true,
+        refresh = {
+          statusline = 10000,
+          tabline = 10000,
+          winbar = 10000,
+        },
       },
       sections = {
         lualine_a = { mode, noice_mode, branch },
@@ -179,8 +184,7 @@ return {
         },
         lualine_z = { progress },
       },
-      tabline = {},
-      extensions = { "quickfix", "man" },
+      extensions = IS_MAC and { "quickfix", "man" } or {},
     })
   end,
 }

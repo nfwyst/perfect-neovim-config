@@ -181,7 +181,7 @@ function GET_CURRENT_BUFFER()
 end
 
 function IS_PACKAGE_LOADED(pkg)
-  return package.loaded[pkg]
+  return not not package.loaded[pkg]
 end
 
 function GET_CURRENT_FILE_PATH(absolute)
@@ -261,7 +261,7 @@ end
 function PCALL(f, ...)
   local ok, err = pcall(f, ...)
   if ok or not err then
-    return
+    return err
   end
   LOG_ERROR("pcall error", err)
 end

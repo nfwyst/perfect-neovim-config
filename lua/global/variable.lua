@@ -11,6 +11,7 @@ IS_VSCODE = vim.g.vscode ~= nil
 local sysname = vim.loop.os_uname().sysname
 IS_WINDOWS = string.sub(sysname, 1, string.len("Windows")) == "Windows"
 IS_LINUX = string.sub(sysname, 1, string.len("Linux")) == "Linux"
+IS_MAC = sysname == "Darwin"
 IS_WIN_LINUX = IS_LINUX or IS_WINDOWS
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"

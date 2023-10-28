@@ -21,7 +21,7 @@ end
 
 local diff = {
   "diff",
-  colored = false,
+  colored = true,
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
   cond = show_on_width,
 }
@@ -149,7 +149,8 @@ return {
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = { "alpha", "dashboard" },
-        always_divide_middle = true,
+        ignore_focus = { "NvimTree" },
+        globalstatus = true,
       },
       sections = {
         lualine_a = { mode, noice_mode, branch },
@@ -179,7 +180,7 @@ return {
         lualine_z = { progress },
       },
       tabline = {},
-      extensions = {},
+      extensions = { "quickfix", "man" },
     })
   end,
 }

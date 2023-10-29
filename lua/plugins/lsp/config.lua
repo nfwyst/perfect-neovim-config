@@ -41,9 +41,9 @@ local function init()
 end
 
 local function on_attach(client)
-  local disable_formatting_lsp = { "tsserver", "lua_ls" }
-  if TABLE_CONTAINS(disable_formatting_lsp, client.name) then
+  if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 end
 
@@ -80,11 +80,26 @@ local function try_load(conf, exclude_filetypes, include_filetypes)
   end
 end
 
+local function load_neodev(server)
+  if server ~= "lua_ls" then
+    return
+  end
+  local ok, neodev = pcall(require, "neodev")
+  if not ok then
+    return
+  end
+  neodev.setup()
+end
+
 return {
   "neovim/nvim-lspconfig",
   cond = not IS_VSCODE,
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "b0o/schemastore.nvim",
+    { "folke/neodev.nvim", enabled = IS_MAC },
+  },
   config = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"
     local lspconfig = require("lspconfig")
@@ -96,6 +111,7 @@ return {
       if not opts then
         goto continue
       end
+      load_neodev(server)
       conf.setup(opts)
       try_load(conf, opts.exclude_filetypes or {}, opts.include_filetypes)
       ::continue::

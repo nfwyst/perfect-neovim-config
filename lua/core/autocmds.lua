@@ -44,8 +44,8 @@ SET_AUTOCMDS({
     "BufWinEnter",
     {
       pattern = "*",
-      callback = function(buf)
-        local bufnr = buf.buf
+      callback = function(event)
+        local bufnr = event.buf
         if GET_BUFFER_OPT(bufnr, "buflisted") then
           return
         end

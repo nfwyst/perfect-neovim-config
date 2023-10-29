@@ -1,14 +1,26 @@
-local fe = { "prettierd" }
+local fe = { "eslint_d", "prettierd" }
 local c = { "clang_format" }
-local opt = {
-  lsp_fallback = true,
-  async = false,
-  timeout_ms = 800,
-}
+
+local function setup_eslint()
+  local eslint_d = require("conform.formatters.eslint_d")
+  eslint_d.cwd = require("conform.util").root_file({
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.json",
+  })
+  eslint_d.require_cwd = true
+end
 
 local function init(conform)
+  vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
+  setup_eslint()
   USER_COMMAND("Format", function()
-    conform.format(opt)
+    conform.format({
+      lsp_fallback = true,
+      async = true,
+      timeout_ms = 800,
+    })
   end)
 end
 

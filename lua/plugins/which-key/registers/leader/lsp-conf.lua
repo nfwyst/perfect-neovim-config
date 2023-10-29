@@ -11,7 +11,6 @@ return {
   },
   f = { "<cmd>Format<cr>", "Format" },
   c = { "<cmd>ConformInfo<cr>", "Show formatter info" },
-  F = { "<cmd>EslintFixAll<cr>", "Fix all" },
   i = { "<cmd>LspInfo<cr>", "Info" },
   I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
   j = {

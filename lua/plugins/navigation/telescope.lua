@@ -141,10 +141,9 @@ return {
         prompt_prefix = " ",
         selection_caret = " ",
         path_display = { "truncate" },
+        set_env = { ["COLORTERM"] = "truecolor" },
         wrap_results = true,
-        preview = {
-          filesize_limit = 3,
-        },
+        preview = { filesize_limit = 3 },
         layout_config = { horizontal = other_layout },
         file_ignore_patterns = TELESCOPE_IGNORE_PATTERNS,
         mappings = {
@@ -224,6 +223,20 @@ return {
         tags = picker_opt,
         find_files = { hidden = true },
         git_status = { layout_config = { preview_width = 0.4 } },
+        buffers = {
+          theme = "dropdown",
+          previewer = false,
+          initial_mode = "normal",
+          fname_width = 500,
+          mappings = {
+            i = {
+              ["<c-d>"] = actions.delete_buffer,
+            },
+            n = {
+              ["dd"] = actions.delete_buffer,
+            },
+          },
+        },
       },
       extensions = {},
     })

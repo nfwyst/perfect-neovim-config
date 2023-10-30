@@ -169,10 +169,9 @@ return {
             ["<tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<s-tab>"] = actions.toggle_selection
               + actions.move_selection_better,
-            ["<m-q>"] = actions.send_to_qflist + actions.open_qflist,
+            ["<c-a>"] = actions.send_to_qflist + actions.open_qflist,
             ["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             ["<c-g>"] = actions.complete_tag,
-            ["<c-_>"] = actions.which_key, -- keys from pressing <C-/>
             ["<c-s>"] = flash,
           },
           n = {
@@ -186,7 +185,7 @@ return {
             ["<tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<s-tab>"] = actions.toggle_selection
               + actions.move_selection_better,
-            ["<m-q>"] = actions.send_to_qflist + actions.open_qflist,
+            ["<c-a>"] = actions.send_to_qflist + actions.open_qflist,
             ["<c-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             ["j"] = actions.move_selection_next,
             ["k"] = actions.move_selection_previous,
@@ -208,7 +207,7 @@ return {
         },
       },
       pickers = {
-        planets = { show_pluto = true },
+        planets = { show_pluto = true, show_moon = true },
         current_buffer_tags = picker_opt,
         jumplist = picker_opt,
         loclist = picker_opt,

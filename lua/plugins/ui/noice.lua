@@ -92,6 +92,7 @@ return {
             any = {
               { find = "method textDocument" },
               { find = "Invalid commentstring" },
+              { find = "Client %d quit with" },
             },
           },
           opts = { skip = true },

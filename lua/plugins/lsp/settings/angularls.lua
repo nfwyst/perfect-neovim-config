@@ -20,9 +20,12 @@ local cmd = {
   "--includeAutomaticOptionalChainCompletions",
 }
 
+local ft = { "javascript" }
+
 return {
   cmd = cmd,
-  filetypes = { "javascript" },
+  filetypes = ft,
+  include_filetypes = ft,
   root_dir = require("lspconfig.util").root_pattern(".git", "angular.json"),
   on_new_config = function(new_config)
     new_config.cmd = cmd

@@ -112,6 +112,11 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+        signature = {
+          auto_open = {
+            enabled = not IS_WIN_LINUX,
+          },
+        },
       },
       views = {
         hover = {

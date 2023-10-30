@@ -64,6 +64,7 @@ LSP_SERVERS = {
   "marksman",
   "svelte",
   "bashls",
+  "angularls",
 }
 
 INVALID_FILETYPE = {

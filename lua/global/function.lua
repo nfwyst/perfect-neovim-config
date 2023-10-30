@@ -142,7 +142,7 @@ function TABLE_CONTAINS(table, value)
 end
 
 function SET_WORKSPACE_PATH_GLOBAL()
-  local ok, util = pcall(require, "lspconfig/util")
+  local ok, util = pcall(require, "lspconfig.util")
   if not ok then
     LOG_ERROR("pcall error", util)
     return

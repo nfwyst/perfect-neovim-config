@@ -8,7 +8,7 @@ end
 
 return {
   root_dir = function(pattern)
-    local status_ok, util = pcall(require, "lspconfig/util")
+    local status_ok, util = pcall(require, "lspconfig.util")
     if not status_ok then
       return WORKSPACE_PATH
     end

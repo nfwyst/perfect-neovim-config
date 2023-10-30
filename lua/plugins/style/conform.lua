@@ -19,7 +19,7 @@ local function init(conform)
     conform.format({
       lsp_fallback = true,
       async = true,
-      timeout_ms = 800,
+      timeout_ms = 1000,
     })
   end)
 end

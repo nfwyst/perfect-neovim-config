@@ -24,6 +24,12 @@ SET_KEY_MAPS({
     { lhs = "<s-k>", rhs = ":m .-2<cr>==" },
     -- Switch between first column and first character
     { lhs = "0", rhs = "col('.') == 1 ? '^': '0'", opts = { expr = true } },
+    { lhs = "n", rhs = "nzz" },
+    { lhs = "N", rhs = "Nzz" },
+    { lhs = "*", rhs = "*zz" },
+    { lhs = "#", rhs = "#zz" },
+    { lhs = "g*", rhs = "g*zz" },
+    { lhs = "g#", rhs = "g#zz" },
   },
   -- visual mode
   v = {

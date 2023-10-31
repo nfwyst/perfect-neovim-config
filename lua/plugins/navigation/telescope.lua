@@ -1,7 +1,8 @@
+local fnw = 9999
 local file_layout = { width = 0.85, height = 0.75 }
-local text_layout = { height = 0.6, preview_width = 0.35 }
-local other_layout = { width = 1000, height = 1000, preview_width = 0.3 }
-local picker_opt = { fname_width = 500 }
+local text_layout = { width = 9999, height = 0.6, preview_width = 0.35 }
+local other_layout = { width = 9999, height = 9999, preview_width = 0.35 }
+local picker_opt = { fname_width = fnw }
 
 local function find_text(builtin, themes, path, undercursor)
   local theme = themes.get_ivy({
@@ -221,13 +222,16 @@ return {
         lsp_workspace_symbols = picker_opt,
         quickfix = picker_opt,
         tags = picker_opt,
-        find_files = { hidden = true },
-        git_status = { layout_config = { preview_width = 0.4 } },
+        find_files = { hidden = true, fname_width = fnw },
+        git_status = {
+          layout_config = { preview_width = 0.55 },
+          fname_width = fnw,
+        },
         buffers = {
           theme = "dropdown",
           previewer = false,
           initial_mode = "normal",
-          fname_width = 500,
+          fname_width = fnw,
           mappings = {
             i = {
               ["<c-d>"] = actions.delete_buffer,

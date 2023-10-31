@@ -115,7 +115,7 @@ return {
           bg = { attribute = "bg", highlight = "Normal" },
         },
         duplicate_selected = {
-          fg = { attribute = "fg", highlight = "TabLine" },
+          fg = { attribute = "fg", highlight = "Normal" },
           bg = { attribute = "bg", highlight = "Normal" },
           underline = false,
           italic = false,

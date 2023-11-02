@@ -23,7 +23,7 @@ return {
   cond = not IS_VSCODE,
   event = "VeryLazy",
   dependencies = {
-    "SmiteshP/nvim-navic",
+    { "SmiteshP/nvim-navic", enabled = navic_enabled },
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
@@ -33,6 +33,9 @@ return {
       exclude_filetypes = INVALID_FILETYPE,
       show_navic = navic_enabled,
       attach_navic = navic_enabled,
+      modifiers = {
+        dirname = ":~",
+      },
     })
     init()
   end,

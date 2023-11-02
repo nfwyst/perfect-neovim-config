@@ -6,10 +6,11 @@ local function init_hi()
   SET_TIMEOUT(function()
     SET_HIGHLIGHT(MERGE_ARRAYS(CURSOR_HILIGHT_OPTS, {
       "LineNr guifg=" .. color.fg1,
-      "CursorLineNr guifg=" .. color.base1,
+      "CursorLineNr guifg=" .. "#388bfd",
       "@variable guifg=" .. color.fg0,
       "Normal guifg=" .. color.fg0,
       "Comment guifg=" .. color.fg2,
+      "CursorLine guibg=" .. color.bg0,
     }))
   end)
 end

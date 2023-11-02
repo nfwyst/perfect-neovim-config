@@ -38,9 +38,6 @@ return {
       modes_allowlist = { "n", "no", "nt" },
       filetypes_denylist = INVALID_FILETYPE,
       large_file_cutoff = MAX_FILE_LENGTH,
-      large_file_overrides = {
-        providers = { "lsp" },
-      },
       under_cursor = false,
     })
   end,

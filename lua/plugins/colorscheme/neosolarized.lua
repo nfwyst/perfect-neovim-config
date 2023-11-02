@@ -1,4 +1,5 @@
 local name = "NeoSolarized"
+local illuminate = { bg = "#B2D4FC", bold = true }
 
 local function init_hi()
   local colors = require("NeoSolarized.colors")
@@ -12,6 +13,13 @@ local function init_hi()
       "Comment guifg=" .. color.fg2,
       "CursorLine guibg=" .. color.bg0,
     }))
+    SET_HL({
+      IlluminatedWord = illuminate,
+      IlluminatedCurWord = illuminate,
+      IlluminatedWordText = illuminate,
+      IlluminatedWordRead = illuminate,
+      IlluminatedWordWrite = illuminate,
+    })
   end)
 end
 

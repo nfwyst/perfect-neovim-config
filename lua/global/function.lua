@@ -41,6 +41,12 @@ function SET_HIGHLIGHT(table)
   end
 end
 
+function SET_HL(table)
+  for group, value in pairs(table) do
+    vim.api.nvim_set_hl(0, group, value)
+  end
+end
+
 function SHOW_CURSOR()
   SET_HIGHLIGHT(CURSOR_HILIGHT_OPTS)
 end

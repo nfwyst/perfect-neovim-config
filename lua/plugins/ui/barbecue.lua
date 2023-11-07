@@ -23,7 +23,7 @@ return {
   cond = not IS_VSCODE,
   event = "VeryLazy",
   dependencies = {
-    { "SmiteshP/nvim-navic", enabled = navic_enabled },
+    "SmiteshP/nvim-navic",
     "nvim-tree/nvim-web-devicons",
   },
   config = function()

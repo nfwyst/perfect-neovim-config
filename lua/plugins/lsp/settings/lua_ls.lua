@@ -11,7 +11,7 @@ return {
         version = "LuaJIT",
       },
       workspace = {
-        checkThirdParty = false,
+        checkThirdParty = "Disable",
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [CONFIG_PATH .. "/lua"] = true,

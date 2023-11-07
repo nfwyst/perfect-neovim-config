@@ -14,10 +14,10 @@ return {
         timer_format = "!%0M:%0S", -- To include hours: '!%0H:%0M:%0S'
       },
       on_work_complete = function()
-        LOG_INFO("TIME IS UP!", "It's time to reset")
+        LOG_INFO("TIME IS UP!", "It's time to reset", false)
       end,
       on_break_complete = function()
-        LOG_INFO("TIME IS UP!", "It's time to continue")
+        LOG_INFO("TIME IS UP!", "It's time to continue", false)
       end,
     })
   end,

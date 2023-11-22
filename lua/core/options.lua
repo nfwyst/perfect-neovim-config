@@ -82,6 +82,7 @@ SET_GLOBAL_OPTS({
   loaded_node_provider = 0,
   loaded_python3_provider = 0,
   editorconfig = true,
+  skip_ts_context_commentstring_module = true,
 })
 
 vim.cmd.language("en_US")

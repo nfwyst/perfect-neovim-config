@@ -3,4 +3,7 @@ return {
   cond = not IS_VSCODE,
   ft = TSX_COMMENT_INCLUDED_FILES,
   config = true,
+  opts = {
+    enable_autocmd = false,
+  },
 }

@@ -35,7 +35,6 @@ return {
         enable = true,
       },
       indent = { enable = true },
-      context_commentstring = { enable = true, enable_autocmd = false },
     })
     bind_ft()
   end,

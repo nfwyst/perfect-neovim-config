@@ -98,7 +98,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
-    { "folke/neodev.nvim", enabled = IS_MAC },
+    { "folke/neodev.nvim", cond = IS_MAC },
   },
   config = function()
     require("lspconfig.ui.windows").default_options.border = "rounded"

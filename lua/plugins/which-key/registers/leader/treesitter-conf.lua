@@ -5,4 +5,6 @@ return {
   e = { "<cmd>EditQuery<cr>", "Show live query editor" },
   u = { "<cmd>TSUpdate<cr>", "Update language" },
   s = { "<cmd>TSUpdateSync<cr>", "Update language sync" },
+  c = { "<cmd>TSContextToggle<cr>", "Toggle treesitter context" },
+  g = { "<cmd>GoToContext<cr>", "Jump to upper context" },
 }

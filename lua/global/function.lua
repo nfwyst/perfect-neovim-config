@@ -275,7 +275,7 @@ end
 function LOG_INFO(title, message, timeout)
   vim.notify(message, vim.log.levels.INFO, {
     title = title,
-    timeout = timeout ~= nil and timeout or 3000
+    timeout = timeout ~= nil and timeout or 3000,
   })
 end
 

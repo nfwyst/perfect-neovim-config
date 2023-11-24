@@ -1,5 +1,6 @@
 return {
   "luukvbaal/statuscol.nvim",
+  branch = IS_ZERO_TEN_DEV and "0.10" or "main",
   cond = not IS_VSCODE,
   event = { "BufReadPost", "BufNewFile" },
   config = function()

@@ -30,6 +30,32 @@ SET_KEY_MAPS({
     { lhs = "#", rhs = "#zz" },
     { lhs = "g*", rhs = "g*zz" },
     { lhs = "g#", rhs = "g#zz" },
+    {
+      lhs = "b",
+      rhs = "<cmd>call search('\\<', 'b')<cr>",
+      opts = { desc = "Previous word" },
+    },
+    {
+      lhs = "e",
+      rhs = "<cmd>call search('\\>')<cr>",
+      opts = { desc = "Next end of word" },
+    },
+    { lhs = "ge", rhs = "<cmd>call search('\\>', 'b')<cr>" },
+    {
+      lhs = "w",
+      rhs = "<cmd>call search('\\<')<cr>",
+      opts = { desc = "Next word" },
+    },
+    {
+      lhs = "{",
+      rhs = "<cmd>call search('\\(\\n\\n\\|\\%^\\)\\s*\\zs\\S', 'b')<cr>",
+      opts = { desc = "Previous start of paragraph" },
+    },
+    {
+      lhs = "}",
+      rhs = "<cmd>call search('\\n\\n\\s*\\zs\\S')<cr>",
+      opts = { desc = "Next start of paragraph" },
+    },
   },
   -- visual mode
   v = {

@@ -8,15 +8,21 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1200
 MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
-local sysname = vim.loop.os_uname().sysname
-IS_WINDOWS = string.sub(sysname, 1, string.len("Windows")) == "Windows"
-IS_LINUX = string.sub(sysname, 1, string.len("Linux")) == "Linux"
-IS_MAC = sysname == "Darwin"
+JIT = require("jit")
+OS = JIT.os
+IS_WINDOWS = OS == "Windows"
+IS_MAC = OS == "OSX"
+IS_LINUX = OS == "Linux"
 IS_WIN_LINUX = IS_LINUX or IS_WINDOWS
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
 MAX_BUFFER_SIZE = 100
 LSP_DOC_WIDTH = 60
+VERSION = vim.version()
+IS_DEV = VERSION.prerelease == "dev"
+MAJOR = VERSION.major
+MINOR = VERSION.minor
+IS_ZERO_TEN_DEV = IS_DEV and MAJOR == 0 and MINOR == 10
 CURSOR_HILIGHT_OPTS = {
   "Cursor guibg=#5f87af ctermbg=67 blend=0",
   "iCursor guibg=#ffffaf ctermbg=229",

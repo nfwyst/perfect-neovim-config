@@ -1,5 +1,5 @@
 SET_OPTS({
-  clipboard = vim.opt.clipboard + "unnamedplus", -- allows neovim to access the system clipboard
+  clipboard = "unnamedplus", -- allows neovim to access the system clipboard
   fileencoding = "utf-8", -- the encoding written to a file
   fileencodings = "utf-8", -- the encoding written to a file
   encoding = "utf-8", -- the encoding written to a file
@@ -74,6 +74,8 @@ SET_OPTS({
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 
+local status, osc52 = pcall(require, "vim.clipboard.osc52")
+osc52 = status and osc52 or require("core.osc52")
 SET_GLOBAL_OPTS({
   mapleader = " ",
   maplocalleader = " ",
@@ -83,6 +85,17 @@ SET_GLOBAL_OPTS({
   loaded_python3_provider = 0,
   editorconfig = true,
   skip_ts_context_commentstring_module = true,
+  clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = osc52.copy,
+      ["*"] = osc52.copy,
+    },
+    paste = {
+      ["+"] = osc52.paste,
+      ["*"] = osc52.paste,
+    },
+  },
 })
 
 vim.cmd.language("en_US")

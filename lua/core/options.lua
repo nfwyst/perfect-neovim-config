@@ -42,7 +42,7 @@ SET_OPTS({
   foldcolumn = "1", -- '0' is not bad
   foldlevel = 99, -- dont open fold at starting up
   foldlevelstart = 99,
-  foldnestmax = 7, -- fold nest dont more than 12, default limit is 20
+  foldnestmax = 7, -- fold nest dont more than 7, default limit is 20
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
   shortmess = vim.opt.shortmess + "cCIWs", --  flags to shorten/silent vim messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allowed move the cursor to previous/next line

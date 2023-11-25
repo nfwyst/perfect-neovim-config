@@ -29,11 +29,11 @@ SET_OPTS({
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line, for performance
   linebreak = true, -- wrap by word
-  scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
+  scrolloff = 999, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- scroll left to right
   inccommand = "split", -- show preview in split window when in %s mode to replace something
   lazyredraw = false, -- don't redraw while executing macros (good performance config), if use noice need to turn this off...
-  redrawtime = 7000, -- redraw timeout, otherwise to set syntax off
+  redrawtime = 1500, -- redraw timeout, otherwise to set syntax off
   title = true, -- show title
   titlestring = "%{fnamemodify(getcwd(), ':t')} - nvim(%{getpid()})",
   ch = 0, -- automatically hide and show command line
@@ -42,7 +42,7 @@ SET_OPTS({
   foldcolumn = "1", -- '0' is not bad
   foldlevel = 99, -- dont open fold at starting up
   foldlevelstart = 99,
-  foldnestmax = 7, -- fold nest dont more than 7, default limit is 20
+  foldnestmax = 7, -- fold nest dont more than 12, default limit is 20
   fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]],
   shortmess = vim.opt.shortmess + "cCIWs", --  flags to shorten/silent vim messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allowed move the cursor to previous/next line

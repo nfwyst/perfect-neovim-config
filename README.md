@@ -66,7 +66,8 @@ git clone https://github.com/nfwyst/perfect-neovim-config.git ~/.config/nvim
 
 # Nerd Font
 
-a font that has a collection of icons builtin, you can install the prebuild 0xProto font
+a font that has a collection of icons builtin, you can install the prebuild 0xProto font, or download from
+[0xProto](https://github.com/ryanoasis/nerd-fonts/releases)
 
 # Vscode integration
 

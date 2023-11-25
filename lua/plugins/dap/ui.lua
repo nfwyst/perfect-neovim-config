@@ -1,7 +1,6 @@
 return {
   "rcarriga/nvim-dap-ui",
-  enabled = DAP_DEBUG_ENABLED,
-  cond = not IS_VSCODE,
+  cond = DAP_DEBUG_ENABLED and not IS_VSCODE,
   dependencies = { "mfussenegger/nvim-dap" },
   lazy = true,
   config = function()

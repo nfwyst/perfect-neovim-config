@@ -1,7 +1,6 @@
 return {
   "jackMort/ChatGPT.nvim",
-  enabled = not IS_WIN_LINUX and vim.env.OPENAI_API_KEY ~= nil,
-  cond = not IS_VSCODE,
+  cond = not IS_WIN_LINUX and vim.env.OPENAI_API_KEY ~= nil and not IS_VSCODE,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",

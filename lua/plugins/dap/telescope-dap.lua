@@ -1,7 +1,6 @@
 return {
   "nvim-telescope/telescope-dap.nvim",
-  enabled = DAP_DEBUG_ENABLED,
-  cond = not IS_VSCODE,
+  cond = DAP_DEBUG_ENABLED and not IS_VSCODE,
   cmd = { "Telescope dap" },
   dependencies = {
     "nvim-telescope/telescope.nvim",

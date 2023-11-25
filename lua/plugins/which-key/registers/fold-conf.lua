@@ -1,8 +1,5 @@
 local register = {
-  zp = {
-    "<cmd>lua require('ufo').peekFoldedLinesUnderCursor()<cr>",
-    "Preview fold",
-  },
+  zp = "Preview fold",
 }
 
 return register

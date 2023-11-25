@@ -5,6 +5,7 @@ local function init(ufo)
       { lhs = "zM", rhs = ufo.closeAllFolds },
       { lhs = "zr", rhs = ufo.openFoldsExceptKinds },
       { lhs = "zm", rhs = ufo.closeFoldsWith },
+      { lhs = "zp", rhs = ufo.peekFoldedLinesUnderCursor }
     },
   })
 end

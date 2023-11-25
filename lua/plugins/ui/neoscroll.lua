@@ -1,5 +1,6 @@
 return {
   "karb94/neoscroll.nvim",
+  cond = not IS_VSCODE,
   keys = {
     "<c-u>",
     "<c-d>",

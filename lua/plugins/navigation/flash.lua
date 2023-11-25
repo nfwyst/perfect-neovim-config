@@ -42,4 +42,5 @@ return {
       desc = "Toggle Flash Search",
     },
   },
+  config = true,
 }

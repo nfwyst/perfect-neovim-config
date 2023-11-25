@@ -1,5 +1,5 @@
 local name = "NeoSolarized"
-local illuminate = { bg = "#B2D4FC", bold = true }
+local illuminate = { bg = "#B2D4FC", fg = "#4d2b03", bold = true }
 
 local function init_hi()
   local colors = require("NeoSolarized.colors")

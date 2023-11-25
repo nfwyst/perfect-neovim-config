@@ -5,7 +5,7 @@ make neovim as a perfect ide for development
 # Requirements
 
 1. nodejs
-2. neovim 0.8+
+2. neovim 0.10+
 3. lazygit -- awesome termial ui for git
 4. ncdu -- list file by size
 5. htop -- an interactive process viewer

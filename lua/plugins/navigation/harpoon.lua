@@ -1,19 +1,20 @@
 local function init()
-  SET_USER_COMMANDS({
-    AddHarpoonFile = function()
-      require("harpoon.mark").add_file()
-    end,
-    ToggleHarpoonQuickMenu = function()
-      require("harpoon.ui").toggle_quick_menu()
-    end,
-  })
+  local ui = require("harpoon.ui")
   SET_HL({ HarpoonBorder = { link = "TelescopeBorder" } })
+  SET_USER_COMMANDS({
+    AddHarpoonFile = require("harpoon.mark").add_file,
+    ToggleHarpoonQuickMenu = ui.toggle_quick_menu,
+  })
+  SET_KEY_MAPS({
+    n = { { lhs = "<tab>", rhs = ui.toggle_quick_menu } },
+  })
 end
 
 return {
   "ThePrimeagen/harpoon",
   cond = not IS_VSCODE,
   cmd = { "Telescope harpoon", "AddHarpoonFile", "ToggleHarpoonQuickMenu" },
+  keys = { "<tab>" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",

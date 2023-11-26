@@ -8,8 +8,7 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1200
 MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
-JIT = require("jit")
-OS = JIT.os
+OS = jit.os
 IS_WINDOWS = OS == "Windows"
 IS_MAC = OS == "OSX"
 IS_LINUX = OS == "Linux"

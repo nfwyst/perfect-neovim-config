@@ -111,4 +111,24 @@ SET_AUTOCMDS({
       group = AUTOGROUP("_auto_resize_", { clear = true }),
     },
   },
+  {
+    "InsertEnter",
+    {
+      pattern = '*',
+      group = group,
+      callback = function ()
+        vim.opt_local.cursorline = false
+      end,
+    }
+  },
+  {
+    "InsertLeave",
+    {
+      pattern = '*',
+      group = group,
+      callback = function ()
+        vim.opt_local.cursorline = true
+      end,
+    }
+  }
 })

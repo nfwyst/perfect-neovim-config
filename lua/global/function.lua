@@ -47,6 +47,10 @@ function SET_HL(table)
   end
 end
 
+function GET_HL(name)
+  return vim.api.nvim_get_hl(0, { name = name })
+end
+
 function SHOW_CURSOR()
   SET_HIGHLIGHT(CURSOR_HILIGHT_OPTS)
 end

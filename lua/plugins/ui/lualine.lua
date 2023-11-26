@@ -143,6 +143,23 @@ local timer = {
   padding = { left = 0, right = 1 },
 }
 
+local fileformat = {
+  function()
+    if IS_MAC then
+      return ""
+    end
+    local format = vim.bo.fileformat
+    if format == "dos" then
+      return ""
+    end
+    if format == "unix" then
+      return ""
+    end
+    return format
+  end,
+  cond = show_on_width,
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   cond = not IS_VSCODE,
@@ -183,7 +200,7 @@ return {
           debugger,
           spaces,
           { cond = show_on_width, "encoding" },
-          { cond = show_on_width, "fileformat" },
+          fileformat,
           location,
           timer,
         },

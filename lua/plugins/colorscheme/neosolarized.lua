@@ -11,7 +11,6 @@ local function init_hi()
       "@variable guifg=" .. color.fg0,
       "Normal guifg=" .. color.fg0,
       "Comment guifg=" .. color.fg2,
-      "CursorLine guibg=" .. color.bg0,
     }))
     SET_HL({
       IlluminatedWord = illuminate,
@@ -19,6 +18,7 @@ local function init_hi()
       IlluminatedWordText = illuminate,
       IlluminatedWordRead = illuminate,
       IlluminatedWordWrite = illuminate,
+      CursorLine = MERGE_TABLE(GET_HL("CursorLine"), { bg = color.base1, bold = true }),
     })
   end)
 end

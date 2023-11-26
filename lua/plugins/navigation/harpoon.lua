@@ -7,6 +7,7 @@ local function init()
       require("harpoon.ui").toggle_quick_menu()
     end,
   })
+  SET_HL({ HarpoonBorder = { link = "TelescopeBorder" } })
 end
 
 return {

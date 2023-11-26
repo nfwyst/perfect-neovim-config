@@ -114,21 +114,24 @@ SET_AUTOCMDS({
   {
     "InsertEnter",
     {
-      pattern = '*',
+      pattern = "*",
       group = group,
-      callback = function ()
-        vim.opt_local.cursorline = false
+      callback = function()
+        SET_OPTS({ cursorline = false }, true)
       end,
-    }
+    },
   },
   {
     "InsertLeave",
     {
-      pattern = '*',
+      pattern = "*",
       group = group,
-      callback = function ()
-        vim.opt_local.cursorline = true
+      callback = function()
+        SET_OPTS(
+          { cursorline = not TABLE_CONTAINS(INVALID_FILETYPE, vim.bo.filetype) },
+          true
+        )
       end,
-    }
-  }
+    },
+  },
 })

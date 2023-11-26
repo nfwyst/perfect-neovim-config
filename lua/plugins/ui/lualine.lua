@@ -120,7 +120,7 @@ local lsps = function()
   for _, client in pairs(clients) do
     table.insert(c, client.name)
   end
-  return " " .. table.concat(c, "•")
+  return "󱓞 " .. table.concat(c, "•")
 end
 
 local debugger = {

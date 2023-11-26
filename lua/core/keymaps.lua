@@ -31,18 +31,17 @@ SET_KEY_MAPS({
     { lhs = "g*", rhs = "g*zz" },
     { lhs = "g#", rhs = "g#zz" },
     {
-      lhs = "b",
+      lhs = "B",
       rhs = "<cmd>call search('\\<', 'b')<cr>",
       opts = { desc = "Previous word" },
     },
     {
-      lhs = "e",
+      lhs = "E",
       rhs = "<cmd>call search('\\>')<cr>",
       opts = { desc = "Next end of word" },
     },
-    { lhs = "ge", rhs = "<cmd>call search('\\>', 'b')<cr>" },
     {
-      lhs = "w",
+      lhs = "W",
       rhs = "<cmd>call search('\\<')<cr>",
       opts = { desc = "Next word" },
     },

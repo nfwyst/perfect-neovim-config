@@ -18,7 +18,10 @@ local function init_hi()
       IlluminatedWordText = illuminate,
       IlluminatedWordRead = illuminate,
       IlluminatedWordWrite = illuminate,
-      CursorLine = MERGE_TABLE(GET_HL("CursorLine"), { bg = color.base1, bold = true }),
+      CursorLine = MERGE_TABLE(
+        GET_HL("CursorLine"),
+        { bg = color.base1, bold = true }
+      ),
     })
   end)
 end

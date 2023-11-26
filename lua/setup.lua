@@ -34,13 +34,11 @@ lazy.setup({
     colorscheme = { "tokyonight", "NeoSolarized" },
   },
   ui = {
-    size = { height = 0.7 },
     border = "rounded",
   },
   checker = {
-    enabled = true,
+    enabled = false,
     notify = false,
-    frequency = 604800,
   },
   change_detection = {
     notify = false,

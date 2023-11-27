@@ -81,14 +81,10 @@ local function try_load(conf, exclude_filetypes, include_filetypes)
 end
 
 local function load_neodev(server)
-  if server ~= "lua_ls" then
+  if not IS_MAC or server ~= "lua_ls" then
     return
   end
-  local ok, neodev = pcall(require, "neodev")
-  if not ok then
-    return
-  end
-  neodev.setup()
+  require('neodev').setup()
 end
 
 return {

@@ -13,7 +13,7 @@
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "conform.nvim": { "branch": "master", "commit": "db9da1aa57e8be683ada1b1e5f8129c28d2576eb" },
+  "conform.nvim": { "branch": "master", "commit": "d763ad5be9ed39e75945130abc294e997e035a16" },
   "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "dressing.nvim": { "branch": "master", "commit": "fe3071330a0720ce3695ac915820c8134b22d1b0" },
   "emmet-vim": { "branch": "master", "commit": "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d" },

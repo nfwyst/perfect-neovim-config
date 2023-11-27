@@ -76,6 +76,7 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
         separator_style = "thin",
+        truncate_names = false,
       },
       highlights = {
         fill = {

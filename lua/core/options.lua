@@ -83,17 +83,6 @@ SET_GLOBAL_OPTS({
   loaded_python3_provider = 0,
   editorconfig = true,
   skip_ts_context_commentstring_module = true,
-  clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-  },
 })
 
 vim.cmd.language("en_US")

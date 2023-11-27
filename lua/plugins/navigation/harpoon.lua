@@ -2,7 +2,9 @@ local function init()
   local ui = require("harpoon.ui")
   SET_HL({ HarpoonBorder = { link = "TelescopeBorder" } })
   SET_USER_COMMANDS({
-    AddHarpoonFile = require("harpoon.mark").add_file,
+    AddHarpoonFile = function()
+      require("harpoon.mark").add_file()
+    end,
     ToggleHarpoonQuickMenu = ui.toggle_quick_menu,
   })
   SET_KEY_MAPS({

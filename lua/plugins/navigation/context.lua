@@ -12,7 +12,7 @@ return {
     local context = require("treesitter-context")
     init(context)
     context.setup({
-      max_lines = 3,
+      max_lines = IS_MAC and 3 or 1,
       zindex = 30,
     })
   end,

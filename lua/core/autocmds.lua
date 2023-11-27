@@ -111,6 +111,13 @@ SET_AUTOCMDS({
       group = AUTOGROUP("_auto_resize_", { clear = true }),
     },
   },
+})
+
+if not IS_MAC then
+  return
+end
+
+SET_AUTOCMDS({
   {
     "InsertEnter",
     {

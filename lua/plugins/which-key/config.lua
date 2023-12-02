@@ -15,6 +15,8 @@ local options = {
 local other = {
   [">."] = "Neorg promote no recursively",
   ["<,"] = "Neorg demote no recursively",
+  [">t"] = { "<cmd>tabNext<cr>", "Next tab" },
+  ["<t"] = { "<cmd>tabprevious<cr>", "Previous tab" },
 }
 
 local registers = {

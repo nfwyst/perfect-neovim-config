@@ -11,7 +11,7 @@ end
 
 return {
   "epwalsh/obsidian.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = {
     "EnableObsidian",

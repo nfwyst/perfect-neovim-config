@@ -88,7 +88,7 @@ end
 
 return {
   "mfussenegger/nvim-dap",
-  cond = DAP_DEBUG_ENABLED and not IS_VSCODE,
+  cond = DAP_DEBUG_ENABLED and not IS_VSCODE_OR_LEET_CODE,
   cmd = {
     "DapSetLogLevel",
     "DapShowLog",

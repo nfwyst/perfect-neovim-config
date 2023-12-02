@@ -112,7 +112,7 @@ end
 
 return {
   "akinsho/toggleterm.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   cmd = {
     "ToggleNode",
     "ToggleNcdu",

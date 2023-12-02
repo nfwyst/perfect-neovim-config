@@ -1,21 +1,17 @@
 return {
-  "Dhanus3133/LeetBuddy.nvim",
-  cond = not IS_VSCODE,
+  "kawre/leetcode.nvim",
+  cond = not IS_VSCODE and IS_LEET_CODE,
   dependencies = {
-    "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
-  },
-  cmd = {
-    "LBQuestions",
-    "LBQuestion",
-    "LBReset",
-    "LBTest",
-    "LBSubmit",
+    "MunifTanjim/nui.nvim",
   },
   config = function()
-    require("leetbuddy").setup({
-      domain = "cn",
-      language = "ts",
+    require("leetcode").setup({
+      lang = "typescript",
+      logging = false,
+      cn = {
+        enabled = true,
+      }
     })
   end,
 }

@@ -9,7 +9,7 @@ end
 
 return {
   "David-Kunz/gen.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   cmd = "Gen",
   config = function()
     require("gen").model = "codellama"

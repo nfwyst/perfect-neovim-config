@@ -105,11 +105,11 @@ return {
         },
         tab_selected = {
           fg = { attribute = "fg", highlight = "Normal" },
-          bg = { attribute = "bg", highlight = "Normal" },
+          bg = "#268bd2",
         },
         tab = {
-          fg = { attribute = "fg", highlight = "TabLine" },
-          bg = { attribute = "bg", highlight = "TabLine" },
+          fg = "#268bd2",
+          bg = { attribute = "bg", highlight = "Normal" },
         },
         tab_close = {
           fg = { attribute = "fg", highlight = "TabLineSel" },

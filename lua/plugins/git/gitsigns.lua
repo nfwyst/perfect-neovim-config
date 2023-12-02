@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     signs = {

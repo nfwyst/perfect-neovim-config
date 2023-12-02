@@ -1,6 +1,6 @@
 return {
   "simrat39/symbols-outline.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   cmd = "SymbolsOutline",
   config = function()
     require("symbols-outline").setup({

@@ -1,6 +1,6 @@
 return {
   "ahmedkhalf/project.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   event = "VeryLazy",
   config = function()
     require("project_nvim").setup({

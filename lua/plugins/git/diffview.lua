@@ -1,6 +1,6 @@
 return {
   "sindrets/diffview.nvim",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   cmd = {
     "DiffviewOpen",
     "DiffviewClose",

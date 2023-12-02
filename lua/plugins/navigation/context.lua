@@ -6,7 +6,7 @@ end
 
 return {
   "nvim-treesitter/nvim-treesitter-context",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local context = require("treesitter-context")

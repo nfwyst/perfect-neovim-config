@@ -8,6 +8,9 @@ SCHEME_BACKGROUND = "dark"
 MAX_FILE_LENGTH = 1200
 MAX_FILE_SIZE = 0.03 -- MiB
 IS_VSCODE = vim.g.vscode ~= nil
+HAS_OPENAI_KEY = vim.env.OPENAI_API_KEY ~= nil
+IS_LEET_CODE = "leetcode.nvim" == vim.fn.argv()[1]
+IS_VSCODE_OR_LEET_CODE = IS_VSCODE or IS_LEET_CODE
 OS = jit.os
 IS_WINDOWS = OS == "Windows"
 IS_MAC = OS == "OSX"

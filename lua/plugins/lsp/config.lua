@@ -84,6 +84,9 @@ local function load_neodev(server)
   if not IS_MAC or server ~= "lua_ls" then
     return
   end
+  if IS_LEET_CODE then
+    return
+  end
   require('neodev').setup()
 end
 

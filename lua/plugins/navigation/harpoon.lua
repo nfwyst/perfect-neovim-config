@@ -14,7 +14,7 @@ end
 
 return {
   "ThePrimeagen/harpoon",
-  cond = not IS_VSCODE,
+  cond = not IS_VSCODE_OR_LEET_CODE,
   cmd = { "Telescope harpoon", "AddHarpoonFile", "ToggleHarpoonQuickMenu" },
   keys = { "<tab>" },
   dependencies = {

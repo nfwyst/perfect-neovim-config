@@ -303,35 +303,25 @@ function LOG_WARN(title, message)
   })
 end
 
-function QUICKSORT(array, left, right, value_getter)
-  left = left or 1
-  right = right or #array
-  value_getter = value_getter or function(v)
-    return v
-  end
+local function PARTITION(arr, low, high, compare)
+  local pivot = arr[high]
+  local i = low - 1
 
-  if right <= left then
-    return
-  end
-
-  local function partition(arr, l, r, pivotIndex)
-    local pivotValue = arr[pivotIndex]
-    arr[pivotIndex], arr[r] = arr[r], arr[pivotIndex]
-
-    local storeIndex = l
-
-    for i = l, r - 1 do
-      if value_getter(arr[i]) <= value_getter(pivotValue) then
-        arr[i], arr[storeIndex] = arr[storeIndex], arr[i]
-        storeIndex = storeIndex + 1
-      end
-      arr[storeIndex], arr[r] = arr[r], arr[storeIndex]
+  for j = low, high - 1 do
+    if compare(arr[j], pivot) then
+      i = i + 1
+      arr[i], arr[j] = arr[j], arr[i]
     end
-
-    return storeIndex
   end
 
-  local pivotNewIndex = partition(array, left, right, left)
-  QUICKSORT(array, left, pivotNewIndex - 1, value_getter)
-  QUICKSORT(array, pivotNewIndex + 1, right, value_getter)
+  arr[i + 1], arr[high] = arr[high], arr[i + 1]
+  return i + 1
+end
+
+function QUICKSORT(arr, low, high, compare)
+  if low < high then
+    local pivot = PARTITION(arr, low, high, compare)
+    QUICKSORT(arr, low, pivot - 1, compare)
+    QUICKSORT(arr, pivot + 1, high, compare)
+  end
 end

@@ -11,16 +11,10 @@ local function restore_position(bufnr)
 end
 
 local function delete_buffers(num, buffers)
-  local value_getter = function(wrapper)
-    local bufnr = wrapper.id
-    local time = BUFFER_OPENED_TIME[bufnr]
-    if not time then
-      LOG_ERROR("fatal", "buffer open time not exists")
-      return bufnr
-    end
-    return time
+  local compare = function(cur, next)
+    return BUFFER_OPENED_TIME[cur.id] < BUFFER_OPENED_TIME[next.id]
   end
-  QUICKSORT(buffers, 1, #buffers, value_getter)
+  QUICKSORT(buffers, 1, #buffers, compare)
   for k, v in ipairs(buffers) do
     if k > num then
       return
@@ -33,7 +27,7 @@ end
 
 local function delete_oldest_buffers(bufferline)
   local buffers = bufferline.get_elements().elements
-  local num_to_delete = #buffers - MAX_BUFFER_NUM - 1
+  local num_to_delete = #buffers - MAX_BUFFER_NUM
   if num_to_delete <= 0 then
     return
   end
@@ -71,7 +65,9 @@ local function init(bufferline)
             once = true,
             buffer = event.buf,
             callback = function()
-              PCALL(delete_oldest_buffers, bufferline)
+              vim.schedule(function()
+                PCALL(delete_oldest_buffers, bufferline)
+              end)
             end,
           })
         end,

@@ -25,7 +25,7 @@ local function delete_buffers(num, buffers)
   end
 end
 
-local function delete_oldest_buffers(bufferline)
+local function delete_old_buffers(bufferline)
   local buffers = bufferline.get_elements().elements
   local num_to_delete = #buffers - MAX_BUFFER_NUM
   if num_to_delete <= 0 then
@@ -66,7 +66,7 @@ local function init(bufferline)
             buffer = event.buf,
             callback = function()
               vim.schedule(function()
-                PCALL(delete_oldest_buffers, bufferline)
+                PCALL(delete_old_buffers, bufferline)
               end)
             end,
           })

@@ -151,6 +151,14 @@ function TABLE_CONTAINS(table, value)
   return false
 end
 
+function TABLE_REMOVE_BY_VAL(table, value)
+  for k, v in pairs(table) do
+    if v == value then
+      table[k] = nil
+    end
+  end
+end
+
 function SET_WORKSPACE_PATH_GLOBAL()
   local ok, util = pcall(require, "lspconfig.util")
   if not ok then
@@ -293,4 +301,37 @@ function LOG_WARN(title, message)
   vim.notify(message, vim.log.levels.WARN, {
     title = title,
   })
+end
+
+function QUICKSORT(array, left, right, value_getter)
+  left = left or 1
+  right = right or #array
+  value_getter = value_getter or function(v)
+    return v
+  end
+
+  if right <= left then
+    return
+  end
+
+  local function partition(arr, l, r, pivotIndex)
+    local pivotValue = arr[pivotIndex]
+    arr[pivotIndex], arr[r] = arr[r], arr[pivotIndex]
+
+    local storeIndex = l
+
+    for i = l, r - 1 do
+      if value_getter(arr[i]) <= value_getter(pivotValue) then
+        arr[i], arr[storeIndex] = arr[storeIndex], arr[i]
+        storeIndex = storeIndex + 1
+      end
+      arr[storeIndex], arr[r] = arr[r], arr[storeIndex]
+    end
+
+    return storeIndex
+  end
+
+  local pivotNewIndex = partition(array, left, right, left)
+  QUICKSORT(array, left, pivotNewIndex - 1, value_getter)
+  QUICKSORT(array, pivotNewIndex + 1, right, value_getter)
 end

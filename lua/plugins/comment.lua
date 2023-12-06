@@ -18,7 +18,9 @@ return {
   },
   opts = {
     pre_hook = function(...)
-      if not TABLE_CONTAINS(TSX_COMMENT_INCLUDED_FILES, vim.bo.filetype) then
+      local need_tsx =
+        TABLE_CONTAINS(TSX_COMMENT_INCLUDED_FILES, vim.bo.filetype)
+      if not need_tsx or IS_VSCODE_OR_LEET_CODE then
         return
       end
       local mod = "ts_context_commentstring.integrations.comment_nvim"

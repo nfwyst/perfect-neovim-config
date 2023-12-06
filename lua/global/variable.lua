@@ -11,6 +11,7 @@ IS_VSCODE = vim.g.vscode ~= nil
 HAS_OPENAI_KEY = vim.env.OPENAI_API_KEY ~= nil
 IS_LEET_CODE = "leetcode.nvim" == vim.fn.argv()[1]
 IS_VSCODE_OR_LEET_CODE = IS_VSCODE or IS_LEET_CODE
+BIGFILES = {}
 OS = jit.os
 IS_WINDOWS = OS == "Windows"
 IS_MAC = OS == "OSX"
@@ -18,7 +19,8 @@ IS_LINUX = OS == "Linux"
 IS_WIN_LINUX = IS_LINUX or IS_WINDOWS
 OS_SEP = IS_WINDOWS and "\\" or "/"
 DEFAULT_COLORSCHEME = "tokyonight"
-MAX_BUFFER_SIZE = 100
+MAX_BUFFER_NUM = 6
+BUFFER_OPENED_TIME = {}
 LSP_DOC_WIDTH = 60
 VERSION = vim.version()
 IS_DEV = VERSION.prerelease == "dev"

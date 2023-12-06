@@ -10,19 +10,41 @@ local function restore_position(bufnr)
   end
 end
 
+local function delete_buffers(num, buffers)
+  local value_getter = function(wrapper)
+    local bufnr = wrapper.id
+    local time = BUFFER_OPENED_TIME[bufnr]
+    if not time then
+      LOG_ERROR("fatal", "buffer open time not exists")
+      return bufnr
+    end
+    return time
+  end
+  QUICKSORT(buffers, 1, #buffers, value_getter)
+  for k, v in ipairs(buffers) do
+    if k > num then
+      return
+    end
+    vim.schedule(function()
+      require("bufdelete").bufdelete(v.id, false)
+    end)
+  end
+end
+
 local function delete_oldest_buffers(bufferline)
   local buffers = bufferline.get_elements().elements
-  if #buffers > 100 then
-    vim.cmd.write("a!")
-    require("bufdelete").bufdelete(buffers[1].id, false)
+  local num_to_delete = #buffers - MAX_BUFFER_NUM - 1
+  if num_to_delete <= 0 then
+    return
   end
+  delete_buffers(num_to_delete, buffers)
 end
 
 local function init(bufferline)
   local group = AUTOGROUP("_alpha_and_bufferline_", { clear = true })
   SET_AUTOCMDS({
     {
-      "BufRead",
+      "BufReadPost",
       {
         group = group,
         callback = function(event)
@@ -32,6 +54,23 @@ local function init(bufferline)
             buffer = event.buf,
             callback = function()
               restore_position(event.buf)
+            end,
+          })
+        end,
+      },
+    },
+    {
+      { "BufReadPost", "BufAdd", "BufNewFile" },
+      {
+        group = group,
+        callback = function(event)
+          local bufnr = event.buf
+          BUFFER_OPENED_TIME[bufnr] = os.time()
+          AUTOCMD("BufWinEnter", {
+            group = AUTOGROUP("_clean_buffer_", { clear = true }),
+            once = true,
+            buffer = event.buf,
+            callback = function()
               PCALL(delete_oldest_buffers, bufferline)
             end,
           })

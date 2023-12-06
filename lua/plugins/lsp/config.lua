@@ -1,16 +1,4 @@
-local function init()
-  local signs = {
-    DiagnosticSignError = { text = " ", texthl = "DiagnosticSignError" },
-    DiagnosticSignWarn = { text = " ", texthl = "DiagnosticSignWarn" },
-    DiagnosticSignHint = { text = " ", texthl = "DiagnosticSignHint" },
-    DiagnosticSignInfo = { text = " ", texthl = "DiagnosticSignInfo" },
-  }
-  DEFINE_SIGNS(signs)
-  local active = {}
-  for name, value in pairs(signs) do
-    table.insert(active, { name = name, text = value.text })
-  end
-
+local function setup_diagnostic(active)
   local config = {
     virtual_text = false,
     signs = { active = active },
@@ -26,6 +14,26 @@ local function init()
       prefix = "",
     },
   }
+  vim.diagnostic.config(config)
+  if IS_LEET_CODE then
+    vim.diagnostic.disable()
+  end
+end
+
+local function init()
+  local signs = {
+    DiagnosticSignError = { text = " ", texthl = "DiagnosticSignError" },
+    DiagnosticSignWarn = { text = " ", texthl = "DiagnosticSignWarn" },
+    DiagnosticSignHint = { text = " ", texthl = "DiagnosticSignHint" },
+    DiagnosticSignInfo = { text = " ", texthl = "DiagnosticSignInfo" },
+  }
+  DEFINE_SIGNS(signs)
+
+  local active = {}
+  for name, value in pairs(signs) do
+    table.insert(active, { name = name, text = value.text })
+  end
+  setup_diagnostic(active)
 
   local opt = {
     border = "rounded",
@@ -33,7 +41,6 @@ local function init()
     max_width = GET_MAX_WIDTH(),
     silent = true,
   }
-  vim.diagnostic.config(config)
 
   local hd = vim.lsp.handlers
   hd["textDocument/hover"] = vim.lsp.with(hd.hover, opt)
@@ -87,7 +94,7 @@ local function load_neodev(server)
   if IS_LEET_CODE then
     return
   end
-  require('neodev').setup()
+  require("neodev").setup()
 end
 
 return {

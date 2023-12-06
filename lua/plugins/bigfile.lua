@@ -23,7 +23,12 @@ return {
         if TABLE_CONTAINS({ "help", "text", "markdown" }, filetype) then
           return false
         end
-        return file_length > MAX_FILE_LENGTH or filesize_mib > MAX_FILE_SIZE
+        local is_big_file = file_length > MAX_FILE_LENGTH
+          or filesize_mib > MAX_FILE_SIZE
+        if is_big_file then
+          table.insert(BIGFILES, bufnr)
+        end
+        return is_big_file
       end,
       features = {
         "indent_blankline",

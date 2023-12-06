@@ -11,7 +11,7 @@ return {
       logging = false,
       cn = {
         enabled = true,
-      }
+      },
     })
   end,
 }

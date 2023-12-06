@@ -57,6 +57,18 @@ local filetype = {
   icon = nil,
 }
 
+local filepath = {
+  "filename",
+  path = 3,
+  file_status = false,
+  cond = function()
+    return TABLE_CONTAINS(BIGFILES, GET_CURRENT_BUFFER())
+  end,
+  symbols = {
+    unnamed = "",
+  },
+}
+
 local branch = {
   "branch",
   icons_enabled = true,
@@ -184,6 +196,7 @@ return {
           diagnostics,
           filetype,
           lsps,
+          filepath,
           "searchcount",
         },
         lualine_c = {},

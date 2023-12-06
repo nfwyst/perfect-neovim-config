@@ -17,6 +17,7 @@ local other = {
   ["<,"] = "Neorg demote no recursively",
   [">t"] = { "<cmd>tabNext<cr>", "Next tab" },
   ["<t"] = { "<cmd>tabprevious<cr>", "Previous tab" },
+  [">x"] = { "<cmd>tabclose<cr>", "Close tab" },
 }
 
 local registers = {

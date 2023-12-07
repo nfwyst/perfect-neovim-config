@@ -54,11 +54,14 @@ local function init(bufferline)
       },
     },
     {
-      { "BufReadPost", "BufAdd", "BufNewFile" },
+      { "BufReadPost", "BufNewFile" },
       {
         group = group,
         callback = function(event)
           local bufnr = event.buf
+          if BUFFER_OPENED_TIME[bufnr] then
+            return
+          end
           BUFFER_OPENED_TIME[bufnr] = os.time()
           AUTOCMD("BufWinEnter", {
             group = AUTOGROUP("_clean_buffer_", { clear = true }),

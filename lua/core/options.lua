@@ -47,8 +47,8 @@ SET_OPTS({
   shortmess = vim.opt.shortmess + "cCIWs", --  flags to shorten/silent vim messages
   whichwrap = vim.opt.whichwrap + "<,>,[,],h,l", -- keys that allowed move the cursor to previous/next line
   background = SCHEME_BACKGROUND,
-  guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor,a:blinkwait1000-blinkon500-blinkoff250",
-  guifont = "0xProto Nerd Font Mono:h18",
+  guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor",
+  guifont = "0xProto Nerd Font Bold:h18",
   autowrite = true, -- enable autowrite
   conceallevel = 3, -- hide * markup
   confirm = true, -- confirm to save changes before exiting modified buffer

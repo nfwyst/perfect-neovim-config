@@ -4,7 +4,7 @@ local text_layout = { width = 9999, height = 0.6, preview_width = 0.35 }
 local other_layout = { width = 9999, height = 9999, preview_width = 0.35 }
 local picker_opt = { fname_width = fnw }
 
-local function find_text(builtin, themes, path, undercursor)
+local function find_text(builtin, themes, path, undercursor, extra)
   local theme = themes.get_ivy({
     layout_config = text_layout,
   })
@@ -13,10 +13,10 @@ local function find_text(builtin, themes, path, undercursor)
     theme.search_dir = path
   end
   if undercursor then
-    builtin.grep_string(theme)
+    builtin.grep_string(MERGE_TABLE(theme, extra or {}))
     return
   end
-  builtin.live_grep(theme)
+  builtin.live_grep(MERGE_TABLE(theme, extra or {}))
 end
 
 local function find_files(builtin, themes, config)
@@ -31,11 +31,27 @@ end
 
 local function init(builtin, themes)
   SET_USER_COMMANDS({
-    FindText = function(path, undercursor)
-      find_text(builtin, themes, path, undercursor)
+    FindText = function()
+      find_text(builtin, themes, nil, false)
     end,
     FindTextCursor = function()
       find_text(builtin, themes, nil, true)
+    end,
+    FindTextByFileType = function()
+      vim.ui.input({ prompt = "Enter file type to search:" }, function(type)
+        if not type then
+          return
+        end
+        find_text(builtin, themes, nil, false, { type_filter = type })
+      end)
+    end,
+    FindTextByPattern = function()
+      vim.ui.input({ prompt = "Enter pattern to search:" }, function(pattern)
+        if not pattern then
+          return
+        end
+        find_text(builtin, themes, nil, false, { glob_pattern = pattern })
+      end)
     end,
     FindFiles = function()
       find_files(builtin, themes)
@@ -95,6 +111,8 @@ return {
   cond = not IS_VSCODE,
   cmd = {
     "FindText",
+    "FindTextByFileType",
+    "FindTextByPattern",
     "FindTextCursor",
     "FindFiles",
     "FindGitHiddenFiles",

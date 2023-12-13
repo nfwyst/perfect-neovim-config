@@ -101,6 +101,8 @@ INVALID_FILETYPE = {
   "DiffviewFiles",
   "DiffviewFileHistory",
   "mason",
+  "WhichKey",
+  "TelescopeResults",
   "",
   nil,
 }

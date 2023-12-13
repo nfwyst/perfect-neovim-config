@@ -23,6 +23,9 @@ local function init(illuminate)
   AUTOCMD("FileType", {
     group = AUTOGROUP("_illuminate_key_", { clear = true }),
     callback = function(event)
+      if TABLE_CONTAINS(INVALID_FILETYPE, event.match) then
+        return
+      end
       bind_keymap(illuminate, event.buf)
     end,
   })

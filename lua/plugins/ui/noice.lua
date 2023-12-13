@@ -82,6 +82,7 @@ return {
               { find = "hit BOTTOM" },
               { find = "hit TOP" },
               { find = "No fold found" },
+              { find = "filetype unknown" },
             },
           },
           opts = { skip = true },

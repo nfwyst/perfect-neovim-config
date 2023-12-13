@@ -38,12 +38,12 @@ local function init(bufferline)
   local group = AUTOGROUP("_alpha_and_bufferline_", { clear = true })
   SET_AUTOCMDS({
     {
-      "BufReadPost",
+      "BufRead",
       {
         group = group,
         callback = function(event)
           AUTOCMD("BufWinEnter", {
-            group = AUTOGROUP("_restore_pos_", { clear = true }),
+            group = group,
             once = true,
             buffer = event.buf,
             callback = function()
@@ -54,20 +54,16 @@ local function init(bufferline)
       },
     },
     {
-      { "BufReadPost", "BufNewFile" },
+      { "BufRead", "BufNewFile" },
       {
         group = group,
         callback = function(event)
           local bufnr = event.buf
-          if BUFFER_OPENED_TIME[bufnr] then
-            return
-          end
-          BUFFER_OPENED_TIME[bufnr] = os.time()
           AUTOCMD("BufWinEnter", {
-            group = AUTOGROUP("_clean_buffer_", { clear = true }),
-            once = true,
-            buffer = event.buf,
+            group = group,
+            buffer = bufnr,
             callback = function()
+              BUFFER_OPENED_TIME[bufnr] = os.time()
               vim.schedule(function()
                 PCALL(delete_old_buffers, bufferline)
               end)

@@ -52,7 +52,6 @@ local function on_attach(bufnr)
         rhs = api.node.navigate.parent_close,
         opts = get_opts("Close Directory"),
       },
-      { lhs = "<CR>", rhs = api.node.open.edit, opts = get_opts("Open") },
       {
         lhs = "<Tab>",
         rhs = api.node.open.preview,
@@ -152,7 +151,6 @@ local function on_attach(bufnr)
         opts = get_opts("First Sibling"),
       },
       { lhs = "m", rhs = api.marks.toggle, opts = get_opts("Toggle Bookmark") },
-      { lhs = "o", rhs = api.node.open.edit, opts = get_opts("Open") },
       {
         lhs = "O",
         rhs = api.node.open.no_window_picker,
@@ -182,19 +180,8 @@ local function on_attach(bufnr)
         rhs = api.fs.copy.relative_path,
         opts = get_opts("Copy Relative Path"),
       },
-      {
-        lhs = "<2-LeftMouse>",
-        rhs = api.node.open.edit,
-        opts = get_opts("Open"),
-      },
-      {
-        lhs = "<2-RightMouse>",
-        rhs = api.tree.change_root_to_node,
-        opts = get_opts("CD"),
-      },
       { lhs = "l", rhs = api.node.open.edit, opts = get_opts("Open") },
       { lhs = "<cr>", rhs = api.node.open.edit, opts = get_opts("Open") },
-      { lhs = "o", rhs = api.node.open.edit, opts = get_opts("Open") },
       {
         lhs = "h",
         rhs = api.node.navigate.parent_close,

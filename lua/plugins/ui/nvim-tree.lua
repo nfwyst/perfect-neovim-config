@@ -75,7 +75,7 @@ local function on_attach(bufnr)
       },
       { lhs = "a", rhs = api.fs.create, opts = get_opts("Create") },
       {
-        lhs = "bmv",
+        lhs = "M",
         rhs = api.marks.bulk.move,
         opts = get_opts("Move Bookmarked"),
       },

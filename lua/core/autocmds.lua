@@ -66,7 +66,7 @@ SET_AUTOCMDS({
       callback = function(event)
         local bufnr = event.buf
         TABLE_REMOVE_BY_VAL(BIGFILES, bufnr)
-        BUFFER_OPENED_TIME[bufnr] = nil
+        TABLE_REMOVE_BY_KEY(BUFFER_OPENED_TIME, bufnr)
       end,
       group = group,
     },

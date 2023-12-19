@@ -12,7 +12,9 @@ end
 
 local function delete_buffers(num, buffers)
   local compare = function(cur, next)
-    return BUFFER_OPENED_TIME[cur.id] < BUFFER_OPENED_TIME[next.id]
+    local curtime = BUFFER_OPENED_TIME[cur.id] or 0
+    local nexttime = BUFFER_OPENED_TIME[next.id] or 0
+    return curtime < nexttime
   end
   QUICKSORT(buffers, 1, #buffers, compare)
   for k, v in ipairs(buffers) do
@@ -20,6 +22,10 @@ local function delete_buffers(num, buffers)
       return
     end
     vim.schedule(function()
+      local is_deleted = BUFFER_OPENED_TIME[v.id] == nil
+      if is_deleted then
+        return
+      end
       require("bufdelete").bufdelete(v.id, false)
     end)
   end
@@ -63,7 +69,11 @@ local function init(bufferline)
             group = group,
             buffer = bufnr,
             callback = function()
+              local is_opened = BUFFER_OPENED_TIME[bufnr] ~= nil
               BUFFER_OPENED_TIME[bufnr] = os.time()
+              if is_opened then
+                return
+              end
               vim.schedule(function()
                 PCALL(delete_old_buffers, bufferline)
               end)

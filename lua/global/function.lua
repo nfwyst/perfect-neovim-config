@@ -159,6 +159,10 @@ function TABLE_REMOVE_BY_VAL(table, value)
   end
 end
 
+function TABLE_REMOVE_BY_KEY(table, key)
+  table[key] = nil
+end
+
 function SET_WORKSPACE_PATH_GLOBAL()
   local ok, util = pcall(require, "lspconfig.util")
   if not ok then

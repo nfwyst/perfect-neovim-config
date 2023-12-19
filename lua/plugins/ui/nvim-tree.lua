@@ -1,6 +1,7 @@
 local function on_attach(bufnr)
   local api = require("nvim-tree.api")
-  local function get_opts(desc)
+
+  local function o(desc)
     return {
       desc = "nvim-tree: " .. desc,
       buffer = bufnr,
@@ -10,190 +11,86 @@ local function on_attach(bufnr)
     }
   end
 
-  SET_KEY_MAPS({
-    n = {
-      {
-        lhs = "<C-]>",
-        rhs = api.tree.change_root_to_node,
-        opts = get_opts("CD"),
-      },
-      {
-        lhs = "<C-e>",
-        rhs = api.node.open.replace_tree_buffer,
-        opts = get_opts("Open: In Place"),
-      },
-      {
-        lhs = "<C-k>",
-        rhs = api.node.show_info_popup,
-        opts = get_opts("Info"),
-      },
-      {
-        lhs = "<C-r>",
-        rhs = api.fs.rename_sub,
-        opts = get_opts("Rename: Omit Filename"),
-      },
-      {
-        lhs = "<C-t>",
-        rhs = api.node.open.tab,
-        opts = get_opts("Open: New Tab"),
-      },
-      {
-        lhs = "<C-v>",
-        rhs = api.node.open.vertical,
-        opts = get_opts("Open: Vertical Split"),
-      },
-      {
-        lhs = "<C-x>",
-        rhs = api.node.open.horizontal,
-        opts = get_opts("Open: Horizontal Split"),
-      },
-      {
-        lhs = "<BS>",
-        rhs = api.node.navigate.parent_close,
-        opts = get_opts("Close Directory"),
-      },
-      {
-        lhs = "<Tab>",
-        rhs = api.node.open.preview,
-        opts = get_opts("Open Preview"),
-      },
-      {
-        lhs = ">",
-        rhs = api.node.navigate.sibling.next,
-        opts = get_opts("Next Sibling"),
-      },
-      {
-        lhs = "<",
-        rhs = api.node.navigate.sibling.prev,
-        opts = get_opts("Previous Sibling"),
-      },
-      { lhs = ".", rhs = api.node.run.cmd, opts = get_opts("Run Command") },
-      {
-        lhs = "-",
-        rhs = api.tree.change_root_to_parent,
-        opts = get_opts("Up"),
-      },
-      { lhs = "a", rhs = api.fs.create, opts = get_opts("Create") },
-      {
-        lhs = "M",
-        rhs = api.marks.bulk.move,
-        opts = get_opts("Move Bookmarked"),
-      },
-      {
-        lhs = "B",
-        rhs = api.tree.toggle_no_buffer_filter,
-        opts = get_opts("Toggle No Buffer"),
-      },
-      { lhs = "c", rhs = api.fs.copy.node, opts = get_opts("Copy") },
-      {
-        lhs = "C",
-        rhs = api.tree.toggle_git_clean_filter,
-        opts = get_opts("Toggle Git Clean"),
-      },
-      {
-        lhs = "[c",
-        rhs = api.node.navigate.git.prev,
-        opts = get_opts("Prev Git"),
-      },
-      {
-        lhs = "]c",
-        rhs = api.node.navigate.git.next,
-        opts = get_opts("Next Git"),
-      },
-      { lhs = "d", rhs = api.fs.remove, opts = get_opts("Delete") },
-      { lhs = "D", rhs = api.fs.trash, opts = get_opts("Trash") },
-      { lhs = "E", rhs = api.tree.expand_all, opts = get_opts("Expand All") },
-      {
-        lhs = "e",
-        rhs = api.fs.rename_basename,
-        opts = get_opts("Rename: Basename"),
-      },
-      {
-        lhs = "]e",
-        rhs = api.node.navigate.diagnostics.next,
-        opts = get_opts("Next Diagnostic"),
-      },
-      {
-        lhs = "[e",
-        rhs = api.node.navigate.diagnostics.prev,
-        opts = get_opts("Prev Diagnostic"),
-      },
-      {
-        lhs = "F",
-        rhs = api.live_filter.clear,
-        opts = get_opts("Clean Filter"),
-      },
-      { lhs = "f", rhs = api.live_filter.start, opts = get_opts("Filter") },
-      { lhs = "g?", rhs = api.tree.toggle_help, opts = get_opts("Help") },
-      {
-        lhs = "gy",
-        rhs = api.fs.copy.absolute_path,
-        opts = get_opts("Copy Absolute Path"),
-      },
-      {
-        lhs = "H",
-        rhs = api.tree.toggle_hidden_filter,
-        opts = get_opts("Toggle Dotfiles"),
-      },
-      {
-        lhs = "I",
-        rhs = api.tree.toggle_gitignore_filter,
-        opts = get_opts("Toggle Git Ignore"),
-      },
-      {
-        lhs = "J",
-        rhs = api.node.navigate.sibling.last,
-        opts = get_opts("Last Sibling"),
-      },
-      {
-        lhs = "K",
-        rhs = api.node.navigate.sibling.first,
-        opts = get_opts("First Sibling"),
-      },
-      { lhs = "m", rhs = api.marks.toggle, opts = get_opts("Toggle Bookmark") },
-      {
-        lhs = "O",
-        rhs = api.node.open.no_window_picker,
-        opts = get_opts("Open: No Window Picker"),
-      },
-      { lhs = "p", rhs = api.fs.paste, opts = get_opts("Paste") },
-      {
-        lhs = "P",
-        rhs = api.node.navigate.parent,
-        opts = get_opts("Parent Directory"),
-      },
-      { lhs = "q", rhs = api.tree.close, opts = get_opts("Close") },
-      { lhs = "r", rhs = api.fs.rename, opts = get_opts("Rename") },
-      { lhs = "R", rhs = api.tree.reload, opts = get_opts("Refresh") },
-      { lhs = "s", rhs = api.node.run.system, opts = get_opts("Run System") },
-      { lhs = "S", rhs = api.tree.search_node, opts = get_opts("Search") },
-      {
-        lhs = "U",
-        rhs = api.tree.toggle_custom_filter,
-        opts = get_opts("Toggle Hidden"),
-      },
-      { lhs = "W", rhs = api.tree.collapse_all, opts = get_opts("Collapse") },
-      { lhs = "x", rhs = api.fs.cut, opts = get_opts("Cut") },
-      { lhs = "y", rhs = api.fs.copy.filename, opts = get_opts("Copy Name") },
-      {
-        lhs = "Y",
-        rhs = api.fs.copy.relative_path,
-        opts = get_opts("Copy Relative Path"),
-      },
-      { lhs = "l", rhs = api.node.open.edit, opts = get_opts("Open") },
-      { lhs = "<cr>", rhs = api.node.open.edit, opts = get_opts("Open") },
-      {
-        lhs = "h",
-        rhs = api.node.navigate.parent_close,
-        opts = get_opts("Close Directory"),
-      },
-      {
-        lhs = "v",
-        rhs = api.node.open.vertical,
-        opts = get_opts("Open: Vertical Split"),
-      },
+  local tree = api.tree
+  local fs = api.fs
+  local copy = fs.copy
+  local node = api.node
+  local open = node.open
+  local navigate = node.navigate
+  local run = node.run
+  local bulk = api.marks.bulk
+
+  local n = {
+    { lhs = "<c-]>", rhs = tree.change_root_to_node, opts = o("cd") },
+    { lhs = "<c-k>", rhs = node.show_info_popup, opts = o("info") },
+    { lhs = "<c-r>", rhs = fs.rename_sub, opts = o("rename: path") },
+    { lhs = "<c-t>", rhs = open.tab, opts = o("open in new tab") },
+    { lhs = "<c-x>", rhs = open.horizontal, opts = o("open horizontal") },
+    { lhs = "[c", rhs = navigate.git.prev, opts = o("prev git") },
+    { lhs = "]c", rhs = navigate.git.next, opts = o("next git") },
+    { lhs = "<cr>", rhs = open.edit, opts = o("expand node") },
+    { lhs = ">", rhs = navigate.sibling.next, opts = o("next sibling") },
+    { lhs = "<", rhs = navigate.sibling.prev, opts = o("prev sibling") },
+    { lhs = ".", rhs = run.cmd, opts = o("run command") },
+    { lhs = "-", rhs = tree.change_root_to_parent, opts = o("up") },
+    { lhs = "a", rhs = fs.create, opts = o("new node") },
+    { lhs = "A", rhs = copy.absolute_path, opts = o("copy abs path") },
+    { lhs = "b", rhs = fs.rename, opts = o("rename: basename") },
+    {
+      lhs = "B",
+      rhs = tree.toggle_no_buffer_filter,
+      opts = o("toggle no buffer"),
     },
-  })
+    { lhs = "c", rhs = copy.node, opts = o("copy: node") },
+    {
+      lhs = "C",
+      rhs = tree.toggle_git_clean_filter,
+      opts = o("toggle git clean"),
+    },
+    { lhs = "d", rhs = fs.remove, opts = o("delete") },
+    { lhs = "D", rhs = bulk.delete, opts = o("delete bookmarked") },
+    { lhs = "e", rhs = open.no_window_picker, opts = o("open directly") },
+    { lhs = "f", rhs = api.live_filter.start, opts = o("filter") },
+    { lhs = "F", rhs = api.live_filter.clear, opts = o("clean filter") },
+    { lhs = "g?", rhs = tree.toggle_help, opts = o("help") },
+    { lhs = "gs", rhs = tree.search_node, opts = o("Search") },
+    { lhs = "h", rhs = navigate.parent_close, opts = o("close directory") },
+    { lhs = "H", rhs = tree.collapse_all, opts = o("collapse all") },
+    {
+      lhs = "i",
+      rhs = tree.toggle_hidden_filter,
+      opts = o("toggle dotfiles"),
+    },
+    {
+      lhs = "I",
+      rhs = tree.toggle_gitignore_filter,
+      opts = o("toggle ignorefile"),
+    },
+    { lhs = "J", rhs = navigate.sibling.last, opts = o("last sibling") },
+    { lhs = "K", rhs = navigate.sibling.first, opts = o("first sibling") },
+    { lhs = "n", rhs = copy.filename, opts = o("copy name") },
+    { lhs = "m", rhs = api.marks.toggle, opts = o("toggle bookmark") },
+    { lhs = "M", rhs = bulk.move, opts = o("move bookmarked") },
+    { lhs = "l", rhs = open.edit, opts = o("expand node") },
+    { lhs = "L", rhs = tree.expand_all, opts = o("expand all") },
+    { lhs = "o", rhs = run.system, opts = o("open with system") },
+    { lhs = "p", rhs = fs.paste, opts = o("paste node") },
+    { lhs = "P", rhs = navigate.parent, opts = o("parent directory") },
+    { lhs = "q", rhs = tree.close, opts = o("close tree") },
+    { lhs = "r", rhs = tree.reload, opts = o("reload") },
+    { lhs = "R", rhs = copy.relative_path, opts = o("copy relative path") },
+    { lhs = "t", rhs = fs.trash, opts = o("trash") },
+    { lhs = "T", rhs = bulk.trash, opts = o("trash bookmarked") },
+    {
+      lhs = "u",
+      rhs = tree.toggle_custom_filter,
+      opts = o("toggle custom filter"),
+    },
+    { lhs = "v", rhs = open.vertical, opts = o("open vertical") },
+    { lhs = "x", rhs = fs.cut, opts = o("cut node") },
+  }
+
+  SET_KEY_MAPS({ n = n })
 end
 
 SET_GLOBAL_OPTS({

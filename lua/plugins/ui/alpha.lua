@@ -38,8 +38,16 @@ return {
       bd.button("f", "󰱼  Find file", "<cmd>FindFiles<cr>"),
       bd.button("e", "  New file", "<cmd>ene <bar> startinsert<cr>"),
       bd.button("p", "  Find project", "<cmd>Telescope projects<cr>"),
-      bd.button("R", "  Recently used files global", "<cmd>Telescope oldfiles<cr>"),
-      bd.button("r", "  Recently used files", "<cmd>Telescope oldfiles only_cwd=true<cr>"),
+      bd.button(
+        "R",
+        "  Recently used files global",
+        "<cmd>Telescope oldfiles<cr>"
+      ),
+      bd.button(
+        "r",
+        "  Recently used files",
+        "<cmd>Telescope oldfiles only_cwd=true<cr>"
+      ),
       bd.button("t", "󰊄  Find text", "<cmd>FindText<cr>"),
       bd.button("c", "  Configuration", "<cmd>e $MYVIMRC<cr>"),
       bd.button("q", "󰅙  Quit Neovim", "<cmd>qa<cr>"),

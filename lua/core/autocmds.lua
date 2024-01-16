@@ -110,7 +110,7 @@ SET_AUTOCMDS({
         if IS_WIN_LINUX then
           return
         end
-        SET_OPTS({ wrap = true, spell = true }, true)
+        SET_OPTS({ wrap = true }, true)
       end,
       group = AUTOGROUP("_markdown_git_", { clear = true }),
     },

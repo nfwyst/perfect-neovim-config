@@ -4,6 +4,23 @@ local text_layout = { width = 9999, height = 0.6, preview_width = 0.35 }
 local other_layout = { width = 9999, height = 9999, preview_width = 0.35 }
 local picker_opt = { fname_width = fnw }
 
+local function get_symbols(on_done)
+  vim.ui.select(
+    LSP_SYMBOLS,
+    { prompt = "select symbols type to filter" },
+    function(symbol)
+      if not symbol then
+        return
+      end
+      local symbols = { symbol }
+      if symbol == LSP_SYMBOLS[1] then
+        symbols = nil
+      end
+      on_done(symbols)
+    end
+  )
+end
+
 local function find_text(builtin, themes, path, undercursor, extra)
   local theme = themes.get_ivy({
     layout_config = text_layout,
@@ -98,10 +115,14 @@ local function init(builtin, themes)
       end)
     end,
     DocumentSymbols = function()
-      builtin.lsp_document_symbols({ symbols = LSP_SYMBOLS })
+      get_symbols(function(symbols)
+        builtin.lsp_document_symbols({ symbols = symbols })
+      end)
     end,
     WorkspaceSymbols = function()
-      builtin.lsp_dynamic_workspace_symbols({ symbols = LSP_SYMBOLS })
+      get_symbols(function(symbols)
+        builtin.lsp_dynamic_workspace_symbols({ symbols = symbols })
+      end)
     end,
   })
 end

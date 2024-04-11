@@ -28,7 +28,6 @@ local function init()
     DiagnosticSignInfo = { text = " ", texthl = "DiagnosticSignInfo" },
   }
   DEFINE_SIGNS(signs)
-
   local active = {}
   for name, value in pairs(signs) do
     table.insert(active, { name = name, text = value.text })

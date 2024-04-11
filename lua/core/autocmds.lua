@@ -107,10 +107,10 @@ SET_AUTOCMDS({
     {
       pattern = { "markdown", "gitcommit", "NeogitCommitMessage" },
       callback = function()
-        if IS_WIN_LINUX then
-          return
-        end
-        SET_OPTS({ wrap = true }, true)
+        SET_OPTS(
+          { wrap = true, tabstop = 2, softtabstop = 2, shiftwidth = 2 },
+          true
+        )
       end,
       group = AUTOGROUP("_markdown_git_", { clear = true }),
     },

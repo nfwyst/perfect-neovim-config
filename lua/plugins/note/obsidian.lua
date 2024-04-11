@@ -6,15 +6,14 @@ local function init()
       return "gf"
     end
   end, { expr = true })
-  USER_COMMAND("EnableObsidian", function() end)
 end
 
 return {
   "epwalsh/obsidian.nvim",
   cond = not IS_VSCODE_OR_LEET_CODE,
   dependencies = { "nvim-lua/plenary.nvim" },
+  ft = "markdown",
   cmd = {
-    "EnableObsidian",
     "ObsidianBacklinks",
     "ObsidianToday",
     "ObsidianYesterday",
@@ -28,13 +27,29 @@ return {
     "ObsidianTemplate",
     "ObsidianWorkspace",
   },
-  ft = not IS_WIN_LINUX and "markdown" or nil,
   config = function()
     local obsidian = require("obsidian")
     obsidian.setup({
       workspaces = {
         { name = "work", path = OBSIDIAN_WORK_DIR },
         { name = "personal", path = OBSIDIAN_DIR },
+        {
+          name = "no-vault",
+          path = function()
+            return assert(vim.fn.getcwd())
+          end,
+          overrides = {
+            notes_subdir = vim.NIL,
+            new_notes_location = "current_dir",
+            daily_notes = {
+              folder = vim.NIL,
+            },
+            templates = {
+              subdir = vim.NIL,
+            },
+            disable_frontmatter = true,
+          },
+        },
       },
       completion = {
         nvim_cmp = true,

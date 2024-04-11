@@ -44,7 +44,7 @@ local function init(bufferline)
   local group = AUTOGROUP("_alpha_and_bufferline_", { clear = true })
   SET_AUTOCMDS({
     {
-      "BufRead",
+      "BufReadPost",
       {
         group = group,
         callback = function(event)

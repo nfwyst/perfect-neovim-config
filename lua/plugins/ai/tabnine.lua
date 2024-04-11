@@ -8,11 +8,10 @@ end
 
 return {
   "codota/tabnine-nvim",
-  cond = false and not IS_WINDOWS and not IS_VSCODE_OR_LEET_CODE,
+  cond = not IS_WINDOWS and not IS_VSCODE_OR_LEET_CODE,
   build = tabnine_build_path(),
   config = function()
-    local tabnine = require("tabnine")
-    tabnine.setup({
+    require("tabnine").setup({
       disable_auto_comment = true,
       accept_keymap = "<c-t>",
       dismiss_keymap = "<c-d>",

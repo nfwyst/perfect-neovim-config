@@ -79,7 +79,6 @@ LSP_SERVERS = {
 INVALID_FILETYPE = {
   "NvimTree",
   "alpha",
-  "Outline",
   "dashboard",
   "qf",
   "help",
@@ -103,6 +102,7 @@ INVALID_FILETYPE = {
   "mason",
   "WhichKey",
   "TelescopeResults",
+  "Outline",
   "",
   nil,
 }
@@ -190,16 +190,32 @@ PROJECT_PATTERNS = {
 }
 
 LSP_SYMBOLS = {
-  "Class",
-  "Function",
+  "All",
+  "Text",
   "Method",
+  "Function",
   "Constructor",
+  "Field",
+  "Variable",
+  "Class",
   "Interface",
   "Module",
-  "Struct",
-  "Trait",
-  "Field",
   "Property",
+  "Unit",
+  "Value",
+  "Enum",
+  "Keyword",
+  "Snippet",
+  "Color",
+  "File",
+  "Reference",
+  "Folder",
+  "EnumMember",
+  "Constant",
+  "Struct",
+  "Event",
+  "Operator",
+  "TypeParameter",
 }
 
 WHICHKEY_MODE = { "x", "n", "o", "v" }

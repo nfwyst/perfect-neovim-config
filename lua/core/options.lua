@@ -50,7 +50,7 @@ SET_OPTS({
   guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver100-iCursor,r-cr:block-rCursor,o:hor50-Cursor/lCursor,sm:block-iCursor",
   guifont = "0xProto Nerd Font Bold:h18",
   autowrite = true, -- enable autowrite
-  conceallevel = 3, -- hide * markup
+  conceallevel = 2, -- hide * markup
   confirm = true, -- confirm to save changes before exiting modified buffer
   formatoptions = "jcroqlnt", -- tcqj
   grepformat = "%f:%l:%c:%m", -- grep command output format, %f filename, %l row, %c column, %m content
@@ -65,12 +65,16 @@ SET_OPTS({
   },
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }, -- seesions that will save when exiting
   shiftround = true, -- round indent to multiple of shiftwidth
-  splitkeep = "screen", -- keep screen layout not changing
+  splitkeep = "cursor", -- keep the same relative cursor position
   undolevels = IS_WIN_LINUX and 300 or 10000, -- more big, more undo can do
   wildmode = "longest:full,full", -- command line completion mode
   winminwidth = 5, -- minimum width of window
   showcmd = false,
   ruler = false,
+  breakindent = true,
+  backspace = { "start", "eol", "indent" },
+  path = vim.opt.path + "**",
+  wildignore = vim.opt.wildignore + "*/node_modules/*",
   -- colorcolumn = "81", -- number of column that should be highlight
 })
 

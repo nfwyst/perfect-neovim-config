@@ -3,7 +3,6 @@ return {
   cond = not IS_VSCODE_OR_LEET_CODE and not IS_LINUX,
   dependencies = { "luarocks.nvim" },
   ft = "norg",
-  lazy = false,
   cmd = "Neorg",
   config = function()
     require("neorg").setup({
